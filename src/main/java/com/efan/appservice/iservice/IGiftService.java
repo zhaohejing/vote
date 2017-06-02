@@ -1,21 +1,21 @@
 package com.efan.appservice.iservice;
 
-import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
-import com.efan.core.primary.Actor;
+import com.efan.core.primary.Gift;
 
 /**
- * 报名者
+ * Created by 45425 on 2017/6/2.
  */
-public interface IActorService {
+public interface IGiftService {
     /*获取活动列表分页数据*/
-     ResultModel<Actor> Actors(ActorInput input);
+     ResultModel<Gift> Gifts(BaseInput input);
     /*获取详情*/
-     Actor Actor(DeleteInput input);
+     Gift Gift(DeleteInput input);
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/
-     Actor   Modify(Actor input);
+     Gift Modify(Gift input);
+
 }

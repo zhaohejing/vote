@@ -1,6 +1,7 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IActorService;
+import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
@@ -28,10 +29,10 @@ public class ActorService implements IActorService {
         this._actorRepository=actorRepository;
     }
     /*获取活动列表分页数据*/
-    public ResultModel<Actor> Actors(BaseInput input){
+    public ResultModel<Actor> Actors(ActorInput input){
           Sort sort = new Sort(Sort.Direction.DESC, "actorCount");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),sort);
-        Page<Actor> res=  _actorRepository.findAllByActivityIdAndActorNameLike(1L, input.getFilter(), pageable);
+        Page<Actor> res=  _actorRepository.findAllByActivityIdAndActorNameLike(input.getActivityId(), input.getFilter(), pageable);
         return  new ResultModel<Actor>( res.getContent(),res.getTotalElements());
     }
     /*获取详情*/

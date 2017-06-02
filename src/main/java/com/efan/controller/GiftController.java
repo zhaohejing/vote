@@ -1,13 +1,12 @@
 package com.efan.controller;
 
-import com.efan.appservice.iservice.IActorService;
-import com.efan.controller.dtos.ActivityDto;
-import com.efan.controller.inputs.ActorInput;
+
+import com.efan.appservice.iservice.IGiftService;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
-import com.efan.core.primary.Actor;
+import com.efan.core.primary.Gift;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,53 +16,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by 45425 on 2017/6/2.
- */
-/**
- * 报名者接口
+ * 远程购买接口表
  */
 @RestController
-@RequestMapping("/api/actor")
-public class ActorController {
-    private IActorService    _actorService;
+@RequestMapping("/api/gift")
+public class GiftController {
+    private IGiftService _giftService;
     @Autowired
-    public ActorController(IActorService actorService){
-        _actorService=actorService;
+    public GiftController(IGiftService giftService){
+        _giftService=giftService;
     }
+
     /**
-     * 获取报名者列表带分页*/
-    @ApiOperation(value="获取报名者列表带分页", notes="报名者接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActorInput")
-    @RequestMapping(value  ="/actors" ,method = RequestMethod.POST)
-    public ActionResult Actors(@RequestBody ActorInput input){
-        ResultModel<Actor> result=_actorService.Actors(input);
+     * 获取礼物列表带分页*/
+    @ApiOperation(value="获取礼物列表带分页", notes="礼物接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "BaseInput")
+    @RequestMapping(value  ="/gifts" ,method = RequestMethod.POST)
+    public ActionResult Gifts(@RequestBody BaseInput input){
+        ResultModel<Gift> result=_giftService.Gifts(input);
         return  new ActionResult(result);
     }
     /**
-     * 添加报名者*/
-    @ApiOperation(value="添加报名者", notes="报名者接口")
+     * 添加或编辑活动*/
+    @ApiOperation(value="添加投票活动", notes="礼物接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActivityDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
-    public ActionResult Modify(@RequestBody ActivityDto input){
-        Actor result=_actorService.Modify(new Actor());
+    public ActionResult Modify(@RequestBody Gift input){
+        Gift result=_giftService.Modify(input);
         return  new ActionResult(result);
     }
     /**
-     * 删除报名者*/
-    @ApiOperation(value="删除报名者", notes="报名者接口")
+     * 删除活动*/
+    @ApiOperation(value="删除活动", notes="礼物接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/delete" ,method = RequestMethod.POST)
     public ActionResult Delete(@RequestBody DeleteInput input){
-        _actorService.Delete(input);
+        _giftService.Delete(input);
         return  new ActionResult(1);
     }
     /**
-     * 获取报名者详情*/
-    @ApiOperation(value="获取报名者详情", notes="报名者接口")
+     * 获取礼物详情*/
+    @ApiOperation(value="获取礼物详情", notes="礼物接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/detail" ,method = RequestMethod.POST)
     public ActionResult Detail(@RequestBody DeleteInput input){
-        Actor model=_actorService.Actor(input);
+        Gift model=_giftService.Gift(input);
         return  new ActionResult(model);
     }
 }
