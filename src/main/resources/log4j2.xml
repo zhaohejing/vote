@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+<Appenders>
+    <!--<Console name="Console" target="SYSTEM_OUT">-->
+        <!--<PatternLayout pattern="[%-5p] %d %c - %m%n" />-->
+    <!--</Console>-->
+    <File name="File" fileName="log/test.log">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+    </File>
+    <RollingFile name="RollingFile" fileName="log/info.log"
+                 filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+        <PatternLayout pattern="[%-5p] %d %c - %m%n" />
+        <Policies>
+            <TimeBasedTriggeringPolicy />
+            <SizeBasedTriggeringPolicy size="25 KB" />
+        </Policies>
+        <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+</Appenders>
+<Loggers>
+    <Logger name="mh.sample2.Log4jTest2" level="INFO" additivity="false">
+        <AppenderRef ref="File" />
+        <AppenderRef ref="RollingFile" />
+    </Logger>
+    <Root level="WARN">
+        <AppenderRef ref="Console" />
+    </Root>
+</Loggers>
+</Configuration>
