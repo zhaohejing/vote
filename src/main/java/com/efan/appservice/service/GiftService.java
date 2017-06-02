@@ -1,6 +1,7 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IGiftService;
+import com.efan.controller.dtos.GiftDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
@@ -11,6 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -41,10 +45,30 @@ public class GiftService implements IGiftService {
         _giftRepository.delete(input.id);
     }
     /*创建或编辑*/
-    public Gift   Modify(Gift input){
-        Gift model=new Gift();
-        model=  _giftRepository.saveAndFlush(model );
-        return  model   ;
+    public Gift   Modify(GiftDto input){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Gift model;
+        if (input.id>0){
+            model=_giftRepository.findOne(input.id  );
+            model.setGiftName(input.giftName);
+            if (! input.giftImage.isEmpty()){
+                model.setGiftImage(input.giftImage);
+            }
+            model.setPrice(input.price);
+            model=  _giftRepository.saveAndFlush(model );
+            return model;
+        }else {
+            model=new Gift();
+            model.setPrice(input.price);
+            model.setGiftImage(input.giftImage);
+            model.setGiftName(input.giftName);
+            model.setDelete(false);
+            model.setId(0L);
+            model.setCreationTime(df.format(new Date()));
+
+          model=  _giftRepository.save(model);
+          return  model;
+        }
     }
 
 }

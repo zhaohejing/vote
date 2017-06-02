@@ -2,6 +2,7 @@ package com.efan.controller;
 
 
 import com.efan.appservice.iservice.IGiftService;
+import com.efan.controller.dtos.GiftDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ActionResult;
@@ -39,9 +40,9 @@ public class GiftController {
     /**
      * 添加或编辑活动*/
     @ApiOperation(value="添加投票活动", notes="礼物接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActivityDto")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "GiftDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
-    public ActionResult Modify(@RequestBody Gift input){
+    public ActionResult Modify(@RequestBody GiftDto input){
         Gift result=_giftService.Modify(input);
         return  new ActionResult(result);
     }

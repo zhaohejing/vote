@@ -2,6 +2,7 @@ package com.efan.controller;
 
 import com.efan.appservice.iservice.IActorService;
 import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
@@ -42,10 +43,10 @@ public class ActorController {
     /**
      * 添加报名者*/
     @ApiOperation(value="添加报名者", notes="报名者接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActivityDto")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActorDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
-    public ActionResult Modify(@RequestBody ActivityDto input){
-        Actor result=_actorService.Modify(new Actor());
+    public ActionResult Modify(@RequestBody ActorDto input){
+        Actor result=_actorService.Modify(input);
         return  new ActionResult(result);
     }
     /**

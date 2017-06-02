@@ -34,7 +34,10 @@ public class Actor implements Serializable {
     private  String  actorImage;
     @Description("投票数 ")
     private  Integer actorCount;
-    private Timestamp creationTime;
+    //用户唯一id
+    @Description("用户唯一id key")
+    @Column(length = 50)
+    private String creationTime;
    private  Long activityId;
 
     public Long getId() {
@@ -77,11 +80,11 @@ public class Actor implements Serializable {
         this.actorCount = actorCount;
     }
 
-    public Timestamp getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Timestamp creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 

@@ -1,6 +1,7 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IActorService;
+import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
@@ -13,6 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by 45425 on 2017/6/2.
@@ -45,9 +49,30 @@ public class ActorService implements IActorService {
         _actorRepository.delete(input.id);
     }
     /*创建或编辑*/
-    public Actor   Modify(Actor input){
-        Actor model=new Actor();
-        model=  _actorRepository.saveAndFlush(model );
-        return  model   ;
+    public Actor   Modify(ActorDto input){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Actor model;
+        if (input.id>0){
+            model=_actorRepository.findOne(input.id);
+            model.setActivityId(input.activityId);
+            model.setActorCount(input.actorCount);
+            model.setActorImage(input.actorImage);
+            model.setActorKey(input.actorKey);
+            model.setActorName(input.actorName);
+            model=  _actorRepository.saveAndFlush(model );
+            return model;
+        }else {
+            model=new Actor();
+            model.setActivityId(input.activityId);
+            model.setActorCount(0);
+            model.setActorImage(input.actorImage);
+            model.setActorKey(input.actorKey);
+            model.setActorName(input.actorName);
+            model.setId(0L);
+            model.setCreationTime(df.format(new java.util.Date()));
+            model=  _actorRepository.save(model);
+            return  model;
+        }
+
     }
 }

@@ -9,6 +9,7 @@ import com.efan.core.page.Response;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
 import com.efan.repository.IActivityRepository;
+import com.efan.repository.IImageRepository;
 import com.efan.utils.HttpUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,13 @@ import java.util.*;
  */
 @Service
 public class ActivityService implements IActivityService {
-   /* @Value("${efanurl}")
-    private String efanurl;
-    @Value("${returnurl}")
-    private String returnurl;*/
+
     private IActivityRepository _activityRepository;
+    private IImageRepository _imageRepository;
     @Autowired
-     public ActivityService(IActivityRepository activityRepository){
+     public ActivityService(IActivityRepository activityRepository,IImageRepository imageRepository){
          this._activityRepository=activityRepository;
+         _imageRepository=imageRepository;
      }
      /*获取活动列表分页数据*/
     public ResultModel<Activity> Activitys(BaseInput input){
@@ -57,9 +57,32 @@ public class ActivityService implements IActivityService {
     }
     /*创建或编辑*/
     public Activity   Modify(ActivityDto input){
-       Activity model=new Activity();
-        model=  _activityRepository.saveAndFlush(model );
-        return  model   ;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Activity model;
+        if (input.id>0){
+            model=_activityRepository.findOne(input.id);
+            model.setContent(input.content);
+            model.setEndTime(input.endTime);
+            model.setRules(input.rules);
+            model.setTitle(input.title);
+            model=  _activityRepository.saveAndFlush(model );
+            return model;
+        }else {
+            model=new Activity();
+            model.setContent(input.content);
+            model.setEndTime(input.endTime);
+            model.setRules(input.rules);
+            model.setTitle(input.title);
+            model.setActorCount(0);
+            model.setDelete(false);
+            model.setActorCount(0);
+            model.setTotalVotes(0);
+            model.setTraffic(0);
+            model.setId(0L);
+            model.setCreationTime(df.format(new java.util.Date()));
+            model=  _activityRepository.save(model);
+            return  model;
+        }
     }
 
     private  Date GenderTime(Date time,Boolean isstart){

@@ -1,5 +1,6 @@
 package com.efan.appservice.iservice;
 
+import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
@@ -17,5 +18,5 @@ public interface IActorService {
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/
-     Actor   Modify(Actor input);
+     Actor   Modify(ActorDto input);
 }

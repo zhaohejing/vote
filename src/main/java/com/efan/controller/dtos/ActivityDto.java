@@ -7,12 +7,12 @@ import java.util.List;
  * Created by 45425 on 2017/6/2.
  */
 public class ActivityDto {
-    private Long id;
-    private  String title;
+    public Long id;
+    public  String title;
 
-    private  String content;
+    public  String content;
 
-    private Timestamp endTime;
-    private  String rules;
-    private List<String> images;
+    public Timestamp endTime;
+    public  String rules;
+    public List<String> images;
 }

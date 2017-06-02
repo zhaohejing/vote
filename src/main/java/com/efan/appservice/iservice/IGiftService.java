@@ -1,5 +1,6 @@
 package com.efan.appservice.iservice;
 
+import com.efan.controller.dtos.GiftDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
@@ -16,6 +17,6 @@ public interface IGiftService {
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/
-     Gift Modify(Gift input);
+     Gift Modify(GiftDto input);
 
 }

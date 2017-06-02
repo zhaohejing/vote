@@ -37,7 +37,8 @@ public class Activity implements Serializable {
     @Description("是否删除")
     private Boolean isDelete;
     @Description("创建时间")
-    private Timestamp creationTime;
+    @Column(length = 120,unique = true)
+    private String creationTime;
     @Description("参与者")
     private Integer actorCount;
     @Description("总投票数")
@@ -92,11 +93,11 @@ public class Activity implements Serializable {
         isDelete = delete;
     }
 
-    public Timestamp getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Timestamp creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 

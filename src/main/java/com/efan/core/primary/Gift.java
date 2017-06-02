@@ -44,7 +44,8 @@ public class Gift implements Serializable {
     @Description("是否删除")
     private Boolean isDelete;
     @Description("创建时间")
-    private Timestamp creationTime;
+    @Column(length = 30)
+    private String creationTime;
 
     public Long getId() {
         return id;
@@ -78,11 +79,11 @@ public class Gift implements Serializable {
         isDelete = delete;
     }
 
-    public Timestamp getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Timestamp creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 
