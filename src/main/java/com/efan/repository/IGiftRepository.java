@@ -15,5 +15,7 @@ public interface IGiftRepository extends JpaRepository<Gift,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Gift> findAllByGiftNameLike( String giftName, Pageable pageable);
+    Page<Gift> findAllByGiftNameContains( String giftName, Pageable pageable);
+
 }
 

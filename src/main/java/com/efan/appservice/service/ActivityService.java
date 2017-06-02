@@ -44,7 +44,7 @@ public class ActivityService implements IActivityService {
     public ResultModel<Activity> Activitys(BaseInput input){
       //  Sort sort = new Sort(Sort.Direction.DESC, "createdate");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
-        Page<Activity> res=  _activityRepository.findAllByTitleLike(input.getFilter(), pageable);
+        Page<Activity> res=  _activityRepository.findAllByTitleContains(input.getFilter(), pageable);
         return  new ResultModel<Activity>( res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
@@ -60,7 +60,7 @@ public class ActivityService implements IActivityService {
     public Activity   Modify(ActivityDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Activity model;
-        if (input.id>0){
+        if (input.id !=null&& input.id>0){
             model=_activityRepository.findOne(input.id);
             model.setContent(input.content);
             model.setEndTime(input.endTime);

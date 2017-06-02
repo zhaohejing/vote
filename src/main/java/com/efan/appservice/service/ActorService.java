@@ -36,7 +36,7 @@ public class ActorService implements IActorService {
     public ResultModel<Actor> Actors(ActorInput input){
           Sort sort = new Sort(Sort.Direction.DESC, "actorCount");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),sort);
-        Page<Actor> res=  _actorRepository.findAllByActivityIdAndActorNameLike(input.getActivityId(), input.getFilter(), pageable);
+        Page<Actor> res=  _actorRepository.findAllByActivityIdAndActorNameContains(input.getActivityId(), input.getFilter(), pageable);
         return  new ResultModel<Actor>( res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
@@ -52,7 +52,7 @@ public class ActorService implements IActorService {
     public Actor   Modify(ActorDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Actor model;
-        if (input.id>0){
+        if (input.id !=null&&input.id>0){
             model=_actorRepository.findOne(input.id);
             model.setActivityId(input.activityId);
             model.setActorCount(input.actorCount);

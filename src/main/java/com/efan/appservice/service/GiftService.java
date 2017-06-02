@@ -32,8 +32,8 @@ public class GiftService implements IGiftService {
     public ResultModel<Gift> Gifts(BaseInput input){
         //  Sort sort = new Sort(Sort.Direction.DESC, "createdate");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
-        Page<Gift> res=  _giftRepository.findAllByGiftNameLike(input.getFilter(), pageable);
-        return  new ResultModel<Gift>( res.getContent(),res.getTotalElements());
+        Page<Gift> res=  _giftRepository.findAllByGiftNameContains(input.getFilter(), pageable);
+        return  new ResultModel<Gift>(res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
     public Gift Gift(DeleteInput input){
@@ -48,7 +48,7 @@ public class GiftService implements IGiftService {
     public Gift   Modify(GiftDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Gift model;
-        if (input.id>0){
+        if (input.id !=null&&input.id>0){
             model=_giftRepository.findOne(input.id  );
             model.setGiftName(input.giftName);
             if (! input.giftImage.isEmpty()){

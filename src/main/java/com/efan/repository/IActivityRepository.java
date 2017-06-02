@@ -19,4 +19,6 @@ public interface IActivityRepository extends JpaRepository<Activity,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Activity> findAllByTitleLike(String title, Pageable pageable);
+    Page<Activity> findAllByTitleContains(String title, Pageable pageable);
+
 }

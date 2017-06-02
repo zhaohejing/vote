@@ -16,6 +16,8 @@ public interface IActorRepository extends JpaRepository<Actor,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Actor> findAllByActivityIdAndActorNameLike(Long activityId, String actorName, Pageable pageable);
+    Page<Actor> findAllByActivityIdAndActorNameContains(Long activityId, String actorName, Pageable pageable);
+
 }
 
 
