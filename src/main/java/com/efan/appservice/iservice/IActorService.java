@@ -1,22 +1,20 @@
 package com.efan.appservice.iservice;
 
-
-import com.efan.controller.dtos.ActivityDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
-import com.efan.core.primary.Activity;
+import com.efan.core.primary.Actor;
 
 /**
- *接口列表
+ * Created by 45425 on 2017/6/2.
  */
-public interface IActivityService {
+public interface IActorService {
     /*获取活动列表分页数据*/
-     ResultModel<Activity> Activitys(BaseInput input);
+     ResultModel<Actor> Actors(BaseInput input);
     /*获取详情*/
-     Activity Activity(DeleteInput input);
+     Actor Actor(DeleteInput input);
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/
-     Activity   Modify(ActivityDto input);
+     Actor   Modify(Actor input);
 }

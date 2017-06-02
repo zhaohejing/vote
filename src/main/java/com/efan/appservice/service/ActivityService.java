@@ -2,12 +2,21 @@ package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IActivityService;
 
+import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.inputs.BaseInput;
+import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.Response;
+import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Activity;
 import com.efan.repository.IActivityRepository;
 import com.efan.utils.HttpUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -17,36 +26,40 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * 购买订单相关接口
+ *活动创建相关
  */
 @Service
 public class ActivityService implements IActivityService {
-    @Value("${efanurl}")
+   /* @Value("${efanurl}")
     private String efanurl;
     @Value("${returnurl}")
-    private String returnurl;
+    private String returnurl;*/
     private IActivityRepository _activityRepository;
     @Autowired
      public ActivityService(IActivityRepository activityRepository){
          this._activityRepository=activityRepository;
      }
-
-    /**
-     * 获取包厢列表
-     * */
-    public Response GetCoupeList(String remoteId)  {
-        String url=efanurl+"api/getMachineListBySpot";
-        String parms="spot_id="+remoteId;
-        String result=  HttpUtils.sendPost(url,parms);
-        Response res;
-        try{
-            res =   new Gson().fromJson(result,Response.class);
-        }catch (Exception e){
-           res=new Response();
-           res.code=1000;
-           res.message=result;
-        }
+     /*获取活动列表分页数据*/
+    public ResultModel<Activity> Activitys(BaseInput input){
+      //  Sort sort = new Sort(Sort.Direction.DESC, "createdate");
+        Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
+        Page<Activity> res=  _activityRepository.findAllByTitleLike(input.getFilter(), pageable);
+        return  new ResultModel<Activity>( res.getContent(),res.getTotalElements());
+    }
+    /*获取详情*/
+    public Activity Activity(DeleteInput input){
+        Activity res=  _activityRepository.findOne(input.id);
         return  res;
+    }
+    /*删除*/
+    public void   Delete(DeleteInput input){
+        _activityRepository.delete(input.id);
+    }
+    /*创建或编辑*/
+    public Activity   Modify(ActivityDto input){
+       Activity model=new Activity();
+        model=  _activityRepository.saveAndFlush(model );
+        return  model   ;
     }
 
     private  Date GenderTime(Date time,Boolean isstart){

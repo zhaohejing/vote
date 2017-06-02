@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
- * 我的录音实体
+ * 图片表
  */
 @Entity
 @Table(name="image")
