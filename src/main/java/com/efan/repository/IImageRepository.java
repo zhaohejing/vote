@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IImageRepository extends JpaRepository<Image,Long> {
-
+ void  deleteByActivityId(Long activityId);
 }

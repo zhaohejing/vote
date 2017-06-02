@@ -8,6 +8,7 @@ import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.Response;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
+import com.efan.core.primary.Image;
 import com.efan.repository.IActivityRepository;
 import com.efan.repository.IImageRepository;
 import com.efan.utils.HttpUtils;
@@ -65,8 +66,7 @@ public class ActivityService implements IActivityService {
             model.setEndTime(input.endTime);
             model.setRules(input.rules);
             model.setTitle(input.title);
-            model=  _activityRepository.saveAndFlush(model );
-            return model;
+            model=  _activityRepository.saveAndFlush(model);
         }else {
             model=new Activity();
             model.setContent(input.content);
@@ -81,8 +81,22 @@ public class ActivityService implements IActivityService {
             model.setId(0L);
             model.setCreationTime(df.format(new java.util.Date()));
             model=  _activityRepository.save(model);
-            return  model;
         }
+        if (input.images.size()>0){
+            _imageRepository.deleteByActivityId(input.id);
+            List<Image> list=new ArrayList<>();
+            for (int i = 0; i < input.images.size(); i++) {
+                Image dto=new Image();
+                dto.setActivityId(model.getId());
+                dto.setId(0L);
+                dto.setQiniuUrl(input.images.get(i));
+                dto.setState(true);
+                dto.setCreationTime(df.format(new java.util.Date()));
+                   list.add(dto);
+            }
+              list=   _imageRepository.save(list);
+        }
+        return model;
     }
 
     private  Date GenderTime(Date time,Boolean isstart){
