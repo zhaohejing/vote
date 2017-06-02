@@ -1,5 +1,6 @@
 package com.efan.core.primary;
 
+import com.sun.org.glassfish.gmbal.Description;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
@@ -17,37 +18,24 @@ public class Actor implements Serializable {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     //用户唯一id
     @NotNull
+    @Description("用户唯一id key")
     @Column(length = 50)
-    private String userKey;
-    //点歌歌名
+    private String actorKey;
+
     @Column(length = 50)
-    private  String  songName;
-    //演唱者
+    @Description("用户名 ")
+    private  String  actorName;
+
     @Column(length = 50)
-    private  String singer;
-
-
-    private  Boolean state;
-
-    private Long creationUserId;
-
+    @Description("用户头像路径 ")
+    private  String  actorImage;
+    @Description("投票数 ")
+    private  Integer actorCount;
     private Timestamp creationTime;
-
-    private Long modifyUserId;
-
-    private Timestamp modifyTime;
-
-    public String getSongKey() {
-        return songKey;
-    }
-
-    public void setSongKey(String songKey) {
-        this.songKey = songKey;
-    }
-
-    private String songKey;
+   private  Long activityId;
 
     public Long getId() {
         return id;
@@ -57,44 +45,36 @@ public class Actor implements Serializable {
         this.id = id;
     }
 
-    public String getUserKey() {
-        return userKey;
+    public String getActorKey() {
+        return actorKey;
     }
 
-    public void setUserKey(String userKey) {
-        this.userKey = userKey;
+    public void setActorKey(String actorKey) {
+        this.actorKey = actorKey;
     }
 
-    public String getSongName() {
-        return songName;
+    public String getActorName() {
+        return actorName;
     }
 
-    public void setSongName(String songName) {
-        this.songName = songName;
+    public void setActorName(String actorName) {
+        this.actorName = actorName;
     }
 
-    public String getSinger() {
-        return singer;
+    public String getActorImage() {
+        return actorImage;
     }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
+    public void setActorImage(String actorImage) {
+        this.actorImage = actorImage;
     }
 
-    public Boolean getState() {
-        return state;
+    public Integer getActorCount() {
+        return actorCount;
     }
 
-    public void setState(Boolean state) {
-        this.state = state;
-    }
-
-    public Long getCreationUserId() {
-        return creationUserId;
-    }
-
-    public void setCreationUserId(Long creationUserId) {
-        this.creationUserId = creationUserId;
+    public void setActorCount(Integer actorCount) {
+        this.actorCount = actorCount;
     }
 
     public Timestamp getCreationTime() {
@@ -105,19 +85,12 @@ public class Actor implements Serializable {
         this.creationTime = creationTime;
     }
 
-    public Long getModifyUserId() {
-        return modifyUserId;
+    public Long getActivityId() {
+        return activityId;
     }
 
-    public void setModifyUserId(Long modifyUserId) {
-        this.modifyUserId = modifyUserId;
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
     }
 
-    public Timestamp getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Timestamp modifyTime) {
-        this.modifyTime = modifyTime;
-    }
 }

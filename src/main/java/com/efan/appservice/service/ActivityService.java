@@ -1,9 +1,9 @@
 package com.efan.appservice.service;
 
-import com.efan.appservice.iservice.IOrderService;
+import com.efan.appservice.iservice.IActivityService;
 
 import com.efan.core.page.Response;
-import com.efan.repository.primary.IOrderRepository;
+import com.efan.repository.IActivityRepository;
 import com.efan.utils.HttpUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,15 @@ import java.util.*;
  * 购买订单相关接口
  */
 @Service
-public class OrderService implements IOrderService {
+public class ActivityService implements IActivityService {
     @Value("${efanurl}")
     private String efanurl;
     @Value("${returnurl}")
     private String returnurl;
-    private IOrderRepository _orderRepository;
+    private IActivityRepository _activityRepository;
     @Autowired
-     public OrderService(IOrderRepository orderRepository){
-         this._orderRepository=orderRepository;
+     public ActivityService(IActivityRepository activityRepository){
+         this._activityRepository=activityRepository;
      }
 
     /**

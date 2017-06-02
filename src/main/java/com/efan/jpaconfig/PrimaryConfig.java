@@ -22,7 +22,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef="entityManagerFactoryPrimary",
         transactionManagerRef="transactionManagerPrimary",
-        basePackages= { "com.efan.repository.primary" }) //设置Repository所在位置
+        basePackages= { "com.efan.repository" }) //设置Repository所在位置
 public class PrimaryConfig {
 
     @Autowired @Qualifier("primaryDataSource")

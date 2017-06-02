@@ -1,7 +1,6 @@
 package com.efan.core.primary;
 
 import com.sun.org.glassfish.gmbal.Description;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;

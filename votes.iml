@@ -10,7 +10,7 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" />
-          <factory-entry name="entityManagerFactoryPrimary" value="4da16146-2d18-4370-b389-f49536d8adb8" />
+          <factory-entry name="entityManagerFactoryPrimary" />
           <factory-entry name="entityManagerFactorySecondary" />
         </datasource-mapping>
       </configuration>

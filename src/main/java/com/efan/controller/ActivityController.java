@@ -1,7 +1,7 @@
 package com.efan.controller;
 
-import com.efan.appservice.iservice.IOrderService;
 
+import com.efan.appservice.iservice.IActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/order")
-public class OrderController {
-    private IOrderService _orderService;
+public class ActivityController {
+    private IActivityService _activityService;
     @Autowired
-    public OrderController(IOrderService orderService){
-        _orderService=orderService;
+    public ActivityController(IActivityService activityService){
+        _activityService=activityService;
     }
 
   /*  *//**
