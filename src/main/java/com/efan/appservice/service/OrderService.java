@@ -1,22 +1,13 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IOrderService;
-import com.efan.controller.dtos.OrderTime;
-import com.efan.controller.inputs.BaseInput;
-import com.efan.controller.inputs.OrderInput;
-import com.efan.controller.inputs.RemoteInput;
-import com.efan.core.page.ResultModel;
-import com.efan.core.primary.MyTape;
-import com.efan.core.primary.Order;
+
 import com.efan.core.page.Response;
 import com.efan.repository.primary.IOrderRepository;
 import com.efan.utils.HttpUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -39,23 +30,7 @@ public class OrderService implements IOrderService {
      public OrderService(IOrderRepository orderRepository){
          this._orderRepository=orderRepository;
      }
-     /**
-      * 获取门店列表
-     * */
-    public Response GetRemoteList(RemoteInput input) {
-        String url=efanurl+"api/getSpotsByCoordinate";
-        String parms="longitude="+input.x+"&latitude"+input.y+"&page="+input.page;
-      String result=  HttpUtils.sendPost(url,parms);
-        Response res;
-        try{
-            res =   new Gson().fromJson(result,Response.class);
-        }catch (Exception e){
-            res=new Response();
-            res.code=1000;
-            res.message=result;
-        }
-        return  res;
-    }
+
     /**
      * 获取包厢列表
      * */
@@ -73,103 +48,6 @@ public class OrderService implements IOrderService {
         }
         return  res;
     }
-
-
-    /*获取预定订单列表*/
-    public List<OrderTime> GetOrderList(String boxId, Date date){
-        Date start=GenderTime(date,true);
-        Date end=GenderTime(date,false);
-        List<OrderTime> result=new ArrayList<>();
-          List<Order> list= _orderRepository.findOrders(boxId,start,end);
-        for (int i = 0; i <24 ; i++) {
-            Integer count=0;
-            for (int j = 0; j < list.size(); j++) {
-                Order temp=list.get(j);
-               Timestamp from = temp.getFromTime();
-                Integer hour=  from.getHours();
-                Integer min=  from.getMinutes();
-                Timestamp to = temp.getToTime();
-                Integer tohour=  to.getHours();
-                Integer tomin=  to.getMinutes();
-                if (i==hour){
-                    if (i==tohour){
-                        count+=(tomin-min);
-                    }else {
-                        count+=(60-min);
-                    }
-                    }
-                    if (i==tohour){
-                        if (hour<tohour){
-                            count+=tomin;
-                        }
-                    }
-            }
-            result.add(new OrderTime(i,i+1,count));
-        }
-        return  result;
-    }
-///根据lexington获取套餐详情
-     public  Response GetOrderTypeList(Boolean isRemote,String boxId){
-         String url=efanurl+"api/getProductsByRoom";
-         String parms="room_id="+boxId+"&isremote="+isRemote;
-         String result=  HttpUtils.sendPost(url,parms);
-         Response res;
-         try{
-             res =   new Gson().fromJson(result,Response.class);
-         }catch (Exception e){
-             res=new Response();
-             res.code=1000;
-             res.message=result;
-         }
-         return  res;
-     }
-     ///获取订单详情
-     public  Order GetOrderDetail(String orderId){
-     return   _orderRepository.findOrderByFilter(orderId);
-     }
-    public ResultModel<Order> GetMyOrders(BaseInput input){
-        Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
-        Page<Order> res=  _orderRepository.findAllByUserKey(input.getFilter(), pageable);
-        return  new ResultModel<Order>( res.getContent(),res.getTotalElements());
-
-    }
-//创建订单并调用支付接口
-  //  @Async
-    public Order CreateOrder(OrderInput input)  {
-        Timestamp date = new Timestamp(System.currentTimeMillis());
-      UUID num=   java.util.UUID.randomUUID();
-      String pars=getTimeDifference(input.fromTime,input.toTime);
-        Order model=new Order();
-        model.setAmount(input.amount);
-        model.setBoxId(input.boxId);
-        model.setBoxName(input.boxName);
-        model.setOrderNum(num.toString());
-        model.setCommon(false);
-        model.setPointName(input.pointName);
-        model.setUserKey(input.userKey);
-        model.setState(0);
-        model.setPurchaseTime(pars);
-        model.setModifyUserId(1L);
-        model.setConsumerName(input.consumerName);
-        model.setCreationTime(date);
-        model.setOrderId(input.orderId);
-        model.setCreationUserId(1L);
-        model.setDelete(false);
-        model.setFromTime(input.fromTime);
-        model.setModifyTime(date);
-        model.setMobile(input.consumerName);
-        model.setOrderType(input.orderType);
-        model.setToTime(input.toTime);
-      return  _orderRepository.save(model);
-    }
-
-    public String Payfor(String boxId,String orderId){
-        //调用微信支付
-        String url="http://wxpay.dev.efanyun.com/order";
-        String parms="?machineCode="+boxId+"&productId="+orderId+"&notifyUrl="+returnurl;
-      return   HttpUtils.sendGet(url+parms);
-    }
-
 
     private  Date GenderTime(Date time,Boolean isstart){
         Calendar calendar = new GregorianCalendar();
