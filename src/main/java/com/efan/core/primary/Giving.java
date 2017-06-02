@@ -77,23 +77,23 @@ public class Giving implements Serializable {
     private Long id;
 
     @NotNull
-    @Description("送礼人")
+     //"送礼人")
     @Column(length = 120,unique = true)
     private  String sendName;
 
-    @Description("送礼人头像")
+     //"送礼人头像")
     @Column(length = 300)
     private  String sendImage;
     @NotNull
-    @Description("接受人")
+     //"接受人")
     private Long actorId;
 
     @NotNull
-    @Description("礼物id")
+     //"礼物id")
     private Long giftId;
 
-    @Description("是否删除")
+     //"是否删除")
     private Boolean isDelete;
-    @Description("送礼时间")
+     //"送礼时间")
     private Timestamp creationTime;
 }

@@ -21,29 +21,29 @@ public class Activity implements Serializable {
 
 
     @NotNull
-    @Description("标题")
+     //"标题"
     @Column(length = 120,unique = true)
     private  String title;
     @Max(2000)
     @NotNull
     @Column(length = 2000)
-    @Description("内容")
+     //"内容"
     private  String content;
-    @Description("截至时间")
+     //"截至时间")
     private Timestamp endTime;
     @NotNull
-    @Description("活动规则")
+     //"活动规则")
     private  String rules;
-    @Description("是否删除")
+     //"是否删除")
     private Boolean isDelete;
-    @Description("创建时间")
+     //"创建时间")
     @Column(length = 120,unique = true)
     private String creationTime;
-    @Description("参与者")
+     //"参与者")
     private Integer actorCount;
-    @Description("总投票数")
+     //"总投票数")
     private  Integer totalVotes;
-    @Description("访问量")
+     //"访问量")
     private Integer traffic;
     public Long getId() {
         return id;

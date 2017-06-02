@@ -21,21 +21,21 @@ public class Actor implements Serializable {
 
     //用户唯一id
     @NotNull
-    @Description("用户唯一id key")
+     //"用户唯一id key")
     @Column(length = 50)
     private String actorKey;
 
     @Column(length = 50)
-    @Description("用户名 ")
+     //"用户名 ")
     private  String  actorName;
 
     @Column(length = 50)
-    @Description("用户头像路径 ")
+     //"用户头像路径 ")
     private  String  actorImage;
-    @Description("投票数 ")
+     //"投票数 ")
     private  Integer actorCount;
     //用户唯一id
-    @Description("用户唯一id key")
+     //"用户唯一id key")
     @Column(length = 50)
     private String creationTime;
    private  Long activityId;

@@ -19,11 +19,11 @@ public class Image implements Serializable {
     //骑牛url
     @NotNull
     @Column(length = 50)
-    @Description("骑牛图片路径")
+     //"骑牛图片路径")
     private String qiniuUrl;
 
     @NotNull
-    @Description("活动id")
+     //"活动id")
     private  Long activityId;
     //是否已上传
     private  Boolean state;

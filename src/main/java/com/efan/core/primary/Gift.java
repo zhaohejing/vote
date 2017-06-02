@@ -21,7 +21,7 @@ public class Gift implements Serializable {
     private Long id;
 
     @NotNull
-    @Description("礼物名称")
+     //"礼物名称")
     @Column(length = 120,unique = true)
     private  String giftName;
 
@@ -34,16 +34,16 @@ public class Gift implements Serializable {
     }
 
     @NotNull
-    @Description("礼物图片路径")
+     //"礼物图片路径")
     @Column(length = 300,unique = true)
     private  String giftImage;
 
     @NotNull
-    @Description("价格分为单位")
+     //"价格分为单位")
     private Integer price;
-    @Description("是否删除")
+     //"是否删除")
     private Boolean isDelete;
-    @Description("创建时间")
+     //"创建时间")
     @Column(length = 30)
     private String creationTime;
 
