@@ -6,7 +6,8 @@ package com.efan.controller.dtos;
 public class GiftDto {
     public Long id;
     public  String giftName;
-    public  String giftImage;
+    public  String imageName;
+    public  String imageUrl;
     public Integer price;
 
 }

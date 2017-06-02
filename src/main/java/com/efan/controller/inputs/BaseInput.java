@@ -6,9 +6,6 @@ package com.efan.controller.inputs;
 public class BaseInput {
     private Integer size;
     private Integer index;
-
-
-
     private String filter;
     public String getFilter() {
         return filter;

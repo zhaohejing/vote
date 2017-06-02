@@ -25,19 +25,31 @@ public class Gift implements Serializable {
     @Column(length = 120,unique = true)
     private  String giftName;
 
-    public String getGiftImage() {
-        return giftImage;
+
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setGiftImage(String giftImage) {
-        this.giftImage = giftImage;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @NotNull
-     //"礼物图片路径")
+     //"礼物图片名称")
     @Column(length = 300,unique = true)
-    private  String giftImage;
-
+    public  String imageName;
+    @NotNull
+    //"礼物图片路径")
+    @Column(length = 300,unique = true)
+    public  String imageUrl;
     @NotNull
      //"价格分为单位")
     private Integer price;

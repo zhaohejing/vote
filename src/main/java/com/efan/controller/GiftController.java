@@ -64,4 +64,13 @@ public class GiftController {
         Gift model=_giftService.Gift(input);
         return  new ActionResult(model);
     }
+    /**
+     * 送礼物*/
+    @ApiOperation(value="送礼物", notes="礼物接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @RequestMapping(value  ="/send" ,method = RequestMethod.POST)
+    public ActionResult Send(@RequestBody DeleteInput input){
+        Gift model=_giftService.Gift(input);
+        return  new ActionResult(model);
+    }
 }
