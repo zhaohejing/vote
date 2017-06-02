@@ -18,7 +18,7 @@ public   class HttpUtils {
             HttpURLConnection con = (HttpURLConnection)obj.openConnection();
             con.setRequestMethod("GET"); // Default is GET
             // Request header
-            // con.setRequestProperty("User-Agent", USER_AGENT);
+            // con.setRequestProperty("Activity-Agent", USER_AGENT);
 
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -40,7 +40,7 @@ public   class HttpUtils {
             HttpURLConnection con = (HttpURLConnection)obj.openConnection();
             con.setRequestMethod("POST"); // Default is GET
             // Request header
-            // con.setRequestProperty("User-Agent", USER_AGENT);
+            // con.setRequestProperty("Activity-Agent", USER_AGENT);
             con.setDoOutput(true);
             DataOutputStream dos = new DataOutputStream(con.getOutputStream());
             dos.writeBytes(body);

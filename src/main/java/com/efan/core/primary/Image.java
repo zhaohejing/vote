@@ -8,8 +8,8 @@ import java.io.Serializable;
  * 我的录音实体
  */
 @Entity
-@Table(name="efan_mytape")
-public class MyTape implements Serializable {
+@Table(name="image")
+public class Image implements Serializable {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)

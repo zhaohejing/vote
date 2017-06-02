@@ -29,10 +29,10 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("efan的KTV接口列表")
-                .description("版本不固定先简单来")
+                .title("咱自己的投票接口列表")
+                .description("初始化的版本")
                 .termsOfServiceUrl("http://blog.didispace.com/")
-                .version("1.0")
+                .version("0.0.1")
                 .build();
     }
 

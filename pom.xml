@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.efan</groupId>
-	<artifactId>sings</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>votes</artifactId>
+	<version>0.0.1-EFAN</version>
 
 	<packaging>jar</packaging>
 
-	<name>sings</name>
-	<description>Demo project for Spring Boot</description>
+	<name>votes</name>
+	<description>为了投票</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

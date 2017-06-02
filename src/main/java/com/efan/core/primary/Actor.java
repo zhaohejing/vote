@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * 我点过的歌
+ * 参与者
  */
 @Entity
-@Table(name="efan_mysongs")
-public class MySongs implements Serializable {
+@Table(name="actor")
+public class Actor implements Serializable {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
