@@ -22,16 +22,13 @@ public class Activity implements Serializable {
 
     @NotNull
      //"标题"
-    @Column(length = 120,unique = true)
+    @Column(length = 200,unique = true)
     private  String title;
-    @Max(2000)
-    @NotNull
-    @Column(length = 2000)
      //"内容"
     private  String content;
      //"截至时间")
     private Timestamp endTime;
-    @NotNull
+
      //"活动规则")
     private  String rules;
      //"是否删除")
