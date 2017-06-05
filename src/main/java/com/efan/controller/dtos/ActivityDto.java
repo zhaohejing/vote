@@ -12,5 +12,10 @@ public class ActivityDto  {
     public  String title;
     public Timestamp endTime;
     public  String rules;
-    public List<String> images;
+    public List<ImageDto> images;
+
+    public  class  ImageDto {
+        public String title;
+        public String url;
+    }
 }

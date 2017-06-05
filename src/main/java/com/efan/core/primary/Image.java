@@ -20,15 +20,12 @@ public class Image implements Serializable {
     @NotNull
     @Column(length = 50)
      //"骑牛图片路径")
-    private String qiniuUrl;
-
+    private String url;
+    //骑牛url
     @NotNull
-     //"活动id")
-    private  Long activityId;
-    //是否已上传
-    private  Boolean state;
-    private String creationTime;
-
+    @Column(length = 50)
+    //"骑牛图片路径")
+    private String title;
 
     public Long getId() {
         return id;
@@ -38,12 +35,20 @@ public class Image implements Serializable {
         this.id = id;
     }
 
-    public String getQiniuUrl() {
-        return qiniuUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setQiniuUrl(String qiniuUrl) {
-        this.qiniuUrl = qiniuUrl;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getActivityId() {
@@ -70,4 +75,10 @@ public class Image implements Serializable {
         this.creationTime = creationTime;
     }
 
+    @NotNull
+     //"活动id")
+    private  Long activityId;
+    //是否已上传
+    private  Boolean state;
+    private String creationTime;
 }

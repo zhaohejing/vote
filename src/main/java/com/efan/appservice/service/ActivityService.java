@@ -20,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.sql.Timestamp;
@@ -61,6 +62,7 @@ public class ActivityService implements IActivityService {
     public void   Delete(DeleteInput input){
         _activityRepository.delete(input.id);
     }
+    @Transactional()
     /*创建或编辑*/
     public Activity   Modify(ActivityDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -94,7 +96,8 @@ public class ActivityService implements IActivityService {
                 Image dto=new Image();
                 dto.setActivityId(model.getId());
                 dto.setId(0L);
-                dto.setQiniuUrl(input.images.get(i));
+                dto.setUrl(input.images.get(i).url);
+                dto.setTitle(input.images.get(i).title);
                 dto.setState(true);
                 dto.setCreationTime(df.format(new java.util.Date()));
                    list.add(dto);
