@@ -43,6 +43,9 @@ public class GiftController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "GiftDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
     public ActionResult Modify(@RequestBody GiftDto input){
+        if (input.activityId==null||input.activityId<=0){
+            return new ActionResult(false,"活动不存在,请先添加活动");
+        }
         Gift result=_giftService.Modify(input);
         return  new ActionResult(result);
     }

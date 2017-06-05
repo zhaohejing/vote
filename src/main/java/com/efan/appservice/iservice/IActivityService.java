@@ -7,6 +7,8 @@ import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
 
+import java.util.List;
+
 /**
  *接口列表
  */
@@ -19,4 +21,5 @@ public interface IActivityService {
      void   Delete(DeleteInput input);
     /*创建或编辑*/
      Activity   Modify(ActivityDto input);
+    List<Activity> AllActivitys();
 }

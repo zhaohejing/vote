@@ -9,5 +9,6 @@ public class GiftDto {
     public  String imageName;
     public  String imageUrl;
     public Integer price;
-
+    public Long activityId;
+    public  Integer level;
 }

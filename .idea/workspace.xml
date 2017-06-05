@@ -1,40 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0d0a10e-b853-4aeb-84d6-8ad172c74a8a" name="默认的" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IMyTapeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/ITapeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/MyTapeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/TapeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/AndSoController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/MyController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/TapeController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/MyTapeDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/OrderTime.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/OrderType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/RemoteDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/SingerDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/SongCateDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/SongDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetOrderInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetPayType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSingerInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSongsInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSpotInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/MySongsInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderDetailInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/RemoteInput.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/repository/primary/IMySongsRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/efan/repository/primary/IMyTapeRepository.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="f0d0a10e-b853-4aeb-84d6-8ad172c74a8a" name="默认的" comment="init project">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/singings.iml" afterPath="$PROJECT_DIR$/votes.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActivityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActivityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/GiftService.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/GiftService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/ActivityController.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/controller/ActivityController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActivityDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActivityDto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/GiftDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/GiftDto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Gift.java" afterPath="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Gift.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -57,100 +34,93 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TokenController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/TokenController.java">
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActivityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="75" column="86" lean-forward="false" selection-start-line="75" selection-start-column="86" selection-end-line="75" selection-end-column="86" />
+            <state relative-caret-position="475">
+              <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#token#0;class#TokenController#0" expanded="false" />
-                <element signature="method#getWxSignature#0;class#TokenController#0" expanded="false" />
-                <element signature="method#getUserInfo#0;class#TokenController#0" expanded="false" />
-                <element signature="method#getToken#0;class#TokenController#0" expanded="false" />
-                <element signature="method#getTicket#0;class#TokenController#0" expanded="false" />
-                <element signature="method#getSignature#0;class#TokenController#0" expanded="false" />
+                <element signature="method#Modify#0;class#ActivityService#0" expanded="false" />
+                <element signature="method#GenderTime#0;class#ActivityService#0" expanded="false" />
+                <element signature="method#getTimeDifference#0;class#ActivityService#0" expanded="false" />
+                <element signature="method#getTimeStampNumberFormat#0;class#ActivityService#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/BaseInput.java">
+      <file leaf-file-name="IActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActivityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding>
-                <element signature="e#246#247#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndSoService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1496374167962" expanded="false" signature="602:2286" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IAndSoService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeleteInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/DeleteInput.java">
+      <file leaf-file-name="GiftController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TokenSingleton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/utils/TokenSingleton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="589">
+              <caret line="46" column="58" lean-forward="false" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
               <folding>
-                <element signature="method#getInstance#0;class#TokenSingleton#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java">
+      <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/ActivityController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActivityDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Actor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Actor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GiftDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/GiftDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gift.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Gift.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="114">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#402#403#0" expanded="true" />
-                <element signature="e#444#445#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IOrderService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,27 +128,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java">
+      <file leaf-file-name="GiftService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/GiftService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="912">
+              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
-                <element signature="method#GetCoupeList#0;class#OrderService#0" expanded="false" />
-                <element signature="method#GenderTime#0;class#OrderService#0" expanded="false" />
-                <element signature="method#getTimeDifference#0;class#OrderService#0" expanded="false" />
-                <element signature="method#getTimeStampNumberFormat#0;class#OrderService#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -204,17 +161,19 @@
       <find>leng</find>
       <find>lengt</find>
       <find>length</find>
-      <find>length</find>
-      <find>length =</find>
       <find>length =</find>
       <find>length = -</find>
       <find>length = -1</find>
+      <find>userKey</find>
+      <find>&quot;)</find>
+      <find>@Description(</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>Integer</replace>
       <replace>Long</replace>
       <replace>length = 200</replace>
+      <replace>//</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\javaproject\projects\singings\src\main\java\com\efan\core\secondary</dir>
@@ -231,36 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/RepositoryPrimaryConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/RepositorySecondaryConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/PrimaryConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/SecondaryConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/BaseRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/JpaHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/DiscoStyleInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/MediaPathInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/MovieStyleInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/SingerInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/SongInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/SongStyleInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/secondary/SongVerInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/ISingerRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/IDiscoStyleRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/ISongsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/MyBatisConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/DruidProperties.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/DruidAutoConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/DataSourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/IJdbcHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/secondary/JdbcHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSpotInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/CorsConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/BaseInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSongsInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSingerInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/AndSoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderInput.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/MyTape.java" />
@@ -270,18 +199,48 @@
         <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IMyTapeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/TapeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/SingsApplication.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/utils/TokenSIngleton.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/utils/HttpUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/QiniuController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/utils/TokenSingleton.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/TokenController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/Swagger2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/VotesApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/primary/IOrderRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/IOrderRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/PrimaryConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/ActorInput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/ActorController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IGiftService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActorDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/IImageRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Activity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Actor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Giving.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Image.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/IGiftRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/IActorRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/repository/IActivityRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/BaseInput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/SendDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/GiftDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/GiftService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/ActivityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/BaseDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActivityDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efan/core/primary/Gift.java" />
       </list>
     </option>
   </component>
@@ -341,6 +300,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -353,11 +313,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,6 +346,7 @@
   </component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="" />
       <recent name="com.efan.core.secondary" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -391,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SingingApplication">
+  <component name="RunManager" selected="Spring Boot.VotesApplication">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -795,16 +769,16 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="SingingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration default="false" name="VotesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.efan.SingsApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.efan.VotesApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <module name="singings" />
+      <module name="votes" />
       <envs />
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Spring Boot.SingingApplication" />
+      <item index="0" class="java.lang.String" itemvalue="Spring Boot.VotesApplication" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -856,77 +830,11 @@
       <workItem from="1495845869808" duration="4603000" />
       <workItem from="1495866529498" duration="1705000" />
       <workItem from="1495870003381" duration="648000" />
-      <workItem from="1496373831509" duration="353000" />
-    </task>
-    <task id="LOCAL-00015" summary="删除测试模块">
-      <created>1494315706956</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1494315706956</updated>
-    </task>
-    <task id="LOCAL-00016" summary="删除测试模块">
-      <created>1494317001986</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1494317001986</updated>
-    </task>
-    <task id="LOCAL-00017" summary="删除测试模块">
-      <created>1494324265570</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1494324265570</updated>
-    </task>
-    <task id="LOCAL-00018" summary="编写dto 接口">
-      <created>1494388224471</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1494388224471</updated>
-    </task>
-    <task id="LOCAL-00019" summary="编写dto 接口">
-      <created>1494391996936</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1494391996936</updated>
-    </task>
-    <task id="LOCAL-00020" summary="获取预定清单接口完成！！！！！">
-      <created>1494401443478</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1494401443478</updated>
-    </task>
-    <task id="LOCAL-00021" summary="获取预定清单接口完成！！！！！">
-      <created>1494408749180</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1494408749180</updated>
-    </task>
-    <task id="LOCAL-00022" summary="创建订单接口完成">
-      <created>1494465744209</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1494465744209</updated>
-    </task>
-    <task id="LOCAL-00023" summary="创建订单接口完成">
-      <created>1494468060005</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1494468060005</updated>
-    </task>
-    <task id="LOCAL-00024" summary="创建订单接口完成">
-      <created>1494473110256</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1494473110256</updated>
+      <workItem from="1496373831509" duration="2923000" />
+      <workItem from="1496379256691" duration="14828000" />
+      <workItem from="1496623727288" duration="1190000" />
+      <workItem from="1496625189396" duration="350000" />
+      <workItem from="1496625574215" duration="20000" />
     </task>
     <task id="LOCAL-00025" summary="创建订单接口完成">
       <created>1494479710894</created>
@@ -1201,11 +1109,81 @@
       <option name="project" value="LOCAL" />
       <updated>1495870638447</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="init project">
+      <created>1496374206889</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1496374206890</updated>
+    </task>
+    <task id="LOCAL-00065" summary="创建实体">
+      <created>1496375805349</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1496375805349</updated>
+    </task>
+    <task id="LOCAL-00066" summary="init project">
+      <created>1496380655137</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1496380655138</updated>
+    </task>
+    <task id="LOCAL-00067" summary="接口编写">
+      <created>1496384070608</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1496384070608</updated>
+    </task>
+    <task id="LOCAL-00068" summary="添加礼物接口">
+      <created>1496387551958</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1496387551958</updated>
+    </task>
+    <task id="LOCAL-00069" summary="init project">
+      <created>1496389515633</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1496389515633</updated>
+    </task>
+    <task id="LOCAL-00070" summary="init project">
+      <created>1496390757573</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1496390757574</updated>
+    </task>
+    <task id="LOCAL-00071" summary="init project">
+      <created>1496391058816</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1496391058817</updated>
+    </task>
+    <task id="LOCAL-00072" summary="接口想修改">
+      <created>1496394818033</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1496394818033</updated>
+    </task>
+    <task id="LOCAL-00073" summary="init project">
+      <created>1496397680402</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1496397680403</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144868000" />
+    <option name="totallyTimeSpent" value="163826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1420" y="-8" width="1554" height="904" extended-state="0" />
@@ -1227,13 +1205,12 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32456142" sideWeight="0.4973992" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32581455" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2490247" sideWeight="0.5050125" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32581455" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1989597" sideWeight="0.51301116" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="控制板" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1989597" sideWeight="0.49498746" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1989597" sideWeight="0.48698884" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1244,6 +1221,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32456142" sideWeight="0.4973992" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1272,7 +1250,12 @@
     <MESSAGE value="更换歌曲数据库" />
     <MESSAGE value="xiugai jiekou" />
     <MESSAGE value="接口修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="接口修改" />
+    <MESSAGE value="创建实体" />
+    <MESSAGE value="接口编写" />
+    <MESSAGE value="添加礼物接口" />
+    <MESSAGE value="接口想修改" />
+    <MESSAGE value="init project" />
+    <option name="LAST_COMMIT_MESSAGE" value="init project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1283,8 +1266,14 @@
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1293,226 +1282,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/aspect/LogAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/secondary/DiscoStyleInfo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/JpaHelper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/page/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetOrderInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetPayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSingerInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSongsInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/GetSpotInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cycle/src/main/java/com/gxq/controller/EfanController.java" />
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28671">
-          <caret line="1509" column="16" lean-forward="false" selection-start-line="1509" selection-start-column="16" selection-end-line="1509" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/MyTapeDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/MyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/page/FilterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/primary/IMyTapeRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="14" column="44" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/TapeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2071">
-          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/TokenSingleton.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/page/ActionResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.14/tomcat-embed-core-8.5.14.jar!/org/apache/catalina/webresources/TomcatURLStreamHandlerFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.8.RELEASE/spring-aop-4.3.8.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8873">
-          <caret line="513" column="0" lean-forward="false" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.8.RELEASE/spring-core-4.3.8.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.8.RELEASE/spring-aop-4.3.8.RELEASE.jar!/org/springframework/aop/interceptor/ExposeInvocationInterceptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/utils/HttpUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-483">
-          <caret line="20" column="64" lean-forward="true" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
-          <folding>
-            <element signature="method#SHA1#0;class#HttpUtils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/MyTapeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="73" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/AndSoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1414">
-          <caret line="49" column="40" lean-forward="true" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/ITapeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/primary/IOrderRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/MySongs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/MyTape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/SingsApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/MyTapeService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/AndSoController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/ITapeService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/CorsConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -1521,35 +1293,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/Swagger2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/utils/TokenSingleton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/TapeService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IMyTapeService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/DeleteInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/RemoteInput.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderInput.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderDetailInput.java" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="38">
+            <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/Swagger2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Order.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/DataSourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/jpaconfig/PrimaryConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/VotesApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="17" column="29" lean-forward="false" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
-            <element signature="method#getInstance#0;class#TokenSingleton#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/TokenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
+        <state relative-caret-position="225">
           <caret line="75" column="86" lean-forward="false" selection-start-line="75" selection-start-column="86" selection-end-line="75" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1563,114 +1389,225 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/TapeService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/ActorInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="95">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IMyTapeService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/ActorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="-36">
+          <caret line="48" column="47" lean-forward="false" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IGiftService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActorDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/IImageRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Giving.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="97" column="2" lean-forward="false" selection-start-line="97" selection-start-column="2" selection-end-line="97" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../singings/src/main/java/com/efan/appservice/service/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="67" column="63" lean-forward="false" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../singings/src/main/java/com/efan/appservice/service/TapeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="54" column="66" lean-forward="false" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../singings/src/main/java/com/efan/appservice/service/MyTapeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/IGiftRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/IActorRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="38" column="82" lean-forward="false" selection-start-line="38" selection-start-column="82" selection-end-line="38" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/repository/IActivityRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/BaseInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="342">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/SendDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/BaseDto.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/ActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="24" />
           <folding>
-            <element signature="e#246#247#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Modify#0;class#ActivityService#0" expanded="false" />
+            <element signature="method#GenderTime#0;class#ActivityService#0" expanded="false" />
+            <element signature="method#getTimeDifference#0;class#ActivityService#0" expanded="false" />
+            <element signature="method#getTimeStampNumberFormat#0;class#ActivityService#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/DeleteInput.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IActivityService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="323">
+          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/RemoteInput.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/GiftController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="589">
+          <caret line="46" column="58" lean-forward="false" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/ActivityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/ActivityDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderInput.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/dtos/GiftDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="228">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/inputs/OrderDetailInput.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/GiftService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="912">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/controller/OrderController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/core/primary/Gift.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#444#445#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/OrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="method#GetCoupeList#0;class#OrderService#0" expanded="false" />
-            <element signature="method#GenderTime#0;class#OrderService#0" expanded="false" />
-            <element signature="method#getTimeDifference#0;class#OrderService#0" expanded="false" />
-            <element signature="method#getTimeStampNumberFormat#0;class#OrderService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/iservice/IAndSoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efan/appservice/service/AndSoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1496374167962" expanded="false" signature="602:2286" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -13,6 +13,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 远程购买接口表
  */
@@ -32,6 +34,14 @@ public class ActivityController {
     public ActionResult Activitys(@RequestBody BaseInput input){
         ResultModel<Activity> result=_activityService.Activitys(input);
             return  new ActionResult(result);
+    }
+    /**
+     * 获取所有已创建的活动*/
+    @ApiOperation(value="获取所有已创建的活动", notes="后台活动接口")
+    @RequestMapping(value  ="/allactivitys" ,method = RequestMethod.POST)
+    public ActionResult AllActivitys(){
+        List<Activity> result=_activityService.AllActivitys();
+        return  new ActionResult(result);
     }
     /**
      * 添加或编辑活动*/

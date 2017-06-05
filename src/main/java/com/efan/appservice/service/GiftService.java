@@ -50,7 +50,9 @@ public class GiftService implements IGiftService {
         Gift model;
         if (input.id !=null&&input.id>0){
             model=_giftRepository.findOne(input.id  );
+            model.setActivityId(input.activityId);
             model.setGiftName(input.giftName);
+            model.setLevel(input.level);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
@@ -61,10 +63,12 @@ public class GiftService implements IGiftService {
         }else {
             model=new Gift();
             model.setPrice(input.price);
+            model.setLevel(input.level);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
             }
+            model.setActivityId(input.activityId);
             model.setGiftName(input.giftName);
             model.setDelete(false);
             model.setId(0L);

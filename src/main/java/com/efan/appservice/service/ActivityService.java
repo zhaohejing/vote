@@ -47,6 +47,11 @@ public class ActivityService implements IActivityService {
         Page<Activity> res=  _activityRepository.findAllByTitleContains(input.getFilter(), pageable);
         return  new ResultModel<Activity>( res.getContent(),res.getTotalElements());
     }
+    /*获取活动列表分页数据*/
+    public List<Activity> AllActivitys(){
+        List<Activity> res=  _activityRepository.findAll();
+        return  res;
+    }
     /*获取详情*/
     public Activity Activity(DeleteInput input){
         Activity res=  _activityRepository.findOne(input.id);

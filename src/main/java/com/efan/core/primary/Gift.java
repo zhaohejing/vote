@@ -1,12 +1,9 @@
 package com.efan.core.primary;
 
-import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 
 /**
@@ -20,6 +17,28 @@ public class Gift implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+
+    @NotNull
+    private Long activityId;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    @NotNull
+    private Integer level;
     @NotNull
      //"礼物名称")
     @Column(length = 120,unique = true)
