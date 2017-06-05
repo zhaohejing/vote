@@ -40,8 +40,8 @@ public class Activity implements Serializable {
         isPublic = aPublic;
     }
 
-    //"是否删除")
-    private Boolean isPublic;
+    //"是否发布")
+    private Boolean isPublic=false;
      //"创建时间")
     @Column(length = 120,unique = true)
     private String creationTime;
