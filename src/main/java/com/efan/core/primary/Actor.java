@@ -1,12 +1,9 @@
 package com.efan.core.primary;
 
-import com.sun.org.glassfish.gmbal.Description;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * 参与者
@@ -34,6 +31,7 @@ public class Actor implements Serializable {
     private  String  actorImage;
      //"投票数 ")
     private  Integer actorCount;
+
     //用户唯一id
      //"用户唯一id key")
     @Column(length = 50)

@@ -1,13 +1,15 @@
 package com.efan.appservice.iservice;
 
 import com.efan.controller.dtos.GiftDto;
+import com.efan.controller.dtos.SendDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Gift;
+import com.efan.core.primary.Giving;
 
 /**
- * Created by 45425 on 2017/6/2.
+ * 礼物接口
  */
 public interface IGiftService {
     /*获取活动列表分页数据*/
@@ -18,5 +20,6 @@ public interface IGiftService {
      void   Delete(DeleteInput input);
     /*创建或编辑*/
      Gift Modify(GiftDto input);
-
+    //送礼物
+    Giving SendGift(SendDto dto) throws Exception;
 }

@@ -1,11 +1,19 @@
 package com.efan.controller.dtos;
 
-import sun.rmi.runtime.Log;
 
 /**
- * Created by 45425 on 2017/6/2.
+ * 送礼物dto
  */
 public class SendDto {
-    public  Long actorId;
+
+    public  String sendName;
+
+    public  String sendImage;
+    //"接受人")
+    public Long actorId;
+
+    //"礼物id")
     public Long giftId;
+public  String sendKey;
+
 }

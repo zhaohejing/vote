@@ -25,7 +25,7 @@ public class Gift implements Serializable {
     public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
-
+    //活动id
     @NotNull
     private Long activityId;
 
@@ -36,7 +36,7 @@ public class Gift implements Serializable {
     public void setLevel(Integer level) {
         this.level = level;
     }
-
+    //奖品等级
     @NotNull
     private Integer level;
     @NotNull
@@ -64,14 +64,26 @@ public class Gift implements Serializable {
     @NotNull
      //"礼物图片名称")
     @Column(length = 300,unique = true)
-    public  String imageName;
+    private   String imageName;
     @NotNull
     //"礼物图片路径")
     @Column(length = 300,unique = true)
-    public  String imageUrl;
+    private  String imageUrl;
     @NotNull
      //"价格分为单位")
     private Integer price;
+
+    public Integer getBeVote() {
+        return beVote;
+    }
+
+    public void setBeVote(Integer beVote) {
+        this.beVote = beVote;
+    }
+
+    //可以替代的票数
+    private  Integer beVote;
+
      //"是否删除")
     private Boolean isDelete;
      //"创建时间")

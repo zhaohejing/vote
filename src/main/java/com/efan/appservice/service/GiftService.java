@@ -2,19 +2,27 @@ package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IGiftService;
 import com.efan.controller.dtos.GiftDto;
+import com.efan.controller.dtos.SendDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Gift;
+import com.efan.core.primary.Giving;
+import com.efan.core.primary.Record;
 import com.efan.repository.IGiftRepository;
+import com.efan.repository.IGivingRepository;
+import com.efan.repository.IRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 /**
@@ -24,21 +32,27 @@ import java.util.Date;
 public class GiftService implements IGiftService {
 
     private IGiftRepository _giftRepository;
+    private IGivingRepository _givingRepository;
+
+    private IRecordRepository _recordRepository;
     @Autowired
-    public GiftService(IGiftRepository giftRepository){
+    public GiftService(IGiftRepository giftRepository,IGivingRepository givingRepository, IRecordRepository recordRepository){
         this._giftRepository=giftRepository;
+        _givingRepository=givingRepository;
+        _recordRepository=recordRepository;
     }
     /*获取活动列表分页数据*/
     public ResultModel<Gift> Gifts(BaseInput input){
         //  Sort sort = new Sort(Sort.Direction.DESC, "createdate");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
         Page<Gift> res=  _giftRepository.findAllByGiftNameContains(input.getFilter(), pageable);
-        return  new ResultModel<Gift>(res.getContent(),res.getTotalElements());
+        return  new ResultModel<>(res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
     public Gift Gift(DeleteInput input){
-        Gift res=  _giftRepository.findOne(input.id);
-        return  res;
+        Gift result
+                =  _giftRepository.findOne(input.id);
+        return  result;
     }
     /*删除*/
     public void   Delete(DeleteInput input){
@@ -51,6 +65,7 @@ public class GiftService implements IGiftService {
         if (input.id !=null&&input.id>0){
             model=_giftRepository.findOne(input.id  );
             model.setActivityId(input.activityId);
+            model.setBeVote(input.beVote);
             model.setGiftName(input.giftName);
             model.setLevel(input.level);
             if (! input.imageUrl.isEmpty()){
@@ -64,6 +79,7 @@ public class GiftService implements IGiftService {
             model=new Gift();
             model.setPrice(input.price);
             model.setLevel(input.level);
+            model.setBeVote(input.beVote);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
@@ -78,5 +94,45 @@ public class GiftService implements IGiftService {
           return  model;
         }
     }
+    //送礼物
+    @Transactional()
+    public  Giving SendGift(SendDto dto) throws Exception{
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Gift gift=_giftRepository.findOne(dto.giftId);
+        if (    gift==null){
+            return  null ;
+        }
+            Giving model=new Giving();
+            model.setActorId(dto.actorId);
+            model.setCreationTime(df.format(new java.util.Date()));
+            model.setDelete(false);
+            model.setGiftId(dto .giftId);
+            model.setId(0L);
+            model.setSendImage(dto.sendImage);
+            model.setSendKey(dto.sendKey);
+            model.setSendName(dto.sendName);
+         Record record=  addrecord(dto.actorId,dto.sendKey,gift.getBeVote());
+         if (   record==null    ){
+             throw new Exception("创建失败");
+         }
+              return  _givingRepository.save(model);
+    }
+private  Record  addrecord(Long actorId,String sendKey,Integer votes){
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+    Record dto=new Record();
+    dto.setActorId(actorId);
+    dto.setCreationTime(df.format(new java.util.Date()));
+    dto.setDelete(false);
+    dto.setGift(true);
+    dto.setId(0L);
+    dto.setSendKey(sendKey);
+    dto.setVotes(votes);
+    return   _recordRepository.saveAndFlush(dto);
+}
 
+
+    private  String getTimeStampNumberFormat(Timestamp formatTime) {
+        SimpleDateFormat m_format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss", new Locale("zh", "cn"));
+        return m_format.format(formatTime);
+    }
 }

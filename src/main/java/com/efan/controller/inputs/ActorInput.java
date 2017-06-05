@@ -1,7 +1,7 @@
 package com.efan.controller.inputs;
 
 /**
- * Created by 45425 on 2017/6/2.
+ * 蚌明着dto
  */
 public class ActorInput extends BaseInput {
     public Long getActivityId() {
@@ -13,4 +13,15 @@ public class ActorInput extends BaseInput {
     }
 
     private  Long activityId;
+
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    private  String sort;
 }

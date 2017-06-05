@@ -1,11 +1,13 @@
 package com.efan.appservice.iservice;
 
 import com.efan.controller.dtos.ActorDto;
+import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
+import com.efan.core.primary.Record;
 
 /**
  * 报名者
@@ -19,4 +21,8 @@ public interface IActorService {
      void   Delete(DeleteInput input);
     /*创建或编辑*/
      Actor   Modify(ActorDto input);
+//toupiao
+    Record Vote(VoteDto input);
+    //是否可以投票
+    Boolean  CanVote(VoteDto input);
 }

@@ -46,17 +46,25 @@ public class ActivityService implements IActivityService {
       //  Sort sort = new Sort(Sort.Direction.DESC, "createdate");
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
         Page<Activity> res=  _activityRepository.findAllByTitleContains(input.getFilter(), pageable);
-        return  new ResultModel<Activity>( res.getContent(),res.getTotalElements());
+        return  new ResultModel<>( res.getContent(),res.getTotalElements());
     }
     /*获取活动列表分页数据*/
     public List<Activity> AllActivitys(){
-        List<Activity> res=  _activityRepository.findAll();
-        return  res;
+        List<Activity> result=  _activityRepository.findAllByIsPublic(true);
+        return  result;
     }
     /*获取详情*/
     public Activity Activity(DeleteInput input){
-        Activity res=  _activityRepository.findOne(input.id);
-        return  res;
+        Activity result=  _activityRepository.findOne(input.id);
+        return  result;
+    }
+    /*发布*/
+    public Activity Public(DeleteInput input){
+        Activity act=_activityRepository.findOne(input.id);
+        if (act==null   ){ return null  ; }
+        if ( act.getPublic()){return null   ; }
+        act.setPublic(true);
+        return   _activityRepository.saveAndFlush(act);
     }
     /*删除*/
     public void   Delete(DeleteInput input){
@@ -80,6 +88,7 @@ public class ActivityService implements IActivityService {
             model.setEndTime(input.endTime);
             model.setRules(input.rules);
             model.setTitle(input.title);
+            model.setPublic(false);
             model.setActorCount(0);
             model.setDelete(false);
             model.setActorCount(0);
@@ -102,7 +111,7 @@ public class ActivityService implements IActivityService {
                 dto.setCreationTime(df.format(new java.util.Date()));
                    list.add(dto);
             }
-              list=   _imageRepository.save(list);
+               _imageRepository.save(list);
         }
         return model;
     }

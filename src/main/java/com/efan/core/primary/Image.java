@@ -1,6 +1,5 @@
 package com.efan.core.primary;
 
-import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -79,6 +78,6 @@ public class Image implements Serializable {
      //"活动id")
     private  Long activityId;
     //是否已上传
-    private  Boolean state;
+    private  Boolean  state;
     private String creationTime;
 }

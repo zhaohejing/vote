@@ -3,11 +3,13 @@ package com.efan.controller;
 
 import com.efan.appservice.iservice.IGiftService;
 import com.efan.controller.dtos.GiftDto;
+import com.efan.controller.dtos.SendDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Gift;
+import com.efan.core.primary.Giving;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,8 @@ public class GiftController {
         return  new ActionResult(result);
     }
     /**
-     * 添加或编辑活动*/
-    @ApiOperation(value="添加投票活动", notes="礼物接口")
+     * 添加礼物*/
+    @ApiOperation(value="添加礼物", notes="礼物接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "GiftDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
     public ActionResult Modify(@RequestBody GiftDto input){
@@ -50,8 +52,8 @@ public class GiftController {
         return  new ActionResult(result);
     }
     /**
-     * 删除活动*/
-    @ApiOperation(value="删除活动", notes="礼物接口")
+     * 删除礼物*/
+    @ApiOperation(value="删除礼物", notes="礼物接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/delete" ,method = RequestMethod.POST)
     public ActionResult Delete(@RequestBody DeleteInput input){
@@ -70,10 +72,14 @@ public class GiftController {
     /**
      * 送礼物*/
     @ApiOperation(value="送礼物", notes="礼物接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "SendDto")
     @RequestMapping(value  ="/send" ,method = RequestMethod.POST)
-    public ActionResult Send(@RequestBody DeleteInput input){
-        Gift model=_giftService.Gift(input);
-        return  new ActionResult(model);
+    public ActionResult Send(@RequestBody SendDto input){
+        try {
+            Giving model= _giftService.SendGift(input);
+            return  new ActionResult(model);
+        }catch (Exception e){
+            return  new ActionResult(false,"创建失败");
+        }
     }
 }

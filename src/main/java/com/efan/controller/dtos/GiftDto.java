@@ -1,7 +1,7 @@
 package com.efan.controller.dtos;
 
 /**
- * Created by 45425 on 2017/6/2.
+ * 礼物dto
  */
 public class GiftDto {
     public Long id;
@@ -11,4 +11,5 @@ public class GiftDto {
     public Integer price;
     public Long activityId;
     public  Integer level;
+    public  Integer beVote;
 }

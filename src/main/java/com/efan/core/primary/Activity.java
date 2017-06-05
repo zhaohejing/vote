@@ -1,9 +1,7 @@
 package com.efan.core.primary;
 
-import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -33,6 +31,17 @@ public class Activity implements Serializable {
     private  String rules;
      //"是否删除")
     private Boolean isDelete;
+
+    public Boolean getPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(Boolean aPublic) {
+        isPublic = aPublic;
+    }
+
+    //"是否删除")
+    private Boolean isPublic;
      //"创建时间")
     @Column(length = 120,unique = true)
     private String creationTime;

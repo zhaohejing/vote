@@ -62,6 +62,15 @@ public class ActivityController {
        return  new ActionResult(1);
     }
     /**
+     * 活动状态发布*/
+    @ApiOperation(value="删除活动", notes="后台活动接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @RequestMapping(value  ="/public" ,method = RequestMethod.POST)
+    public ActionResult Public(@RequestBody DeleteInput input){
+      Activity dt=   _activityService.Public(input);
+        return  new ActionResult(dt );
+    }
+    /**
      * 获取活动详情*/
     @ApiOperation(value="获取活动详情", notes="后台活动接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")

@@ -22,4 +22,5 @@ public interface IActivityService {
     /*创建或编辑*/
      Activity   Modify(ActivityDto input);
     List<Activity> AllActivitys();
+    Activity Public(DeleteInput input);
 }

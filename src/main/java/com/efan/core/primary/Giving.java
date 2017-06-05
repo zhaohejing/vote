@@ -1,11 +1,9 @@
 package com.efan.core.primary;
 
-import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 
 
@@ -63,11 +61,11 @@ public class Giving implements Serializable {
         isDelete = delete;
     }
 
-    public Timestamp getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Timestamp creationTime) {
+    public void setCreationTime(String  creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -81,6 +79,18 @@ public class Giving implements Serializable {
     @Column(length = 120,unique = true)
     private  String sendName;
 
+    public String getSendKey() {
+        return sendKey;
+    }
+
+    public void setSendKey(String sendKey) {
+        this.sendKey = sendKey;
+    }
+
+    @NotNull
+    //"送礼人")
+    @Column(length = 120,unique = true)
+    private  String sendKey;
      //"送礼人头像")
     @Column(length = 300)
     private  String sendImage;
@@ -95,5 +105,5 @@ public class Giving implements Serializable {
      //"是否删除")
     private Boolean isDelete;
      //"送礼时间")
-    private Timestamp creationTime;
+    private String creationTime;
 }
