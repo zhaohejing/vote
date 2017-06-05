@@ -16,14 +16,10 @@ public class Image implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //骑牛url
-    @NotNull
-    @Column(length = 50)
      //"骑牛图片路径")
     private String url;
     //骑牛url
-    @NotNull
-    @Column(length = 50)
-    //"骑牛图片路径")
+    //"图片名")
     private String title;
 
     public Long getId() {

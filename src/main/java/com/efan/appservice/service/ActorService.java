@@ -11,6 +11,7 @@ import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
 import com.efan.repository.IActorRepository;
 import com.efan.repository.IRecordRepository;
+import com.efan.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -95,27 +96,12 @@ public class ActorService implements IActorService {
     public  Boolean  CanVote(VoteDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         java.util.Date curr=new java.util.Date();
-        java.util.Date start=GenderTime(curr,true);
+        java.util.Date start= DateUtil.GenderTime(curr,true);
         List<Record> res=_recordRepository.findBySendKeyAndActorIdAndCreationTimeBetween(input.sendKey,input.actorId,start,curr);
         return  res.size()<0;
     }
 
 
 
-    private java.util.Date GenderTime(java.util.Date time, Boolean isstart){
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(time);
-        if (isstart){
-            calendar.set(Calendar.HOUR,0);
-            calendar.set(Calendar.MINUTE,0);
-            calendar.set(Calendar.SECOND,0);
-            calendar.set(Calendar.MILLISECOND,0);
-        }else   {
-            calendar.set(Calendar.HOUR,23);
-            calendar.set(Calendar.MINUTE,59);
-            calendar.set(Calendar.SECOND,59);
-            calendar.set(Calendar.MILLISECOND,999);
-        }
-        return  calendar.getTime();
-    }
+
 }
