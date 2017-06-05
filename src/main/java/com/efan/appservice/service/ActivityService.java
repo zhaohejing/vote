@@ -5,6 +5,7 @@ import com.efan.appservice.iservice.IActivityService;
 import com.efan.controller.dtos.ActivityDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
+import com.efan.controller.inputs.ListInput;
 import com.efan.core.page.Response;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
@@ -59,16 +60,23 @@ public class ActivityService implements IActivityService {
         return  result;
     }
     /*发布*/
-    public Activity Public(DeleteInput input){
-        Activity act=_activityRepository.findOne(input.id);
-        if (act==null   ){ return null  ; }
-        if ( act.getPublic()){return null   ; }
-        act.setPublic(true);
-        return   _activityRepository.saveAndFlush(act);
+    public void Public(ListInput input){
+      List<Activity>  list= _activityRepository.findAll(input.list);
+        for (int i = 0; i < list.size(); i++) {
+            Activity temp=list.get(i);
+            if (temp.getPublic()){ continue;}
+            temp.setPublic(true);
+               _activityRepository.saveAndFlush(temp);
+        }
     }
     /*删除*/
-    public void   Delete(DeleteInput input){
-        _activityRepository.delete(input.id);
+    public void   Delete(ListInput input){
+
+        List<Activity>  list= _activityRepository.findAll(input.list);
+        for (int i = 0; i < list.size(); i++) {
+            Activity temp=list.get(i);
+            _activityRepository.delete(temp);
+        }
     }
     @Transactional()
     /*创建或编辑*/

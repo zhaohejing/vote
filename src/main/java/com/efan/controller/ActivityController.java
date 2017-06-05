@@ -5,6 +5,7 @@ import com.efan.appservice.iservice.IActivityService;
 import com.efan.controller.dtos.ActivityDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
+import com.efan.controller.inputs.ListInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
@@ -55,20 +56,20 @@ public class ActivityController {
     /**
      * 删除活动*/
     @ApiOperation(value="删除活动", notes="后台活动接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ListInput")
     @RequestMapping(value  ="/delete" ,method = RequestMethod.POST)
-    public ActionResult Delete(@RequestBody DeleteInput input){
+    public ActionResult Delete(@RequestBody ListInput input){
        _activityService.Delete(input);
        return  new ActionResult(1);
     }
     /**
      * 活动状态发布*/
-    @ApiOperation(value="删除活动", notes="后台活动接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @ApiOperation(value="活动状态发布", notes="后台活动接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ListInput")
     @RequestMapping(value  ="/public" ,method = RequestMethod.POST)
-    public ActionResult Public(@RequestBody DeleteInput input){
-      Activity dt=   _activityService.Public(input);
-        return  new ActionResult(dt );
+    public ActionResult Public(@RequestBody ListInput input){
+       _activityService.Public(input);
+        return  new ActionResult(1);
     }
     /**
      * 获取活动详情*/
