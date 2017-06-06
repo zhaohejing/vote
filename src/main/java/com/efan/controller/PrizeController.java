@@ -13,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by 45425 on 2017/6/6.
  */
+@RestController
+@RequestMapping("/api/prize")
 public class PrizeController {
     private IPrizeService _prizeService;
     @Autowired
