@@ -6,14 +6,8 @@ import com.efan.controller.dtos.SendDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
-import com.efan.core.primary.Activity;
-import com.efan.core.primary.Gift;
-import com.efan.core.primary.Giving;
-import com.efan.core.primary.Record;
-import com.efan.repository.IActivityRepository;
-import com.efan.repository.IGiftRepository;
-import com.efan.repository.IGivingRepository;
-import com.efan.repository.IRecordRepository;
+import com.efan.core.primary.*;
+import com.efan.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,12 +31,16 @@ public class GiftService implements IGiftService {
     private IGivingRepository _givingRepository;
     private IActivityRepository _activityRepository;
     private IRecordRepository _recordRepository;
+    private IActorRepository _actorRepository;
+
     @Autowired
-    public GiftService(IGiftRepository giftRepository,IGivingRepository givingRepository, IRecordRepository recordRepository,IActivityRepository activityRepository){
+    public GiftService(IGiftRepository giftRepository,IGivingRepository givingRepository, IRecordRepository recordRepository,
+                       IActivityRepository activityRepository,IActorRepository actorRepository){
         this._giftRepository=giftRepository;
         _givingRepository=givingRepository;
         _recordRepository=recordRepository;
         _activityRepository=activityRepository;
+        _actorRepository=actorRepository;
     }
     /*获取活动列表分页数据*/
     public ResultModel<Gift> Gifts(BaseInput input){
@@ -107,6 +105,10 @@ public class GiftService implements IGiftService {
         if (    act==null   ){
             throw new Exception("活动不存在");
         }
+        Actor tor=_actorRepository.findOne(dto.actorId);
+        if (    tor==null   ){
+            throw new Exception("送礼对象不存在");
+        }
             Giving model=new Giving();
             model.setActorId(dto.actorId);
             model.setCreationTime(df.format(new java.util.Date()));
@@ -121,7 +123,9 @@ public class GiftService implements IGiftService {
              throw new Exception("创建失败");
          }
             act.setTotalVotes(gift.getBeVote()+act.getTotalVotes());
-            _activityRepository.saveAndFlush(act);
+         tor.setGiftCount(tor.getGiftCount()+gift.getBeVote());
+         _actorRepository.saveAndFlush(tor);
+          _activityRepository.saveAndFlush(act);
         return  _givingRepository.save(model);
     }
 private  Record  addrecord(Long actorId,String sendKey,Integer votes){
@@ -137,9 +141,4 @@ private  Record  addrecord(Long actorId,String sendKey,Integer votes){
     return   _recordRepository.saveAndFlush(dto);
 }
 
-
-    private  String getTimeStampNumberFormat(Timestamp formatTime) {
-        SimpleDateFormat m_format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss", new Locale("zh", "cn"));
-        return m_format.format(formatTime);
-    }
 }

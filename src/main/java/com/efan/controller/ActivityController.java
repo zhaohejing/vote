@@ -102,7 +102,7 @@ public class ActivityController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/access" ,method = RequestMethod.POST)
     public ActionResult Access(@RequestBody DeleteInput input){
-        Activity model=_activityService.Activity(input);
+        Activity model=_activityService.Access(input);
         return  new ActionResult(model);
     }
 }

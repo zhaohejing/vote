@@ -84,8 +84,12 @@ public class ActorController {
        if (!can){
            return  new ActionResult(false,"今天已经投票了,请明天再试试");
        }
-        Record model=_actorService.Vote(input);
-        return  new ActionResult(model);
+       try{
+           Record model=_actorService.Vote(input);
+           return  new ActionResult(model);
+       }catch (Exception e){
+           return  new ActionResult(false,e.getMessage());
+       }
     }
 
 

@@ -10,7 +10,6 @@ public class ActorDto {
     public String actorKey;
     public  String  actorName;
     public  String  actorImage;
-    public  Integer actorCount;
     public  Long activityId;
     public String declaration;
 }

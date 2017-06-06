@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface IRecordRepository extends JpaRepository<Record,Long> {
-        List<Record> findBySendKeyAndActorIdAndCreationTimeBetween(String sendkey, Long actorId, java.util.Date start, java.util.Date end);
+        List<Record> findBySendKeyAndActorIdAndCreationTimeBetween(String senKey, Long actorId, String start, String end);
 }

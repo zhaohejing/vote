@@ -63,7 +63,7 @@ private IActivityRepository _activityRepository;
         if (input.id !=null&&input.id>0){
             model=_actorRepository.findOne(input.id);
             model.setActivityId(input.activityId);
-            model.setActorCount(input.actorCount);
+            model.setActorCount(0);
             model.setActorImage(input.actorImage);
             model.setDeclaration(input.declaration);
             model.setActorKey(input.actorKey);
@@ -88,7 +88,7 @@ private IActivityRepository _activityRepository;
         return  model;
     }
     //投票
-    public Record  Vote(VoteDto input){
+    public Record  Vote(VoteDto input) throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Record dto=new Record();
         dto.setActorId(input.actorId);
@@ -99,23 +99,27 @@ private IActivityRepository _activityRepository;
         dto.setSendKey(input.sendKey);
         dto.setVotes(input.votes);
 Activity act=_activityRepository.findOne(input.activityId);
-if (    act==null   ){
-    return null;
-}
+if (    act==null   ) throw new Exception("活动不存在");
       Record red=   _recordRepository.saveAndFlush(dto);
-if (    red!=null){
-    act.setActorCount(act.getActorCount()+1);
+      Actor tor=_actorRepository.findOne(input.actorId);
+        if (    tor==null   ) throw new Exception("投票对象不存在");
+if ( red!=null){
+    tor.setActorCount(tor.getActorCount()+input.votes);
+    act.setTotalVotes(act.getTotalVotes()+1);
     _activityRepository.saveAndFlush(act);
+    _actorRepository.saveAndFlush(tor);
 }
 return  red;
 
     }
     public  Boolean  CanVote(VoteDto input){
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        java.util.Date curr=new java.util.Date();
-        java.util.Date start= DateUtil.GenderTime(curr,true);
-        List<Record> res=_recordRepository.findBySendKeyAndActorIdAndCreationTimeBetween(input.sendKey,input.actorId,start,curr);
-        return  res.size()<0;
+        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd 00:00:00");//设置日期格式
+        SimpleDateFormat end = new SimpleDateFormat("yyyy-MM-dd 23:59:59");//设置日期格式
+
+        java.util.Date right=new java.util.Date();
+        java.util.Date left= DateUtil.GenderTime(right,true);
+        List<Record> res=_recordRepository.findBySendKeyAndActorIdAndCreationTimeBetween(input.sendKey,input.actorId,start.format(left),end.format(right));
+        return  res.size()<=0;
     }
 
 

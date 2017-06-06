@@ -31,6 +31,17 @@ public class Actor implements Serializable {
     private  String  actorImage;
      //"投票数 ")
     private  Integer actorCount;
+
+    public Integer getGiftCount() {
+        return giftCount;
+    }
+
+    public void setGiftCount(Integer giftCount) {
+        this.giftCount = giftCount;
+    }
+
+    //"投票数 ")
+    private  Integer giftCount;
   //用户宣言
 
     private String declaration;

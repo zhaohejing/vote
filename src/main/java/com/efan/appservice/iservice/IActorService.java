@@ -21,8 +21,8 @@ public interface IActorService {
      void   Delete(DeleteInput input);
     /*创建或编辑*/
      Actor   Modify(ActorDto input) throws  Exception;
-//toupiao
-    Record Vote(VoteDto input);
+    //投票
+     Record  Vote(VoteDto input) throws Exception;
     //是否可以投票
     Boolean  CanVote(VoteDto input);
 }
