@@ -76,7 +76,7 @@ public class Giving implements Serializable {
 
     @NotNull
      //"送礼人")
-    @Column(length = 120,unique = true)
+    @Column(length = 120)
     private  String sendName;
 
     public String getSendKey() {
@@ -89,10 +89,10 @@ public class Giving implements Serializable {
 
     @NotNull
     //"送礼人")
-    @Column(length = 120,unique = true)
+    @Column(length = 120)
     private  String sendKey;
      //"送礼人头像")
-    @Column(length = 300)
+    @Column(length = 200)
     private  String sendImage;
     @NotNull
      //"接受人")

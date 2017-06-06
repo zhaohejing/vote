@@ -19,7 +19,7 @@ public class Record implements Serializable {
     private Long id;
     @NotNull
     //"投票人key")
-    @Column(length = 120,unique = true)
+    @Column(length = 120)
     private  String sendKey;
     @NotNull
     //"接受人")
@@ -33,12 +33,12 @@ public class Record implements Serializable {
         isGift = gift;
     }
 
-    private Boolean isGift;
+    private Boolean isGift=false;
     //票数
     private  Integer votes;
 
     //"是否删除")
-    private Boolean isDelete;
+    private Boolean isDelete=false;
 
     public Long getId() {
         return id;

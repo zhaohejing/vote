@@ -17,17 +17,19 @@ public class Activity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @NotNull
      //"标题"
     @Column(length = 200,unique = true)
     private  String title;
+
      //"内容"
+    @Column(columnDefinition = "text")
     private  String content;
      //"截至时间")
     private Timestamp endTime;
 
      //"活动规则")
+     @Column(columnDefinition = "text")
     private  String rules;
      //"是否删除")
     private Boolean isDelete;

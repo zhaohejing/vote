@@ -17,9 +17,11 @@ public class Image implements Serializable {
     private Long id;
     //骑牛url
      //"骑牛图片路径")
+    @Column(columnDefinition = "text")
     private String url;
     //骑牛url
     //"图片名")
+    @Column(columnDefinition = "text")
     private String title;
 
     public Long getId() {

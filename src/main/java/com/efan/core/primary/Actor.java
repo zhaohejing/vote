@@ -19,14 +19,14 @@ public class Actor implements Serializable {
     //用户唯一id
     @NotNull
      //"用户唯一id key")
-    @Column(length = 50)
+    @Column(length = 200)
     private String actorKey;
 
-    @Column(length = 50)
+    @Column(length = 200)
      //"用户名 ")
     private  String  actorName;
 
-    @Column(length = 50)
+    @Column(length = 200)
      //"用户头像路径 ")
     private  String  actorImage;
      //"投票数 ")

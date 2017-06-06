@@ -63,11 +63,11 @@ public class Gift implements Serializable {
 
     @NotNull
      //"礼物图片名称")
-    @Column(length = 300,unique = true)
+    @Column(columnDefinition = "text")
     private   String imageName;
     @NotNull
     //"礼物图片路径")
-    @Column(length = 300,unique = true)
+    @Column(columnDefinition = "text")
     private  String imageUrl;
     @NotNull
      //"价格分为单位")
@@ -87,7 +87,7 @@ public class Gift implements Serializable {
      //"是否删除")
     private Boolean isDelete;
      //"创建时间")
-    @Column(length = 30)
+    @Column(length = 50)
     private String creationTime;
 
     public Long getId() {
