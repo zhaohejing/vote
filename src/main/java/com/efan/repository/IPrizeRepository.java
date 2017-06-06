@@ -1,7 +1,6 @@
 package com.efan.repository;
 
 
-import com.efan.core.primary.Gift;
 import com.efan.core.primary.Prize;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +17,6 @@ public interface IPrizeRepository extends JpaRepository<Prize,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Prize> findAllByPrizeNameContains(String prizeName, Pageable pageable);
-    List<Prize> findAllByActivityIdAndOrderByLevel(Long activityId);
+    List<Prize> findAllByActivityId(Long activityId);
+
 }

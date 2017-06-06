@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Entity
 @Table(name="prize")
 public class Prize implements Serializable {
-
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +19,6 @@ public class Prize implements Serializable {
     //活动id
     @NotNull
     private Long activityId;
-
     //奖品等级
     @NotNull
     private Integer level;

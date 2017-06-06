@@ -85,7 +85,8 @@ public class ActivityService implements IActivityService {
             if (    images.size()>0){
                 out.setImages(images);
             }
-            List<Prize> prizes=_prizeRepository.findAllByActivityIdAndOrderByLevel(activityId);
+        Sort sort = new Sort(Sort.Direction.ASC, "level");
+            List<Prize> prizes=_prizeRepository.findAllByActivityId(activityId);
             if (prizes.size()>0){
                 out.setPrizes(prizes);
             }
