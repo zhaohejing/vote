@@ -3,6 +3,7 @@ package com.efan.appservice.service;
 import com.efan.appservice.iservice.IActivityService;
 
 import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.dtos.ActivityOutPut;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
@@ -10,8 +11,10 @@ import com.efan.core.page.Response;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
 import com.efan.core.primary.Image;
+import com.efan.core.primary.Prize;
 import com.efan.repository.IActivityRepository;
 import com.efan.repository.IImageRepository;
+import com.efan.repository.IPrizeRepository;
 import com.efan.utils.HttpUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +40,14 @@ public class ActivityService implements IActivityService {
 
     private IActivityRepository _activityRepository;
     private IImageRepository _imageRepository;
+    private IPrizeRepository _prizeRepository;
+
+
     @Autowired
-     public ActivityService(IActivityRepository activityRepository,IImageRepository imageRepository){
+     public ActivityService(IActivityRepository activityRepository,IImageRepository imageRepository,IPrizeRepository prizeRepository){
          this._activityRepository=activityRepository;
          _imageRepository=imageRepository;
+         _prizeRepository=prizeRepository;
      }
      /*获取活动列表分页数据*/
     public ResultModel<Activity> Activitys(BaseInput input){
@@ -59,6 +66,32 @@ public class ActivityService implements IActivityService {
         Activity result=  _activityRepository.findOne(input.id);
         return  result;
     }
+    public ActivityOutPut GetDetail(Long activityId) throws Exception{
+            Activity model=_activityRepository.findOne(activityId);
+            if (    model==null)
+                throw  new Exception("活动不存在");
+            ActivityOutPut out=new ActivityOutPut();
+            out.setActorCount(model.getActorCount());
+            out.setContent(model.getContent());
+            out.setCreationTime(model.getCreationTime());
+            out.setEndTime(model.getEndTime());
+            out.setId(model.getId());
+            out.setRules(model.getRules());
+            out.setTitle(model.getTitle());
+            out.setTotalVotes(model.getTotalVotes());
+            out.setTraffic(model.getTraffic());
+
+            List<Image> images=  _imageRepository.findAllByActivityId(activityId);
+            if (    images.size()>0){
+                out.setImages(images);
+            }
+            List<Prize> prizes=_prizeRepository.findAllByActivityIdAndOrderByLevel(activityId);
+            if (prizes.size()>0){
+                out.setPrizes(prizes);
+            }
+            return  out;
+    }
+
     /*增加访问量*/
     public Activity Access(DeleteInput input){
         Activity result=  _activityRepository.findOne(input.id);

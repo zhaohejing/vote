@@ -56,7 +56,7 @@ public class PrizeService implements IPrizeService {
             model=_prizeRepository.findOne(input.id  );
             model.setActivityId(input.activityId);
             model.setDescription(input.description);
-
+            model.setLevel(input.level);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
@@ -72,6 +72,7 @@ public class PrizeService implements IPrizeService {
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
             }
+            model.setLevel(input.level);
             model.setActivityId(input.activityId);
             model.setId(0L);
             model.setCreationTime(df.format(new Date()));

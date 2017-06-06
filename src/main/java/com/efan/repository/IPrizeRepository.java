@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IPrizeRepository extends JpaRepository<Prize,Long> {
   /*  @Query("select u from activity u where u.boxId=:boxId and u.creationTime>:a and u.creationTime<=:b ")
@@ -16,5 +18,5 @@ public interface IPrizeRepository extends JpaRepository<Prize,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Prize> findAllByPrizeNameContains(String prizeName, Pageable pageable);
-
+    List<Prize> findAllByActivityIdAndOrderByLevel(Long activityId);
 }

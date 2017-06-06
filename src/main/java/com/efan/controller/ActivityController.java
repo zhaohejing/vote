@@ -3,6 +3,7 @@ package com.efan.controller;
 
 import com.efan.appservice.iservice.IActivityService;
 import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.dtos.ActivityOutPut;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
@@ -80,6 +81,21 @@ public class ActivityController {
         Activity model=_activityService.Activity(input);
         return  new ActionResult(model);
     }
+    /**
+     * 获取活动详情*/
+    @ApiOperation(value="获取活动详情", notes="后台活动接口")
+    @RequestMapping(value  ="/getdetail" ,method = RequestMethod.GET)
+    public ActionResult GetDetail(@RequestParam Long activityId){
+        try {
+            ActivityOutPut model=_activityService.GetDetail(activityId);
+            return  new ActionResult(model);
+
+        }catch (Exception e){
+            return  new ActionResult(false, e.getMessage());
+        }
+    }
+
+
     /**
      * 增加访问量*/
     @ApiOperation(value="增加访问量", notes="后台活动接口")

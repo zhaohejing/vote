@@ -2,6 +2,7 @@ package com.efan.appservice.iservice;
 
 
 import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.dtos.ActivityOutPut;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
@@ -27,4 +28,5 @@ public interface IActivityService {
      void Public(ListInput input);
     /*删除*/
      void   Delete(ListInput input);
+    ActivityOutPut GetDetail(Long activityId) throws Exception;
 }
