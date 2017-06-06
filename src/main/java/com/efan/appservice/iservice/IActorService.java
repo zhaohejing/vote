@@ -20,7 +20,7 @@ public interface IActorService {
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/
-     Actor   Modify(ActorDto input);
+     Actor   Modify(ActorDto input) throws  Exception;
 //toupiao
     Record Vote(VoteDto input);
     //是否可以投票

@@ -57,7 +57,7 @@ private IActivityRepository _activityRepository;
         _actorRepository.delete(input.id);
     }
     /*创建或编辑*/
-    public Actor   Modify(ActorDto input){
+    public Actor   Modify(ActorDto input) throws  Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Actor model;
         if (input.id !=null&&input.id>0){
@@ -65,23 +65,27 @@ private IActivityRepository _activityRepository;
             model.setActivityId(input.activityId);
             model.setActorCount(input.actorCount);
             model.setActorImage(input.actorImage);
+            model.setDeclaration(input.declaration);
             model.setActorKey(input.actorKey);
             model.setActorName(input.actorName);
             model=  _actorRepository.saveAndFlush(model );
-            return model;
         }else {
             model=new Actor();
             model.setActivityId(input.activityId);
             model.setActorCount(0);
             model.setActorImage(input.actorImage);
+            model.setDeclaration(input.declaration);
             model.setActorKey(input.actorKey);
             model.setActorName(input.actorName);
             model.setId(0L);
             model.setCreationTime(df.format(new java.util.Date()));
             model=  _actorRepository.save(model);
-            return  model;
         }
-
+        if (model==null) throw new Exception("报名失败");
+        Activity act=_activityRepository.findOne(input.activityId);
+        act.setActorCount(act.getActorCount()+1);
+        _activityRepository.saveAndFlush(act);
+        return  model;
     }
     //投票
     public Record  Vote(VoteDto input){

@@ -48,8 +48,13 @@ public class ActorController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActorDto")
     @RequestMapping(value  ="/modify" ,method = RequestMethod.POST)
     public ActionResult Modify(@RequestBody ActorDto input){
-        Actor result=_actorService.Modify(input);
-        return  new ActionResult(result);
+        try {
+            Actor result=_actorService.Modify(input);
+            return  new ActionResult(result);
+
+        }catch (Exception e){
+            return  new ActionResult(false,e.getMessage());
+        }
     }
     /**
      * 删除报名者*/

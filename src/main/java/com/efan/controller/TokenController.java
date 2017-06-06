@@ -103,6 +103,7 @@ public class TokenController {
            //  TokenSingleton.getInstance().setWxToken("");
              return "";
          }
+
         Double expires_in = (Double) map.get("expires_in");
         //获取当前时间戳
         long sjc = System.currentTimeMillis();

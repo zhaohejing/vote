@@ -12,4 +12,5 @@ public class ActorDto {
     public  String  actorImage;
     public  Integer actorCount;
     public  Long activityId;
+    public String declaration;
 }

@@ -31,7 +31,9 @@ public class Actor implements Serializable {
     private  String  actorImage;
      //"投票数 ")
     private  Integer actorCount;
+  //用户宣言
 
+    private String declaration;
     //用户唯一id
      //"用户唯一id key")
     @Column(length = 50)
@@ -77,7 +79,13 @@ public class Actor implements Serializable {
     public void setActorCount(Integer actorCount) {
         this.actorCount = actorCount;
     }
+    public String getDeclaration() {
+        return declaration;
+    }
 
+    public void setDeclaration(String declaration) {
+        this.declaration = declaration;
+    }
     public String getCreationTime() {
         return creationTime;
     }
