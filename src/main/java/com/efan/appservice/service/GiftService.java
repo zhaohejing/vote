@@ -6,9 +6,11 @@ import com.efan.controller.dtos.SendDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Activity;
 import com.efan.core.primary.Gift;
 import com.efan.core.primary.Giving;
 import com.efan.core.primary.Record;
+import com.efan.repository.IActivityRepository;
 import com.efan.repository.IGiftRepository;
 import com.efan.repository.IGivingRepository;
 import com.efan.repository.IRecordRepository;
@@ -33,13 +35,14 @@ public class GiftService implements IGiftService {
 
     private IGiftRepository _giftRepository;
     private IGivingRepository _givingRepository;
-
+    private IActivityRepository _activityRepository;
     private IRecordRepository _recordRepository;
     @Autowired
-    public GiftService(IGiftRepository giftRepository,IGivingRepository givingRepository, IRecordRepository recordRepository){
+    public GiftService(IGiftRepository giftRepository,IGivingRepository givingRepository, IRecordRepository recordRepository,IActivityRepository activityRepository){
         this._giftRepository=giftRepository;
         _givingRepository=givingRepository;
         _recordRepository=recordRepository;
+        _activityRepository=activityRepository;
     }
     /*获取活动列表分页数据*/
     public ResultModel<Gift> Gifts(BaseInput input){
@@ -67,7 +70,6 @@ public class GiftService implements IGiftService {
             model.setActivityId(input.activityId);
             model.setBeVote(input.beVote);
             model.setGiftName(input.giftName);
-            model.setLevel(input.level);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
                 model.setImageUrl(input.imageUrl);
@@ -78,7 +80,6 @@ public class GiftService implements IGiftService {
         }else {
             model=new Gift();
             model.setPrice(input.price);
-            model.setLevel(input.level);
             model.setBeVote(input.beVote);
             if (! input.imageUrl.isEmpty()){
                 model.setImageName(input.imageName);
@@ -100,7 +101,11 @@ public class GiftService implements IGiftService {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Gift gift=_giftRepository.findOne(dto.giftId);
         if (    gift==null){
-            return  null ;
+            throw new Exception("礼物不存在");
+        }
+        Activity act=_activityRepository.findOne(dto.activityId);
+        if (    act==null   ){
+            throw new Exception("活动不存在");
         }
             Giving model=new Giving();
             model.setActorId(dto.actorId);
@@ -115,7 +120,9 @@ public class GiftService implements IGiftService {
          if (   record==null    ){
              throw new Exception("创建失败");
          }
-              return  _givingRepository.save(model);
+            act.setTotalVotes(gift.getBeVote()+act.getTotalVotes());
+            _activityRepository.saveAndFlush(act);
+        return  _givingRepository.save(model);
     }
 private  Record  addrecord(Long actorId,String sendKey,Integer votes){
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式

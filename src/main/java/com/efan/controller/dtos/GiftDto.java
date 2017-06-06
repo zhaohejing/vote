@@ -10,6 +10,5 @@ public class GiftDto {
     public  String imageUrl;
     public Integer price;
     public Long activityId;
-    public  Integer level;
     public  Integer beVote;
 }

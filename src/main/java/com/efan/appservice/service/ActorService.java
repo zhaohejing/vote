@@ -7,8 +7,10 @@ import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Activity;
 import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
+import com.efan.repository.IActivityRepository;
 import com.efan.repository.IActorRepository;
 import com.efan.repository.IRecordRepository;
 import com.efan.utils.DateUtil;
@@ -30,12 +32,13 @@ import java.util.List;
 public class ActorService implements IActorService {
     private IActorRepository _actorRepository;
     private IRecordRepository _recordRepository;
-
+private IActivityRepository _activityRepository;
 
     @Autowired
-    public ActorService(IActorRepository actorRepository,IRecordRepository recordRepository){
+    public ActorService(IActorRepository actorRepository,IRecordRepository recordRepository,IActivityRepository activityRepository){
         this._actorRepository=actorRepository;
         _recordRepository=recordRepository;
+        _activityRepository=activityRepository;
     }
     /*获取活动列表分页数据*/
     public ResultModel<Actor> Actors(ActorInput input){
@@ -91,7 +94,17 @@ public class ActorService implements IActorService {
         dto.setId(0L);
         dto.setSendKey(input.sendKey);
         dto.setVotes(input.votes);
-      return   _recordRepository.saveAndFlush(dto);
+Activity act=_activityRepository.findOne(input.activityId);
+if (    act==null   ){
+    return null;
+}
+      Record red=   _recordRepository.saveAndFlush(dto);
+if (    red!=null){
+    act.setActorCount(act.getActorCount()+1);
+    _activityRepository.saveAndFlush(act);
+}
+return  red;
+
     }
     public  Boolean  CanVote(VoteDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式

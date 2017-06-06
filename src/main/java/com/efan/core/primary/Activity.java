@@ -1,10 +1,14 @@
 package com.efan.core.primary;
 
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 活动实体

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 远程购买接口表
+ * 活动列表
  */
 @RestController
 @RequestMapping("/api/activity")
@@ -77,6 +77,15 @@ public class ActivityController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/detail" ,method = RequestMethod.POST)
     public ActionResult Detail(@RequestBody DeleteInput input){
+        Activity model=_activityService.Activity(input);
+        return  new ActionResult(model);
+    }
+    /**
+     * 增加访问量*/
+    @ApiOperation(value="增加访问量", notes="后台活动接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @RequestMapping(value  ="/access" ,method = RequestMethod.POST)
+    public ActionResult Access(@RequestBody DeleteInput input){
         Activity model=_activityService.Activity(input);
         return  new ActionResult(model);
     }

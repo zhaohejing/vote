@@ -29,16 +29,7 @@ public class Gift implements Serializable {
     @NotNull
     private Long activityId;
 
-    public Integer getLevel() {
-        return level;
-    }
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-    //奖品等级
-    @NotNull
-    private Integer level;
     @NotNull
      //"礼物名称")
     @Column(length = 120,unique = true)
@@ -72,18 +63,14 @@ public class Gift implements Serializable {
     @NotNull
      //"价格分为单位")
     private Integer price;
-
     public Integer getBeVote() {
         return beVote;
     }
-
     public void setBeVote(Integer beVote) {
         this.beVote = beVote;
     }
-
     //可以替代的票数
     private  Integer beVote;
-
      //"是否删除")
     private Boolean isDelete;
      //"创建时间")

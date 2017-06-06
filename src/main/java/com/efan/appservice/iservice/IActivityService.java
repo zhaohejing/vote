@@ -18,7 +18,8 @@ public interface IActivityService {
      ResultModel<Activity> Activitys(BaseInput input);
     /*获取详情*/
      Activity Activity(DeleteInput input);
-
+    /*增加访问量*/
+     Activity Access(DeleteInput input);
     /*创建或编辑*/
      Activity   Modify(ActivityDto input);
     List<Activity> AllActivitys();

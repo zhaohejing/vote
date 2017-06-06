@@ -15,5 +15,5 @@ public class SendDto {
     //"礼物id")
     public Long giftId;
 public  String sendKey;
-
+public  Long activityId;
 }

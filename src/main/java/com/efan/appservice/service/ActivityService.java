@@ -59,6 +59,12 @@ public class ActivityService implements IActivityService {
         Activity result=  _activityRepository.findOne(input.id);
         return  result;
     }
+    /*增加访问量*/
+    public Activity Access(DeleteInput input){
+        Activity result=  _activityRepository.findOne(input.id);
+        result.setTraffic(result.getTraffic()+1);
+       return _activityRepository.saveAndFlush(result);
+    }
     /*发布*/
     public void Public(ListInput input){
       List<Activity>  list= _activityRepository.findAll(input.list);
@@ -78,6 +84,7 @@ public class ActivityService implements IActivityService {
             _activityRepository.delete(temp);
         }
     }
+
     @Transactional()
     /*创建或编辑*/
     public Activity   Modify(ActivityDto input){

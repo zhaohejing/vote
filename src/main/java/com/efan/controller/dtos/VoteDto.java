@@ -1,5 +1,7 @@
 package com.efan.controller.dtos;
 
+import sun.rmi.runtime.Log;
+
 /**
  * 投票dto
  */
@@ -11,5 +13,5 @@ public class VoteDto {
     public Long actorId;
     //票数
     public  Integer votes;
-
+    public Long activityId;
 }
