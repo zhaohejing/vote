@@ -70,7 +70,7 @@ public class Gift implements Serializable {
         this.beVote = beVote;
     }
     //可以替代的票数
-    private  Integer beVote;
+    private  Integer beVote=1;
      //"是否删除")
     private Boolean isDelete;
      //"创建时间")

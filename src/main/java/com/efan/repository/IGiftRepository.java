@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IGiftRepository extends JpaRepository<Gift,Long> {
   /*  @Query("select u from activity u where u.boxId=:boxId and u.creationTime>:a and u.creationTime<=:b ")
@@ -15,6 +17,7 @@ public interface IGiftRepository extends JpaRepository<Gift,Long> {
     Activity findOrderByFilter(@Param("orderId") String orderId);*/
 
     Page<Gift> findAllByGiftNameContains( String giftName, Pageable pageable);
+    List<Gift> findAllByActivityId(Long activityId);
 
 }
 

@@ -1,18 +1,16 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IActorService;
+import com.efan.controller.OutPuts.ActorAndGiftOutPut;
+import com.efan.controller.OutPuts.GivingOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
-import com.efan.core.primary.Activity;
-import com.efan.core.primary.Actor;
-import com.efan.core.primary.Record;
-import com.efan.repository.IActivityRepository;
-import com.efan.repository.IActorRepository;
-import com.efan.repository.IRecordRepository;
+import com.efan.core.primary.*;
+import com.efan.repository.*;
 import com.efan.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -32,13 +31,18 @@ import java.util.List;
 public class ActorService implements IActorService {
     private IActorRepository _actorRepository;
     private IRecordRepository _recordRepository;
-private IActivityRepository _activityRepository;
+    private IActivityRepository _activityRepository;
+    private IGivingRepository _givingRepository;
+    private IGiftRepository _giftRepository;
 
     @Autowired
-    public ActorService(IActorRepository actorRepository,IRecordRepository recordRepository,IActivityRepository activityRepository){
+    public ActorService(IActorRepository actorRepository,IRecordRepository recordRepository,IActivityRepository activityRepository,IGivingRepository givingRepository
+    , IGiftRepository giftRepository){
         this._actorRepository=actorRepository;
         _recordRepository=recordRepository;
         _activityRepository=activityRepository;
+    _givingRepository=givingRepository;
+    _giftRepository=giftRepository;
     }
     /*获取活动列表分页数据*/
     public ResultModel<Actor> Actors(ActorInput input){
@@ -48,9 +52,54 @@ private IActivityRepository _activityRepository;
         return  new ResultModel<>( res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
-    public Actor Actor(DeleteInput input){
-        Actor result=  _actorRepository.findOne(input.id);
-        return  result;
+    public ActorAndGiftOutPut Actor(DeleteInput input){
+        ActorAndGiftOutPut out=new ActorAndGiftOutPut();
+        Actor a=  _actorRepository.findOne(input.id);
+            out.setId(a.getId());
+            out.setActivityId(a.getActivityId());
+            out.setActorCount(a.getActorCount());
+            out.setActorImage(a.getActorImage());
+            out.setActorKey(a.getActorKey());
+            out.setActorName(a.getActorName());
+            out.setDeclaration(a.getDeclaration());
+            out.setGiftCount(a.getGiftCount());
+        List<Giving> givings=_givingRepository.findAllByActorId(a.getId());
+        List<Gift> gifts=_giftRepository.findAllByActivityId(a.getActivityId());
+
+        if (givings.size()>0){
+            List<GivingOutPut> givingOutPuts =new ArrayList<>();
+            for (int i = 0; i < givings.size(); i++) {
+                GivingOutPut dto=new GivingOutPut();
+                Giving temp=givings.get(i);
+                dto.setActorId(temp.getActorId());
+                dto.setActorName(a.getActorName());
+                dto.setCreationTime(temp.getCreationTime());
+                dto.setSendImage(temp.getSendImage());
+                dto.setSendKey(temp.getSendKey());
+                dto.setSendName(temp.getSendName());
+                Gift tg=FindByFilter(gifts,temp.getGiftId());
+                if (tg!=null){
+                    dto.setGiftId(tg.getId());
+                    dto.setGiftName(tg.getGiftName());
+                    dto.setGiftImage(tg.getImageUrl());
+                }
+                givingOutPuts.add(dto);
+            }
+            out.setGivings(givingOutPuts);
+        }
+        return  out;
+    }
+    private  Gift FindByFilter(List<Gift> list,Long giftId){
+        Gift te=null;
+        if (list.isEmpty())return  te;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId()!=giftId){
+              continue;
+            }else   {
+                te= list.get(i);
+            }
+        }
+        return  te;
     }
     /*删除*/
     public void   Delete(DeleteInput input){

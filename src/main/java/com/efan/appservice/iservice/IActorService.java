@@ -1,5 +1,6 @@
 package com.efan.appservice.iservice;
 
+import com.efan.controller.OutPuts.ActorAndGiftOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
@@ -16,7 +17,7 @@ public interface IActorService {
     /*获取活动列表分页数据*/
      ResultModel<Actor> Actors(ActorInput input);
     /*获取详情*/
-     Actor Actor(DeleteInput input);
+    ActorAndGiftOutPut Actor(DeleteInput input);
     /*删除*/
      void   Delete(DeleteInput input);
     /*创建或编辑*/

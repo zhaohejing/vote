@@ -1,6 +1,7 @@
 package com.efan.controller;
 
 import com.efan.appservice.iservice.IActorService;
+import com.efan.controller.OutPuts.ActorAndGiftOutPut;
 import com.efan.controller.dtos.ActivityDto;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
@@ -71,7 +72,7 @@ public class ActorController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/detail" ,method = RequestMethod.POST)
     public ActionResult Detail(@RequestBody DeleteInput input){
-        Actor model=_actorService.Actor(input);
+        ActorAndGiftOutPut model=_actorService.Actor(input);
         return  new ActionResult(model);
     }
     /**

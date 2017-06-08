@@ -2,7 +2,7 @@ package com.efan.appservice.iservice;
 
 
 import com.efan.controller.dtos.ActivityDto;
-import com.efan.controller.dtos.ActivityOutPut;
+import com.efan.controller.OutPuts.ActivityOutPut;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;

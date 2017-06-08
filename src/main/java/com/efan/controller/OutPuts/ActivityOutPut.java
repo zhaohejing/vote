@@ -1,4 +1,4 @@
-package com.efan.controller.dtos;
+package com.efan.controller.OutPuts;
 
 import com.efan.core.primary.Gift;
 import com.efan.core.primary.Image;

@@ -1,56 +1,36 @@
-package com.efan.core.primary;
+package com.efan.controller.OutPuts;
 
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import java.util.List;
 
 /**
- * 参与者
+ * Created by 45425 on 2017/6/8.
  */
-@Entity
-@Table(name="actor")
-public class Actor implements Serializable {
-    @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ActorAndGiftOutPut {
     private Long id;
-
-    //用户唯一id
-    @NotNull
-     //"用户唯一id key")
-    @Column(length = 200)
+    //"用户唯一id key")
     private String actorKey;
-
-    @Column(length = 200)
-     //"用户名 ")
+    //"用户名 ")
     private  String  actorName;
-
-    @Column(length = 200)
-     //"用户头像路径 ")
+    //"用户头像路径 ")
     private  String  actorImage;
-     //"投票数 ")
-    private  Integer actorCount=0;
-
-    public Integer getGiftCount() {
-        return giftCount;
-    }
-
-    public void setGiftCount(Integer giftCount) {
-        this.giftCount = giftCount;
-    }
-
     //"投票数 ")
-    private  Integer giftCount=0;
-  //用户宣言
-
+    private  Integer actorCount;
+    //"投票数 ")
+    private  Integer giftCount;
     private String declaration;
-    //用户唯一id
-     //"用户唯一id key")
-    @Column(length = 50)
     private String creationTime;
-   private  Long activityId;
+    private  Long activityId;
 
+    public List<GivingOutPut> getGivings() {
+        return givings;
+    }
+
+    public void setGivings(List<GivingOutPut> givings) {
+        this.givings = givings;
+    }
+
+    private List<GivingOutPut> givings;
     public Long getId() {
         return id;
     }
@@ -90,6 +70,15 @@ public class Actor implements Serializable {
     public void setActorCount(Integer actorCount) {
         this.actorCount = actorCount;
     }
+
+    public Integer getGiftCount() {
+        return giftCount;
+    }
+
+    public void setGiftCount(Integer giftCount) {
+        this.giftCount = giftCount;
+    }
+
     public String getDeclaration() {
         return declaration;
     }
@@ -97,6 +86,7 @@ public class Actor implements Serializable {
     public void setDeclaration(String declaration) {
         this.declaration = declaration;
     }
+
     public String getCreationTime() {
         return creationTime;
     }
@@ -112,5 +102,4 @@ public class Actor implements Serializable {
     public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
-
 }

@@ -3,11 +3,10 @@ package com.efan.appservice.service;
 import com.efan.appservice.iservice.IActivityService;
 
 import com.efan.controller.dtos.ActivityDto;
-import com.efan.controller.dtos.ActivityOutPut;
+import com.efan.controller.OutPuts.ActivityOutPut;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
-import com.efan.core.page.Response;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
 import com.efan.core.primary.Image;
@@ -15,10 +14,7 @@ import com.efan.core.primary.Prize;
 import com.efan.repository.IActivityRepository;
 import com.efan.repository.IImageRepository;
 import com.efan.repository.IPrizeRepository;
-import com.efan.utils.HttpUtils;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,8 +23,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
