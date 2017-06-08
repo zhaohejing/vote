@@ -23,6 +23,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -42,6 +44,7 @@ public class ActivityService implements IActivityService {
          this._activityRepository=activityRepository;
          _imageRepository=imageRepository;
          _prizeRepository=prizeRepository;
+
      }
      /*获取活动列表分页数据*/
     public ResultModel<Activity> Activitys(BaseInput input){
