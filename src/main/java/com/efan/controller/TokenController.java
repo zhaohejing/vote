@@ -32,7 +32,7 @@ public class TokenController {
     @ApiOperation(value="获取七牛token", notes="七牛接口")
     @RequestMapping(value = "/qnToken", method = RequestMethod.POST)
     public ModelMap token(){
-        String bucket = "resource";
+        String bucket = "docker";
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
         ModelMap result = new ModelMap();
