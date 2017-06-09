@@ -1,12 +1,12 @@
 package com.efan.appservice.service;
 
 import com.efan.appservice.iservice.IActorService;
-import com.efan.controller.OutPuts.ActorAndGiftOutPut;
 import com.efan.controller.OutPuts.GivingOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.DeleteInput;
+import com.efan.controller.inputs.GivingInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.*;
 import com.efan.repository.*;
@@ -47,42 +47,41 @@ public class ActorService implements IActorService {
         return  new ResultModel<>( res.getContent(),res.getTotalElements());
     }
     /*获取详情*/
-    public ActorAndGiftOutPut Actor(DeleteInput input){
-        ActorAndGiftOutPut out=new ActorAndGiftOutPut();
-        Actor a=  _actorRepository.findOne(input.id);
-            out.setId(a.getId());
-            out.setActivityId(a.getActivityId());
-            out.setActorCount(a.getActorCount());
-            out.setActorImage(a.getActorImage());
-            out.setActorKey(a.getActorKey());
-            out.setActorName(a.getActorName());
-            out.setDeclaration(a.getDeclaration());
-            out.setGiftCount(a.getGiftCount());
-        List<Giving> givings=_givingRepository.findAllByActorId(a.getId());
-        List<Gift> gifts=_giftRepository.findAllByActivityId(a.getActivityId());
+    public Actor Actor(DeleteInput input){
 
-        if (givings.size()>0){
-            List<GivingOutPut> givingOutPuts =new ArrayList<>();
-            for (int i = 0; i < givings.size(); i++) {
-                GivingOutPut dto=new GivingOutPut();
-                Giving temp=givings.get(i);
+        Actor a=  _actorRepository.findOne(input.id);
+
+        return  a;
+    }
+    public ResultModel<GivingOutPut> GetActorGifts(GivingInput input){
+        Actor a=  _actorRepository.findOne(input.actorId);
+        //Sort sort = new Sort(Sort.Direction.DESC, input.getSort());
+        Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize());
+        Page<Giving> givings=_givingRepository.findAllByActorId(input.actorId,pageable);
+        List<Gift> gifts=_giftRepository.findAllByActivityId(input.activityId);
+        List<GivingOutPut> givingOutPuts =new ArrayList<>();
+
+        if (givings.getTotalElements()>0) {
+            Long length = givings.getTotalElements();
+            for (int i = 0; i < length; i++) {
+                GivingOutPut dto = new GivingOutPut();
+                Giving temp = givings.getContent().get(i);
                 dto.setActorId(temp.getActorId());
                 dto.setActorName(a.getActorName());
                 dto.setCreationTime(temp.getCreationTime());
                 dto.setSendImage(temp.getSendImage());
                 dto.setSendKey(temp.getSendKey());
                 dto.setSendName(temp.getSendName());
-                Gift tg=FindByFilter(gifts,temp.getGiftId());
-                if (tg!=null){
+                Gift tg = FindByFilter(gifts, temp.getGiftId());
+                if (tg != null) {
                     dto.setGiftId(tg.getId());
                     dto.setGiftName(tg.getGiftName());
                     dto.setGiftImage(tg.getImageUrl());
                 }
                 givingOutPuts.add(dto);
             }
-            out.setGivings(givingOutPuts);
         }
-        return  out;
+          return new ResultModel<GivingOutPut>(givingOutPuts,givings.getTotalElements());
     }
     private  Gift FindByFilter(List<Gift> list,Long giftId){
         Gift te=null;

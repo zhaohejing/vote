@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by 45425 on 2017/6/8.
  */
-public class ActorAndGiftOutPut {
+public class ActorOutPut {
     private Long id;
     //"用户唯一id key")
     private String actorKey;
@@ -22,15 +22,11 @@ public class ActorAndGiftOutPut {
     private String creationTime;
     private  Long activityId;
 
-    public List<GivingOutPut> getGivings() {
-        return givings;
-    }
 
-    public void setGivings(List<GivingOutPut> givings) {
-        this.givings = givings;
-    }
 
-    private List<GivingOutPut> givings;
+
+
+
     public Long getId() {
         return id;
     }

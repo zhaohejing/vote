@@ -1,13 +1,12 @@
 package com.efan.controller;
 
 import com.efan.appservice.iservice.IActorService;
-import com.efan.controller.OutPuts.ActorAndGiftOutPut;
-import com.efan.controller.dtos.ActivityDto;
+import com.efan.controller.OutPuts.GivingOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
-import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
+import com.efan.controller.inputs.GivingInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
@@ -72,7 +71,16 @@ public class ActorController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/detail" ,method = RequestMethod.POST)
     public ActionResult Detail(@RequestBody DeleteInput input){
-        ActorAndGiftOutPut model=_actorService.Actor(input);
+        Actor model=_actorService.Actor(input);
+        return  new ActionResult(model);
+    }
+    /**
+     * 获取报名者送礼列表详情*/
+    @ApiOperation(value="获取报名者详情", notes="报名者接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "GivingInput")
+    @RequestMapping(value  ="/actorgifts" ,method = RequestMethod.POST)
+    public ActionResult Gifts(@RequestBody GivingInput input){
+        ResultModel<GivingOutPut> model=_actorService.GetActorGifts(input);
         return  new ActionResult(model);
     }
     /**
