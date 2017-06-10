@@ -4,6 +4,7 @@ import com.efan.appservice.iservice.IActivityService;
 
 import com.efan.controller.dtos.ActivityDto;
 import com.efan.controller.OutPuts.ActivityOutPut;
+import com.efan.controller.dtos.ImageDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
@@ -148,11 +149,14 @@ public class ActivityService implements IActivityService {
             _imageRepository.deleteByActivityId(input.id);
             List<Image> list=new ArrayList<>();
             for (int i = 0; i < input.images.size(); i++) {
+                ImageDto img=input.images.get(i);
                 Image dto=new Image();
                 dto.setActivityId(model.getId());
                 dto.setId(0L);
-                dto.setUrl(input.images.get(i).url);
-                dto.setTitle(input.images.get(i).title);
+                dto.setUrl(img.url);
+               dto.setIsTitle(img.isTitle);
+               dto.setIsShare(img.isShare);
+                dto.setTitle(img.title);
                 dto.setState(true);
                 dto.setCreationTime(df.format(new java.util.Date()));
                    list.add(dto);

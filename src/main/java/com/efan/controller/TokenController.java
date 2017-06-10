@@ -4,6 +4,11 @@ import com.efan.core.page.ActionResult;
 import com.efan.utils.HttpUtils;
 import com.efan.utils.TokenSingleton;
 import com.google.gson.Gson;
+import com.qiniu.common.QiniuException;
+import com.qiniu.common.Zone;
+import com.qiniu.storage.BucketManager;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.model.FetchRet;
 import com.qiniu.util.Auth;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Map;
+import java.util.UUID;
 
 
 @RestController
@@ -46,6 +52,34 @@ public class TokenController {
         }
         return result;
     }
+    @ApiOperation(value="从微信上传到七牛", notes="七牛接口")
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public ActionResult fetchToQiniu(String serverId) {
+        String bucket = "docker";
+        Auth auth = Auth.create(accessKey, secretKey);
+    ActionResult result=new ActionResult();
+        Configuration cfg = new Configuration(Zone.zone1());
+        //实例化一个BucketManager对象
+        BucketManager bucketManager = new BucketManager(auth,cfg);
+        //文件保存的空间名和文件名
+        String key = UUID.randomUUID().toString();
+        String  token=TokenSingleton.getInstance().getWxToken();
+        if (token==null||token.isEmpty()){
+            token=getToken();
+        }
+        //要fetch的url
+        String url = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=" + token+ "&media_id=" + serverId;
+        try {
+            //调用fetch方法抓取文件
+            FetchRet res= bucketManager.fetch(url, bucket,key);
+            result.setResult(res);
+        } catch (QiniuException e) {
+                result.setResult(e.getMessage());
+        }
+         return  result;
+    }
+
+
 
 
     @ApiOperation(value="获取微信access_token", notes="微信接口")

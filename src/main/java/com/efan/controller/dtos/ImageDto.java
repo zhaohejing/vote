@@ -6,4 +6,6 @@ package com.efan.controller.dtos;
 public class ImageDto {
     public String title;
     public String url;
+    public Boolean isTitle=false;
+   public  Boolean isShare=false;
 }

@@ -1,6 +1,4 @@
 package com.efan.core.primary;
-
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -23,6 +21,24 @@ public class Image implements Serializable {
     //"图片名")
     @Column(columnDefinition = "text")
     private String title;
+
+    public void setIsTitle(Boolean title) {
+        isTitle = title;
+    }
+
+    public Boolean getIsShare() {
+        return isShare;
+    }
+    public Boolean getIsTitle() {
+        return isTitle;
+    }
+    public void setIsShare(Boolean share) {
+        isShare = share;
+    }
+
+    private Boolean isTitle=false;
+    private  Boolean isShare=false;
+
 
     public Long getId() {
         return id;
