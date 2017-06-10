@@ -119,15 +119,8 @@ public class TokenController {
         String result = HttpUtils.sendPost(url,"");
         Gson gson = new Gson();
         Map map = gson.fromJson(result,Map.class);
-        String access_token = (String) map.get("access_token");
-        String openId = (String) map.get("openid");
 
-        Double error = (Double) map.get("errcode");
-        if (error!=null&& error>0){
-            String message=(String)map.get("errmsg");
-            //  TokenSingleton.getInstance().setWxToken("");
-            return null ;
-        }
+
         return map;
     }
     private  String getTicket(String token){
