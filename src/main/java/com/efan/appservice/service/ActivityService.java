@@ -22,10 +22,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -118,7 +114,8 @@ public class ActivityService implements IActivityService {
         }
     }
 
-    @Transactional()
+
+
     /*创建或编辑*/
     public Activity   Modify(ActivityDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式

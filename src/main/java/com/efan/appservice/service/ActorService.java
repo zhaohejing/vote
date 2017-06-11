@@ -55,7 +55,7 @@ public class ActorService implements IActorService {
   public ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input){
       StringBuilder sql=new StringBuilder();
       StringBuilder count=new StringBuilder();
-      sql.append("select * from actor  where 1=1  ");
+      sql.append("select *,actor_count+gift_count totalCount from actor  where 1=1  ");
       count.append("SELECT count(*) from actor where 1=1");
 
       if (input.getFilter()!=null&& !input.getFilter().isEmpty()){

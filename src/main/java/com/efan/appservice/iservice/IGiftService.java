@@ -22,4 +22,5 @@ public interface IGiftService {
      Gift Modify(GiftDto input);
     //送礼物
     Giving SendGift(SendDto dto) throws Exception;
+    ResultModel<Gift> GiftsByActivityId(DeleteInput input);
 }

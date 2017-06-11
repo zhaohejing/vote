@@ -30,6 +30,7 @@ public class GiftController {
         _giftService=giftService;
     }
 
+
     /**
      * 获取礼物列表带分页*/
     @ApiOperation(value="获取礼物列表带分页", notes="礼物接口")
@@ -37,6 +38,15 @@ public class GiftController {
     @RequestMapping(value  ="/gifts" ,method = RequestMethod.POST)
     public ActionResult Gifts(@RequestBody BaseInput input){
         ResultModel<Gift> result=_giftService.Gifts(input);
+        return  new ActionResult(result);
+    }
+    /**
+     * 获取活动下礼物列表带分页*/
+    @ApiOperation(value="获取活动下礼物列表带分页", notes="礼物接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
+    @RequestMapping(value  ="/giftsbyactivity" ,method = RequestMethod.POST)
+    public ActionResult Gifts(@RequestBody DeleteInput input){
+        ResultModel<Gift> result=_giftService.GiftsByActivityId(input);
         return  new ActionResult(result);
     }
     /**

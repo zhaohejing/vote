@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -48,6 +49,11 @@ public class GiftService implements IGiftService {
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
         Page<Gift> res=  _giftRepository.findAllByGiftNameContains(input.getFilter(), pageable);
         return  new ResultModel<>(res.getContent(),res.getTotalElements());
+    }
+    /*获取活动列表分页数据*/
+    public ResultModel<Gift> GiftsByActivityId(DeleteInput input){
+        List<Gift> list=_giftRepository.findAllByActivityId(input.id);
+        return  new ResultModel<>(list);
     }
     /*获取详情*/
     public Gift Gift(DeleteInput input){
@@ -94,7 +100,6 @@ public class GiftService implements IGiftService {
         }
     }
     //送礼物
-    @Transactional()
     public  Giving SendGift(SendDto dto) throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Gift gift=_giftRepository.findOne(dto.giftId);
