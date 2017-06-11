@@ -21,6 +21,15 @@ public class Image implements Serializable {
     //"图片名")
     @Column(columnDefinition = "text")
     private String title;
+    private Integer sort;
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
 
     public void setIsTitle(Boolean title) {
         isTitle = title;

@@ -57,7 +57,6 @@ public class TokenController {
     public ActionResult fetchToQiniu(String serverId) {
         String bucket = "docker";
         Auth auth = Auth.create(accessKey, secretKey);
-    ActionResult result=new ActionResult();
         Configuration cfg = new Configuration(Zone.zone0());
         //实例化一个BucketManager对象
         BucketManager bucketManager = new BucketManager(auth,cfg);
@@ -72,11 +71,10 @@ public class TokenController {
         try {
             //调用fetch方法抓取文件
             FetchRet res= bucketManager.fetch(url, bucket,key);
-            result.setResult(res);
+                return  new ActionResult(true,res);
         } catch (QiniuException e) {
-                result.setResult(e.getMessage());
+            return  new ActionResult(false,e.getMessage());
         }
-         return  result;
     }
 
 

@@ -154,6 +154,7 @@ public class ActivityService implements IActivityService {
                 Image dto=new Image();
                 dto.setActivityId(model.getId());
                 dto.setId(0L);
+                dto.setSort(img.sort);
                 dto.setUrl(img.url);
                dto.setIsTitle(img.isTitle);
                dto.setIsShare(img.isShare);
