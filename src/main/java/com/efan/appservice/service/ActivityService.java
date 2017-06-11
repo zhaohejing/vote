@@ -100,6 +100,7 @@ public class ActivityService implements IActivityService {
     /*发布*/
     public void Public(ListInput input){
       List<Activity>  list= _activityRepository.findAll(input.list);
+
         for (int i = 0; i < list.size(); i++) {
             Activity temp=list.get(i);
             if (temp.getPublic()){ continue;}

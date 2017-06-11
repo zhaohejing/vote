@@ -95,7 +95,7 @@ public class WxPayController {
      * @param out_trade_no1 商户订单号
      * @param total_fee1 订单金额(单位:分)
      * @param openid1 网页授权取到的openid
-     * @return
+
      */
 
     private String getPrepayid(String out_trade_no1,String total_fee1,String openid1,String redirt,String userIp) throws  Exception{

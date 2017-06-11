@@ -23,7 +23,7 @@ public   class HttpUtils {
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
             while((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
@@ -50,7 +50,7 @@ public   class HttpUtils {
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
             while((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
@@ -68,7 +68,7 @@ public   class HttpUtils {
             digest.update(str.getBytes());
             byte messageDigest[] = digest.digest();
             // Create Hex String
-            StringBuffer hexStr = new StringBuffer();
+            StringBuilder hexStr = new StringBuilder();
             // 字节数组转换为 十六进制 数
             for (int i = 0; i < messageDigest.length; i++) {
                 String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);

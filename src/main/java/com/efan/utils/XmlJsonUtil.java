@@ -22,7 +22,7 @@ public class XmlJsonUtil {
 
     }
 
-    public static String readFile(String path) throws Exception {
+    private static String readFile(String path) throws Exception {
         File file=new File(path);
         FileInputStream fis = new FileInputStream(file);
         FileChannel fc = fis.getChannel();
@@ -38,9 +38,6 @@ public class XmlJsonUtil {
     }
     /**
      * xml转json
-     * @param xmlStr
-     * @return
-     * @throws DocumentException
      */
     public static JSONObject xml2Json(String xmlStr) throws DocumentException{
         Document doc= DocumentHelper.parseText(xmlStr);
@@ -51,10 +48,8 @@ public class XmlJsonUtil {
 
     /**
      * xml转json
-     * @param element
-     * @param json
      */
-    public static void dom4j2Json(Element element,JSONObject json){
+    private static void dom4j2Json(Element element,JSONObject json){
         //如果是属性
         for(Object o:element.attributes()){
             Attribute attr=(Attribute)o;
@@ -107,11 +102,8 @@ public class XmlJsonUtil {
         }
     }
 
-    public static boolean isEmpty(String str) {
+    private static boolean isEmpty(String str) {
 
-        if (str == null || str.trim().isEmpty() || "null".equals(str)) {
-            return true;
-        }
-        return false;
+        return str == null || str.trim().isEmpty() || "null".equals(str);
     }
 }

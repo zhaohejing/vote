@@ -17,8 +17,8 @@ import java.util.*;
  */
 public class Md5Utils {
 
-    protected static char hexDigits[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
-    protected static MessageDigest messageDigest = null;
+    private static char hexDigits[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+    private static MessageDigest messageDigest = null;
 
     static{
         try{
@@ -31,8 +31,6 @@ public class Md5Utils {
     }
     /**
      * 字符串的md5加密
-     * @param input
-     * @return
      */
     public static String stringMD5(String input) {
         // 输入的字符串转换成字节数组
@@ -53,8 +51,7 @@ public class Md5Utils {
      * 第三部：MD5加密
      * sign=MD5(stringSignTemp).toUpperCase()="9A0A8659F005D6984697E2CA0A9CF3B7"
      *
-     * @param map 不包含空字符串的map
-     * @return
+
      */
     public static String sign(Map<String, String> map,String key) {
         //排序
@@ -75,27 +72,13 @@ public class Md5Utils {
         return sign.toLowerCase();
     }
 
-
-    /**
-     *
-     * <p>Title: JSON-XML转换工具</p>
-     * <p>desc:
-     * <p>Copyright: Copyright(c)Gb 2012</p>
-     * @author http://www.ij2ee.com
-     * @time 上午8:20:40
-     * @version 1.0
-     * @since
-     */
-
-
     /**
      * 对参数列表进行排序，并拼接key=value&key=value形式
-     * @param map
-     * @return
+
      */
     private static String sortParameters(Map<String, String> map) {
         Set<String> keys = map.keySet();
-        List<String> paramsBuf = new ArrayList<String>();
+        List<String> paramsBuf = new ArrayList<>();
         for (String k : keys) {
             paramsBuf.add((k + "=" + getParamString(map, k)));
         }
@@ -114,9 +97,7 @@ public class Md5Utils {
     }
     /**
      * 返回key的值
-     * @param map
-     * @param key
-     * @return
+
      */
     private static String getParamString(Map map, String key) {
         String buf = "";
@@ -129,8 +110,7 @@ public class Md5Utils {
     }
     /**
      * 字符串列表从大到小排序
-     * @param data
-     * @return
+
      */
     private static List<String> sort(List<String> data) {
         Collections.sort(data, new Comparator<String>() {
@@ -167,9 +147,7 @@ public class Md5Utils {
 
     /**
      * 文件的md5加密
-     * @param inputFile
-     * @return
-     * @throws IOException
+
      */
     public static String fileMD5(String inputFile) throws IOException {
         // 缓冲区大小（这个可以抽出一个参数）
@@ -203,8 +181,7 @@ public class Md5Utils {
 
     /**
      * Map转Xml
-     * @param arr
-     * @return
+
      */
     public static String MapToXml(Map<String, String> arr) {
         String xml = "<xml>";
@@ -222,11 +199,7 @@ public class Md5Utils {
         return xml;
     }
     private static boolean IsNumeric(String str) {
-        if (str.matches("\\d *")) {
-            return true;
-        } else {
-            return false;
-        }
+        return str.matches("\\d *");
     }
     public static String getUuid() {
                String s =  UUID.randomUUID().toString();

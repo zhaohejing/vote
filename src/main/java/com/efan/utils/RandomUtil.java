@@ -30,7 +30,7 @@ public class RandomUtil {
      *            随机字符串长度
      * @return 随机字符串
      */
-    public static String generateMixString(int length) {
+    private static String generateMixString(int length) {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
@@ -68,7 +68,7 @@ public class RandomUtil {
      *            字符串长度
      * @return 纯0字符串
      */
-    public static String generateZeroString(int length) {
+    private static String generateZeroString(int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             sb.append('0');
@@ -100,9 +100,7 @@ public class RandomUtil {
 
     /**
      * 每次生成的len位数都不相同
-     *
-     * @param param
-     * @return 定长的数字
+
      */
     public static int getNotSimple(int[] param, int len) {
         Random rand = new Random();
@@ -130,7 +128,6 @@ public class RandomUtil {
      * sign=MD5(stringSignTemp).toUpperCase()="9A0A8659F005D6984697E2CA0A9CF3B7"
      *
      * @param map 不包含空字符串的map
-     * @return
      */
     public static String sign(Map<String, String> map,String key) {
         //排序
@@ -145,8 +142,7 @@ public class RandomUtil {
 
     /**
      * 对参数列表进行排序，并拼接key=value&key=value形式
-     * @param map
-     * @return
+     * @param map 集合
      */
     private static String sortParameters(Map<String, String> map) {
         Set<String> keys = map.keySet();
@@ -169,9 +165,7 @@ public class RandomUtil {
     }
     /**
      * 返回key的值
-     * @param map
-     * @param key
-     * @return
+
      */
     private static String getParamString(Map map, String key) {
         String buf = "";
@@ -184,8 +178,7 @@ public class RandomUtil {
     }
     /**
      * 字符串列表从大到小排序
-     * @param data
-     * @return
+
      */
     private static List<String> sort(List<String> data) {
         Collections.sort(data, new Comparator<String>() {
