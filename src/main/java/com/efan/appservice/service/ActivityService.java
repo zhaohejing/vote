@@ -79,7 +79,7 @@ public class ActivityService implements IActivityService {
             out.setTotalVotes(model.getTotalVotes());
             out.setTraffic(model.getTraffic());
 
-            List<Image> images=  _imageRepository.findAllByActivityId(activityId);
+            List<Image> images=  _imageRepository.findAllByActivityIdOrderBySort(activityId);
             if (    images.size()>0){
                 out.setImages(images);
             }
