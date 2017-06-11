@@ -12,14 +12,17 @@ import com.efan.core.primary.*;
 import com.efan.repository.*;
 import com.efan.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -29,7 +32,9 @@ public class ActorService implements IActorService {
     private IActivityRepository _activityRepository;
     private IGivingRepository _givingRepository;
     private IGiftRepository _giftRepository;
-
+    @Autowired
+    @Qualifier("primaryJdbcTemplate")
+    public JdbcTemplate _jdbc;
     @Autowired
     public ActorService(IActorRepository actorRepository,IRecordRepository recordRepository,IActivityRepository activityRepository,IGivingRepository givingRepository
     , IGiftRepository giftRepository){
@@ -46,9 +51,31 @@ public class ActorService implements IActorService {
         Page<Actor> res=  _actorRepository.findAllByActivityIdAndActorNameContains(input.getActivityId(), input.getFilter(), pageable);
         return  new ResultModel<>( res.getContent(),res.getTotalElements());
     }
+
+  public ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input){
+      StringBuilder sql=new StringBuilder();
+      StringBuilder count=new StringBuilder();
+      sql.append("select * from actor  where 1=1  ");
+      count.append("SELECT count(*) from actor where 1=1");
+
+      if (input.getFilter()!=null&& !input.getFilter().isEmpty()){
+          sql.append(" and actor_name like '%"+input.getFilter()+"%' ");
+          count.append(" and actor_name like '%"+input.getFilter()+"%' ");
+      }
+      if (input.getActivityId()!=null&& input.getActivityId()>0){
+          sql.append(" and activity_id="+input.getActivityId());
+          count.append(" and activity_id="+input.getActivityId());
+      }
+    sql.append(" order by actor_count+gift_count desc ");
+
+      sql.append(" limit  "+input.getPage()+" , "+input.getSize() );
+      Long total= _jdbc.queryForObject(count.toString(),Long.class);
+      List<Map<String,Object>> list = _jdbc.queryForList(sql.toString());
+      return  new ResultModel<Map<String,Object>>(list,total);
+  }
+
     /*获取详情*/
     public Actor Actor(DeleteInput input){
-
         Actor a=  _actorRepository.findOne(input.id);
 
         return  a;

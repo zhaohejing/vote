@@ -1,6 +1,7 @@
 package com.efan.controller;
 
 import com.efan.appservice.iservice.IPrizeService;
+import com.efan.controller.OutPuts.ActivityOutPut;
 import com.efan.controller.dtos.PrizeDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
@@ -10,10 +11,9 @@ import com.efan.core.primary.Prize;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by 45425 on 2017/6/6.
@@ -36,6 +36,15 @@ public class PrizeController {
         ResultModel<Prize> result=_prizeService.Prizes(input);
         return  new ActionResult(result);
     }
+    /**
+     * 获取奖品详情*/
+    @ApiOperation(value="获取奖品详情", notes="奖品接口")
+    @RequestMapping(value  ="/prizelist" ,method = RequestMethod.GET)
+    public ActionResult PrizeList(@RequestParam Long activityId){
+            List<Prize> model=_prizeService.PrizeByActivity(activityId);
+            return  new ActionResult(model);
+    }
+
     /**
      * 添加奖品*/
     @ApiOperation(value="添加奖品", notes="奖品接口")

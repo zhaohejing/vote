@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 
 /**
  * 报名者接口
@@ -40,6 +42,16 @@ public class ActorController {
         ResultModel<Actor> result=_actorService.Actors(input);
         return  new ActionResult(result);
     }
+    /**
+     * 获取报名者热度排行带分页*/
+    @ApiOperation(value="获取报名者热度排行带分页", notes="报名者接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ActorInput")
+    @RequestMapping(value  ="/hotactors" ,method = RequestMethod.POST)
+    public ActionResult HotActors(@RequestBody ActorInput input){
+        ResultModel<Map<String,Object>> result=_actorService.GetActorsByHot(input);
+        return  new ActionResult(result);
+    }
+
     /**
      * 添加报名者*/
     @ApiOperation(value="添加报名者", notes="报名者接口")

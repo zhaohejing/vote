@@ -6,6 +6,8 @@ import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Prize;
 
+import java.util.List;
+
 /**
  * Created by 45425 on 2017/6/6.
  */
@@ -18,5 +20,5 @@ public interface IPrizeService {
      void   Delete(DeleteInput input);
     /*创建或编辑*/
      Prize   Modify(PrizeDto input);
-
+    List<Prize> PrizeByActivity(Long activityId);
 }

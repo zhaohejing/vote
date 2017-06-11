@@ -10,6 +10,8 @@ import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
 
+import java.util.Map;
+
 /**
  * 报名者
  */
@@ -27,4 +29,5 @@ public interface IActorService {
      Record  Vote(VoteDto input) throws Exception;
     //是否可以投票
     Boolean  CanVote(VoteDto input);
+    ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input);
 }

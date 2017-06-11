@@ -24,7 +24,7 @@ public class Prize implements Serializable {
     private Integer level;
     @NotNull
     //"礼物名称")
-    @Column(length = 120,unique = true)
+    @Column(length = 120,unique = false)
     private  String prizeName;
     @NotNull
     //"奖品图片名称")

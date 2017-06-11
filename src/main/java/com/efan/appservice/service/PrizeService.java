@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -37,6 +38,10 @@ public class PrizeService implements IPrizeService {
         Pageable pageable = new PageRequest(input.getIndex()-1, input.getSize(),null);
         Page<Prize> res=  _prizeRepository.findAllByPrizeNameContains(input.getFilter(), pageable);
         return  new ResultModel<>(res.getContent(),res.getTotalElements());
+    }
+    public List<Prize> PrizeByActivity(Long activityId){
+        List<Prize> list=_prizeRepository.findAllByActivityId(activityId);
+        return  list;
     }
     /*获取详情*/
     public Prize Prize(DeleteInput input){
