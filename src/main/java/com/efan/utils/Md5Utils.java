@@ -198,8 +198,22 @@ public class Md5Utils {
         xml += "</xml>";
         return xml;
     }
+    public static String MapToXmlNoReg(Map<String, String> arr) {
+        String xml = "<xml>";
+        Iterator<Map.Entry<String, String>> iter = arr.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry<String, String> entry = iter.next();
+            String key = entry.getKey();
+            String val = entry.getValue();
+
+                xml += "<" + key + ">" + val + "</" + key + ">";
+
+        }
+        xml += "</xml>";
+        return xml;
+    }
     private static boolean IsNumeric(String str) {
-        return str.matches("\\d *");
+        return str.matches("\\d*");
     }
     public static String getUuid() {
                String s =  UUID.randomUUID().toString();

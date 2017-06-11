@@ -1,5 +1,7 @@
 package com.efan.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +61,9 @@ public class WxPayController {
             String  WIDtotal_fee= gift.getPrice().toString();
             String nom=Md5Utils.getUuid();
             String preid=getPrepayid(nom, WIDtotal_fee, input.openId,input.redirectUrl,input.userIp);//获取预支付标示
-
+if (preid==null||preid.isEmpty()){
+    return  new ActionResult(false,"生成预支付定单失败");
+}
             OrderDto dto=new OrderDto(nom,input.openId,gift.getId(),gift.getGiftName(),gift.getPrice(),"");
             _orderService.CreatOrder(dto);
             //组装map用于生成sign
@@ -82,8 +86,8 @@ public class WxPayController {
             map.put("nonceStr", nonceStr);
             map.put("package", "prepay_id="+preid);
             map.put("signType", "MD5");
-
-            result.put("paySign", Md5Utils.sign(map,"vote"));//签名
+            ;
+            result.put("paySign", Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase());//签名
             return new ActionResult(result);
         }catch (Exception e){
             return  new ActionResult(false,e.getMessage());
@@ -114,21 +118,22 @@ public class WxPayController {
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("appid", appid);
         map.put("mch_id", mch_id);
-        map.put("attach", "测试支付");
+        map.put("attach", "test");
         map.put("device_info", "WEB");
         map.put("nonce_str", nonce_str);
-        map.put("body", body);
+        String tempBody= getUTF8XMLString(body);
+        map.put("body",tempBody);
         map.put("out_trade_no", out_trade_no);
         map.put("total_fee", total_fee);
         map.put("spbill_create_ip", spbill_create_ip);
         map.put("trade_type", trade_type);
         map.put("notify_url", notify_url);
         map.put("openid", openid);
-        String sign = Md5Utils.sign(map,"vote");//参数加密
+        String sign = Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase();//参数加密
         System.out.println("sign秘钥:-----------"+sign);
         map.put("sign", sign);
         //组装xml(wx就这么变态，非得加点xml在里面)
-        String content= Md5Utils.MapToXml(map);
+        String content= Md5Utils.MapToXmlNoReg(map);
         //System.out.println(content);
         String PostResult= HttpUtils.sendPost("https://api.mch.weixin.qq.com/pay/unifiedorder", content);
         try{
@@ -141,8 +146,23 @@ public class WxPayController {
             return  e.getMessage();
         }
 
-    }
 
+    }
+    public  String getUTF8XMLString(String text) {
+        // A StringBuffer Object
+        StringBuilder sb = new StringBuilder();
+        sb.append(text);
+        String xmString = "";
+        String xmlUTF8="";
+        try {
+            xmString = new String(sb.toString().getBytes("UTF-8"));
+            xmlUTF8 = URLEncoder.encode(xmString, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        // return to String Formed
+        return xmlUTF8;
+    }
 }
 
 

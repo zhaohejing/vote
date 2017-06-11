@@ -19,7 +19,8 @@ public   class HttpUtils {
             con.setRequestMethod("GET"); // Default is GET
             // Request header
             // con.setRequestProperty("Activity-Agent", USER_AGENT);
-
+            con.setRequestProperty("Accept-Charset", "utf-8");
+            con.setRequestProperty("contentType", "utf-8");
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
@@ -39,6 +40,8 @@ public   class HttpUtils {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection)obj.openConnection();
             con.setRequestMethod("POST"); // Default is GET
+            con.setRequestProperty("Accept-Charset", "utf-8");
+            con.setRequestProperty("contentType", "utf-8");
             // Request header
             // con.setRequestProperty("Activity-Agent", USER_AGENT);
             con.setDoOutput(true);
