@@ -58,7 +58,7 @@ public class TokenController {
         String bucket = "docker";
         Auth auth = Auth.create(accessKey, secretKey);
     ActionResult result=new ActionResult();
-        Configuration cfg = new Configuration(Zone.zone1());
+        Configuration cfg = new Configuration(Zone.zone0());
         //实例化一个BucketManager对象
         BucketManager bucketManager = new BucketManager(auth,cfg);
         //文件保存的空间名和文件名
