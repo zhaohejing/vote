@@ -43,14 +43,11 @@ public class OrderService implements IOrderService {
     public Order   CreatOrder(OrderDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Order model =new Order();
-
-
             model.setPrice(input.price);
             model.setCreationTime(df.format(new Date()));
-
             model.setId(0L);
             model.setOrderDes(input.orderDes);
-            model.setOrderNumber(java.util.UUID.randomUUID().toString());
+            model.setOrderNumber(input.orderNum);
             model.setPayKey(input.payKey);
             model.setProductId(input.productId);
             model.setProductName(input.productName);
