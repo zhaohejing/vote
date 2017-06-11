@@ -77,6 +77,9 @@ if (preid==null||preid.isEmpty()){
             result.put("nonceStr", nonceStr);
             //预支付标识
             result.put("prepay_id",preid);
+            //金额
+            result.put("total_fee",gift.getPrice().toString());
+
             //加密方式
             result.put("signType", "MD5");
             //组装map用于生成sign
@@ -88,6 +91,7 @@ if (preid==null||preid.isEmpty()){
             map.put("signType", "MD5");
             ;
             result.put("paySign", Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase());//签名
+            result.put("order", nom);
             return new ActionResult(result);
         }catch (Exception e){
             return  new ActionResult(false,e.getMessage());

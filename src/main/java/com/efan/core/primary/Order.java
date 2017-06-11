@@ -32,6 +32,8 @@ public class Order implements Serializable {
     @Column(length = 200,unique = true)
     //订单唯一编号
     private String  orderNumber;
+
+
     //订单描述
     @Column(length = 200)
     private String  orderDes;
