@@ -32,6 +32,15 @@ public class Actor implements Serializable {
      //"投票数 ")
     private  Integer actorCount=0;
 
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    private Integer totalPrice=0;
     public Integer getGiftCount() {
         return giftCount;
     }

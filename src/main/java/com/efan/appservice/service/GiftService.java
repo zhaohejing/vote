@@ -129,6 +129,7 @@ public class GiftService implements IGiftService {
          }
             act.setTotalVotes(gift.getBeVote()+act.getTotalVotes());
          tor.setGiftCount(tor.getGiftCount()+gift.getBeVote());
+         tor.setTotalPrice(tor.getTotalPrice()+(gift.getPrice()/100));
          _actorRepository.saveAndFlush(tor);
           _activityRepository.saveAndFlush(act);
         return  _givingRepository.save(model);
