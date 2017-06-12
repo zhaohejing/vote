@@ -101,7 +101,7 @@ public class ActorController {
     public ActionResult Vote(@RequestBody VoteDto input){
        Boolean can=_actorService.CanVote(input);
        if (!can){
-           return  new ActionResult(false,"今天已经投票了,请明天再试试");
+           return  new ActionResult(false,"一个微信号只能投票一次");
        }
        try{
            Record model=_actorService.Vote(input);
