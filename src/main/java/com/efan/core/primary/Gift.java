@@ -32,7 +32,7 @@ public class Gift implements Serializable {
 
     @NotNull
      //"礼物名称")
-    @Column(length = 120,unique = true)
+    @Column(length = 120,unique = false)
     private  String giftName;
 
 
