@@ -6,6 +6,7 @@ import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.GivingInput;
+import com.efan.controller.inputs.ListInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
@@ -30,4 +31,5 @@ public interface IActorService {
     //是否可以投票
     Boolean  CanVote(VoteDto input);
     ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input);
+   void   DisableVote(ListInput input);
 }

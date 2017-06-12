@@ -106,7 +106,6 @@ public class ActivityService implements IActivityService {
     }
     /*删除*/
     public void   Delete(ListInput input){
-
         List<Activity>  list= _activityRepository.findAll(input.list);
         for (int i = 0; i < list.size(); i++) {
             Activity temp=list.get(i);

@@ -7,6 +7,7 @@ import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.GivingInput;
+import com.efan.controller.inputs.ListInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.*;
 import com.efan.repository.*;
@@ -163,8 +164,8 @@ public class ActorService implements IActorService {
     //投票
     public Record  Vote(VoteDto input) throws Exception{
         Actor tor=_actorRepository.findOne(input.actorId);
-        if(tor.getActorCount()>=200){
-            throw new Exception("热度已满200.");
+        if(!tor.getCanVote()){
+            throw new Exception("热度已满");
         }
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Record dto=new Record();
@@ -190,7 +191,20 @@ if ( red!=null){
 return  red;
     }
     public  Boolean  CanVote(VoteDto input){
-        List<Record> res=_recordRepository.findAllBySendKeyAndActivityId(input.sendKey,input.activityId);
-        return  res.size()<=0;
+        List<Record> list=_recordRepository.findAllBySendKeyAndActivityId(input.sendKey,input.activityId);
+        if (list.size()>0){
+            return  false;
+        }
+        Actor act=_actorRepository.findOne(input.actorId);
+        return  act.getCanVote();
+    }
+
+    public void   DisableVote(ListInput input){
+        List<Actor>  list= _actorRepository.findAll(input.list);
+        for (int i = 0; i < list.size(); i++) {
+            Actor temp=list.get(i);
+            temp.setCanVote(false);
+            _actorRepository.save(temp);
+        }
     }
 }

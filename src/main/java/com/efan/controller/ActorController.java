@@ -7,6 +7,7 @@ import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.ActorInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.GivingInput;
+import com.efan.controller.inputs.ListInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
@@ -110,7 +111,15 @@ public class ActorController {
            return  new ActionResult(false,e.getMessage());
        }
     }
-
+    /**
+     * 禁止用户投票*/
+    @ApiOperation(value="禁止用户投票", notes="报名者接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ListInput")
+    @RequestMapping(value  ="/disablevote" ,method = RequestMethod.POST)
+    public ActionResult DisableVote(@RequestBody ListInput input){
+        _actorService.DisableVote(input);
+        return  new ActionResult(1);
+    }
 
     /**
      * 获取榜单列表*/

@@ -26,6 +26,15 @@ public class Actor implements Serializable {
      //"用户名 ")
     private  String  actorName;
 
+    public Boolean getCanVote() {
+        return canVote;
+    }
+
+    public void setCanVote(Boolean canVote) {
+        this.canVote = canVote;
+    }
+
+    private  Boolean canVote=true;
     public Integer getSort() {
         return sort;
     }
