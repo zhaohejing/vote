@@ -189,8 +189,7 @@ return  red;
     }
     public  Boolean  CanVote(VoteDto input){
         List<Record> list=_recordRepository.findAllBySendKeyAndActivityId(input.sendKey,input.activityId);
-       return  list.size()<0;
-
+       return  list.size()<=0;
     }
 
    public  Boolean Disable(VoteDto input){
