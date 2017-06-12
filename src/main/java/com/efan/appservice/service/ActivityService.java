@@ -115,7 +115,7 @@ public class ActivityService implements IActivityService {
     }
 
 
-
+@Transactional
     /*创建或编辑*/
     public Activity   Modify(ActivityDto input){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式

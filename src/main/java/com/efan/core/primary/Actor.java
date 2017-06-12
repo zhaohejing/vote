@@ -26,6 +26,14 @@ public class Actor implements Serializable {
      //"用户名 ")
     private  String  actorName;
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+    private Integer sort=0;
     @Column(length = 200)
      //"用户头像路径 ")
     private  String  actorImage;

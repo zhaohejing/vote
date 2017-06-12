@@ -99,8 +99,9 @@ public class GiftService implements IGiftService {
           return  model;
         }
     }
+    @Transactional
     //送礼物
-    public  Giving SendGift(SendDto dto) throws Exception{
+  public  Giving SendGift(SendDto dto) throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Gift gift=_giftRepository.findOne(dto.giftId);
         if (    gift==null){

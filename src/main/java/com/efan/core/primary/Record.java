@@ -25,6 +25,16 @@ public class Record implements Serializable {
     //"接受人")
     private Long actorId;
 
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+
+    private Long activityId;
+
     public Boolean getGift() {
         return isGift;
     }
