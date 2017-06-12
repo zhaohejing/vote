@@ -4,10 +4,7 @@ import com.efan.appservice.iservice.IActorService;
 import com.efan.controller.OutPuts.GivingOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
-import com.efan.controller.inputs.ActorInput;
-import com.efan.controller.inputs.DeleteInput;
-import com.efan.controller.inputs.GivingInput;
-import com.efan.controller.inputs.ListInput;
+import com.efan.controller.inputs.*;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Actor;
@@ -104,6 +101,10 @@ public class ActorController {
        if (!can){
            return  new ActionResult(false,"一个微信号只能投票一次");
        }
+       Boolean disable=_actorService.Disable(input);
+       if (!disable){
+           return  new ActionResult(false,"热度已满");
+       }
        try{
            Record model=_actorService.Vote(input);
            return  new ActionResult(model);
@@ -114,9 +115,9 @@ public class ActorController {
     /**
      * 禁止用户投票*/
     @ApiOperation(value="禁止用户投票", notes="报名者接口")
-    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "ListInput")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DisableInput")
     @RequestMapping(value  ="/disablevote" ,method = RequestMethod.POST)
-    public ActionResult DisableVote(@RequestBody ListInput input){
+    public ActionResult DisableVote(@RequestBody DisableInput input){
         _actorService.DisableVote(input);
         return  new ActionResult(1);
     }

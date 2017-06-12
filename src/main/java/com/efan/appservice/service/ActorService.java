@@ -4,10 +4,7 @@ import com.efan.appservice.iservice.IActorService;
 import com.efan.controller.OutPuts.GivingOutPut;
 import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
-import com.efan.controller.inputs.ActorInput;
-import com.efan.controller.inputs.DeleteInput;
-import com.efan.controller.inputs.GivingInput;
-import com.efan.controller.inputs.ListInput;
+import com.efan.controller.inputs.*;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.*;
 import com.efan.repository.*;
@@ -192,18 +189,21 @@ return  red;
     }
     public  Boolean  CanVote(VoteDto input){
         List<Record> list=_recordRepository.findAllBySendKeyAndActivityId(input.sendKey,input.activityId);
-        if (list.size()>0){
-            return  false;
-        }
-        Actor act=_actorRepository.findOne(input.actorId);
-        return  act.getCanVote();
+       return  list.size()<0;
+
     }
 
-    public void   DisableVote(ListInput input){
+   public  Boolean Disable(VoteDto input){
+       Actor act=_actorRepository.findOne(input.actorId);
+       if (act==null) return  true;
+       return  act.getCanVote();
+   }
+
+    public void   DisableVote(DisableInput input){
         List<Actor>  list= _actorRepository.findAll(input.list);
         for (int i = 0; i < list.size(); i++) {
             Actor temp=list.get(i);
-            temp.setCanVote(false);
+            temp.setCanVote(input.state);
             _actorRepository.save(temp);
         }
     }
