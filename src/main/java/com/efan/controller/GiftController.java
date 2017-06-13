@@ -89,7 +89,7 @@ public class GiftController {
             Giving model= _giftService.SendGift(input);
             return  new ActionResult(model);
         }catch (Exception e){
-            return  new ActionResult(false,"创建失败");
+            return  new ActionResult(false,e.getMessage());
         }
     }
 }

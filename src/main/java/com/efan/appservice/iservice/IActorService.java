@@ -29,5 +29,5 @@ public interface IActorService {
     Boolean  CanVote(VoteDto input);
     ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input);
    void   DisableVote(DisableInput input);
-    Boolean Disable(VoteDto input);
+    Boolean Disable(Long actorId);
 }

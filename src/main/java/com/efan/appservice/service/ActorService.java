@@ -197,8 +197,8 @@ return  red;
         return  res.size()<=0;
     }
 
-   public  Boolean Disable(VoteDto input){
-       Actor act=_actorRepository.findOne(input.actorId);
+   public  Boolean Disable(Long actorId){
+       Actor act=_actorRepository.findOne(actorId);
        if (act==null) return  true;
        return  act.getCanVote();
    }

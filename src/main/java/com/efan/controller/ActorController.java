@@ -105,7 +105,7 @@ public class ActorController {
        if (!can){
            return  new ActionResult(false,"一个微信号一天只能投票一次");
        }
-       Boolean disable=_actorService.Disable(input);
+       Boolean disable=_actorService.Disable(input.actorId);
        if (!disable){
            return  new ActionResult(false,"热度已满");
        }
