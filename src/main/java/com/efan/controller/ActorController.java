@@ -95,11 +95,15 @@ public class ActorController {
      * 投票*/
     @ApiOperation(value="投票", notes="报名者接口")
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "VoteDto")
+
     @RequestMapping(value  ="/vote" ,method = RequestMethod.POST)
     public ActionResult Vote(@RequestBody VoteDto input){
+        if(input.sendKey.isEmpty()||input.sendKey.equals("undefined")){
+            return  new ActionResult(false,"微信唯一编号不存在");
+        }
        Boolean can=_actorService.CanVote(input);
        if (!can){
-           return  new ActionResult(false,"一个微信号只能投票一次");
+           return  new ActionResult(false,"一个微信号一天只能投票一次");
        }
        Boolean disable=_actorService.Disable(input);
        if (!disable){

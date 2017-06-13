@@ -174,7 +174,7 @@ public class ActorService implements IActorService {
         dto.setActivityId(input.activityId);
         dto.setSendKey(input.sendKey);
         dto.setVotes(input.votes);
-Activity act=_activityRepository.findOne(input.activityId);
+    Activity act=_activityRepository.findOne(input.activityId);
 if (    act==null   ) throw new Exception("活动不存在");
       Record red=   _recordRepository.saveAndFlush(dto);
 
@@ -188,8 +188,13 @@ if ( red!=null){
 return  red;
     }
     public  Boolean  CanVote(VoteDto input){
-        List<Record> list=_recordRepository.findAllBySendKeyAndActivityId(input.sendKey,input.activityId);
-       return  list.size()<=0;
+        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd 00:00:00");//设置日期格式
+        SimpleDateFormat end = new SimpleDateFormat("yyyy-MM-dd 23:59:59");//设置日期格式
+
+        java.util.Date right=new java.util.Date();
+        java.util.Date left= DateUtil.GenderTime(right,true);
+        List<Record> res=_recordRepository.findAllBySendKeyAndActivityIdAndCreationTimeBetween(input.sendKey,input.activityId,start.format(left),end.format(right));
+        return  res.size()<=0;
     }
 
    public  Boolean Disable(VoteDto input){

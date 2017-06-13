@@ -128,7 +128,7 @@ public class GiftService implements IGiftService {
          if (   record==null    ){
              throw new Exception("创建失败");
          }
-            act.setTotalVotes(gift.getBeVote()+act.getTotalVotes());
+        act.setTotalVotes(gift.getBeVote()+act.getTotalVotes());
          tor.setGiftCount(tor.getGiftCount()+gift.getBeVote());
          tor.setTotalPrice(tor.getTotalPrice()+(gift.getPrice()/100));
          _actorRepository.saveAndFlush(tor);
