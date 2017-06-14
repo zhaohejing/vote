@@ -175,7 +175,7 @@ public class ActorService implements IActorService {
             Integer total=0;
       Integer length=input.actors.size();
     for (int i = 0; i <length ; i++) {
-        MutileActorInput.MuActor dto=input.actors.get(i);
+        MutileActor dto=input.actors.get(i);
         Actor model=new Actor();
         model.setActivityId(input.activityId);
         model.setActorCount(0);
