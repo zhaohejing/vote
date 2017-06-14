@@ -5,6 +5,7 @@ import com.efan.controller.dtos.ActorDto;
 import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.*;
 import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Activity;
 import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
 
@@ -30,4 +31,5 @@ public interface IActorService {
     ResultModel<Map<String,Object>> GetActorsByHot(ActorInput input);
    void   DisableVote(DisableInput input);
     Boolean Disable(Long actorId);
+    Activity AddActors(MutileActorInput input) throws Exception;
 }

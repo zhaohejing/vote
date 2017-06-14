@@ -7,6 +7,7 @@ import com.efan.controller.dtos.VoteDto;
 import com.efan.controller.inputs.*;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Activity;
 import com.efan.core.primary.Actor;
 import com.efan.core.primary.Record;
 import io.swagger.annotations.ApiImplicitParam;
@@ -90,6 +91,21 @@ public class ActorController {
     public ActionResult Gifts(@RequestBody GivingInput input){
         ResultModel<GivingOutPut> model=_actorService.GetActorGifts(input);
         return  new ActionResult(model);
+    }
+    /**
+     * 批量添加参与者*/
+    @ApiOperation(value="批量添加参与者", notes="报名者接口")
+    @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "MutileActorInput")
+    @RequestMapping(value  ="/mutileactors" ,method = RequestMethod.POST)
+    public ActionResult MutileActors(@RequestBody MutileActorInput input){
+        try {
+         Activity model= _actorService.AddActors(input);
+            return  new ActionResult(model);
+        }
+        catch (Exception e){
+            return  new ActionResult(false,e.getMessage());
+        }
+
     }
     /**
      * 投票*/

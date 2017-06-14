@@ -17,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,6 +159,40 @@ public class ActorService implements IActorService {
         act.setActorCount(act.getActorCount()+1);
         _activityRepository.saveAndFlush(act);
         return  model;
+    }
+@Transactional()
+    public Activity  AddActors(MutileActorInput input) throws Exception{
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Activity act=_activityRepository.findOne(input.activityId);
+        if (act==null){
+            throw new Exception("活动信息不存在");
+        }
+        List<Actor>  actors=_actorRepository.findAllByActivityId(input.activityId);
+        Integer count=actors.size();
+            if (input.actors.size()<=0){
+                throw new Exception("人员信息不存在");
+            }
+            Integer total=0;
+      Integer length=input.actors.size();
+    for (int i = 0; i <length ; i++) {
+        MutileActorInput.MuActor dto=input.actors.get(i);
+        Actor model=new Actor();
+        model.setActivityId(input.activityId);
+        model.setActorCount(0);
+        model.setSort(count+i+1);
+        model.setActorImage(dto.actorImage);
+        model.setDeclaration("");
+        model.setActorKey(dto.actorKey);
+        model.setActorName(dto.actorName);
+        model.setId(0L);
+        model.setCreationTime(df.format(new java.util.Date()));
+        model=  _actorRepository.save(model);
+        if (model!=null){
+            total++;
+        }
+    }
+        act.setActorCount(act.getActorCount()+total);
+       return   _activityRepository.saveAndFlush(act);
     }
     //投票
     public Record  Vote(VoteDto input) throws Exception{
