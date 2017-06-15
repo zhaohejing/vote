@@ -57,13 +57,16 @@ public class ActivityService implements IActivityService {
     }
     /*获取详情*/
     public Activity Activity(DeleteInput input){
-        Activity result=  _activityRepository.findOne(input.id);
-        return  result;
+       return  _activityRepository.findOne(input.id);
     }
     public ActivityOutPut GetDetail(Long activityId) throws Exception{
             Activity model=_activityRepository.findOne(activityId);
-            if (    model==null)
-                throw  new Exception("活动不存在");
+        if ( model==null)
+            throw  new Exception("活动不存在");
+            if(model.getEndTime().getTime()<=new Date().getTime()){
+                throw new Exception("活动已截止");
+            }
+
             ActivityOutPut out=new ActivityOutPut();
             out.setActorCount(model.getActorCount());
             out.setContent(model.getContent());
