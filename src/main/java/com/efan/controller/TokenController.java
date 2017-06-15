@@ -27,10 +27,11 @@ import java.util.UUID;
 @RequestMapping("/api/token")
 @EnableSwagger2
 public class TokenController {
-    @Value("${appId}")
-    private String appId;
-    @Value("${secret}")
-    private String secret;
+    @Value("${wx.appId}")
+    public String appId;
+    @Value("${wx.secret}")
+    public String secret;
+
     @Value("${accessKey}")
     private String accessKey;
     @Value("${secretKey}")

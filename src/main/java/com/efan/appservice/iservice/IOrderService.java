@@ -15,5 +15,5 @@ public interface IOrderService {
 
     /*创建或编辑*/
      Order   CreatOrder(OrderDto input);
-     Order UpdateState(OrderInput input) throws  Exception;
+    Order UpdateState(String orderNum);
 }

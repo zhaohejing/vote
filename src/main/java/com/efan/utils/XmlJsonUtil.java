@@ -13,15 +13,6 @@ import java.util.List;
  * Created by chengsheng on 2015/8/19.
  */
 public class XmlJsonUtil {
-    public static void main(String[] args) throws Exception {
-        String xmlStr= readFile("D:/ADA/et/Issue_20130506_back.xml");
-        Document doc= DocumentHelper.parseText(xmlStr);
-        JSONObject json=new JSONObject();
-        dom4j2Json(doc.getRootElement(),json);
-        System.out.println("xml2Json:"+json.toJSONString());
-
-    }
-
     private static String readFile(String path) throws Exception {
         File file=new File(path);
         FileInputStream fis = new FileInputStream(file);

@@ -56,11 +56,11 @@ public class OrderService implements IOrderService {
             model=  _orderRepository.save(model);
             return  model;
     }
-    public Order UpdateState(OrderInput input) throws  Exception{
-            Order  order=_orderRepository.findByOrderNumber(input.orderNumber);
-            if ( !order.getPrice().equals(input.price)){
+    public Order UpdateState(String orderNum) {
+            Order  order = _orderRepository.findByOrderNumber(orderNum);
+        /*    if ( !order.getPrice().equals(input.price)){
                 throw new Exception("价格信息错误,请重试");
-            }
+            }*/
             order.setPayState(true);
           return   _orderRepository.saveAndFlush(order);
     }

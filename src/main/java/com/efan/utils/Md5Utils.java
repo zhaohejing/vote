@@ -3,6 +3,7 @@ package com.efan.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -71,11 +72,30 @@ public class Md5Utils {
 
         return sign.toLowerCase();
     }
-
+    public static String SHA1(Map<String, String> map) {
+        if (map == null) {
+            return null;
+        }
+        try {
+            //排序
+            String sort=sortParameters(map);
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
+            messageDigest.update(sort.getBytes());
+            return getFormattedText(messageDigest.digest());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     /**
      * 对参数列表进行排序，并拼接key=value&key=value形式
 
      */
+    /**
+     * 获得值
+     *
+     * @return 值
+     */
+
     private static String sortParameters(Map<String, String> map) {
         Set<String> keys = map.keySet();
         List<String> paramsBuf = new ArrayList<>();
@@ -120,7 +140,37 @@ public class Md5Utils {
         });
         return data;
     }
+    private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    /**
+     * Takes the raw bytes from the digest and formats them correct.
+     *
+     * @param bytes
+     *            the raw bytes from the digest.
+     * @return the formatted bytes.
+     */
+    private static String getFormattedText(byte[] bytes) {
+        int len = bytes.length;
+        StringBuilder buf = new StringBuilder(len * 2);
+        // 把密文转换成十六进制的字符串形式
+        for (int j = 0; j < len; j++) {
+            buf.append(HEX_DIGITS[(bytes[j] >> 4) & 0x0f]);
+            buf.append(HEX_DIGITS[bytes[j] & 0x0f]);
+        }
+        return buf.toString();
+    }
 
+    public static String encode(String str) {
+        if (str == null) {
+            return null;
+        }
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
+            messageDigest.update(str.getBytes());
+            return getFormattedText(messageDigest.digest());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     private static String bufferToHex(byte bytes[], int m, int n) {

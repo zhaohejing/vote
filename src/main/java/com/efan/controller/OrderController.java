@@ -1,12 +1,14 @@
 package com.efan.controller;
 
 
+import com.efan.appservice.iservice.IGiftService;
 import com.efan.appservice.iservice.IOrderService;
 import com.efan.controller.dtos.OrderDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.OrderInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
+import com.efan.core.primary.Giving;
 import com.efan.core.primary.Order;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -23,9 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/order")
 public class OrderController {
     private IOrderService _orderService;
+    private WxPayController _payController;
+    private IGiftService _giftService;
     @Autowired
-    public OrderController(IOrderService orderService){
+    public OrderController(IOrderService orderService,WxPayController payController,IGiftService giftService){
         _orderService=orderService;
+        _payController=payController;
+        _giftService=giftService;
     }
 
     /**
@@ -54,8 +60,15 @@ public class OrderController {
     @RequestMapping(value  ="/updateState" ,method = RequestMethod.POST)
     public ActionResult UpdateState(@RequestBody OrderInput input){
         try{
-            Order order=  _orderService.UpdateState(input);
-            return  new ActionResult(order);
+         Boolean state=   _payController.SearchOrder(input.orderNumber);
+         if (state){
+             Giving model= _giftService.SendGift(input);
+            Order o= _orderService.UpdateState(input.orderNumber);
+             return  new ActionResult(o);
+         }else  {
+             return new ActionResult(false,"微信订单支付失败,请重试");
+         }
+
         }catch (Exception e){
             return new ActionResult(false,e.getMessage());
         }
