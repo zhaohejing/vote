@@ -130,7 +130,7 @@ public class GiftService implements IGiftService {
         model.setId(0L);
         model.setSendImage(dto.sendImage);
         model.setSendKey(dto.sendKey);
-        model.setSendName(dto.sendName);
+        model.setSendName(XmlJsonUtil.emojiConvert( dto.sendName));
         Record record = addrecord(dto.actorId, dto.sendKey, gift.getBeVote());
         if (record == null) {
             throw new Exception("创建失败");

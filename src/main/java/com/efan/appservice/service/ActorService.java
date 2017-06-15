@@ -100,7 +100,8 @@ public class ActorService implements IActorService {
 
                 dto.setSendImage(temp.getSendImage());
                 dto.setSendKey(temp.getSendKey());
-                dto.setSendName(temp.getSendName());
+                String name=XmlJsonUtil.emojiRecovery(temp.getSendName());
+                dto.setSendName(name);
                 Gift tg = FindByFilter(gifts, temp.getGiftId());
                 if (tg != null) {
                     dto.setGiftId(tg.getId());
