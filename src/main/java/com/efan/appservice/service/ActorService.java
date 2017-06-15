@@ -9,6 +9,7 @@ import com.efan.core.page.ResultModel;
 import com.efan.core.primary.*;
 import com.efan.repository.*;
 import com.efan.utils.DateUtil;
+import com.efan.utils.XmlJsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -96,9 +97,10 @@ public class ActorService implements IActorService {
                 dto.setActorId(temp.getActorId());
                 dto.setActorName(a.getActorName());
                 dto.setCreationTime(temp.getCreationTime());
+
                 dto.setSendImage(temp.getSendImage());
                 dto.setSendKey(temp.getSendKey());
-                dto.setSendName(temp.getSendName());
+                dto.setSendName(XmlJsonUtil.getURLDecoderString( temp.getSendName()));
                 Gift tg = FindByFilter(gifts, temp.getGiftId());
                 if (tg != null) {
                     dto.setGiftId(tg.getId());
@@ -160,7 +162,7 @@ public class ActorService implements IActorService {
         _activityRepository.saveAndFlush(act);
         return  model;
     }
-@Transactional()
+        @Transactional()
     public Activity  AddActors(MutileActorInput input) throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Activity act=_activityRepository.findOne(input.activityId);

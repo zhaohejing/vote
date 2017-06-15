@@ -7,5 +7,5 @@ import com.efan.controller.dtos.SendDto;
  */
 public class OrderInput extends SendDto {
     public String orderNumber;
-
+    public Integer price;
 }

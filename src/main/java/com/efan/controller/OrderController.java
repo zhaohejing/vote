@@ -60,7 +60,7 @@ public class OrderController {
     @RequestMapping(value  ="/updateState" ,method = RequestMethod.POST)
     public ActionResult UpdateState(@RequestBody OrderInput input){
         try{
-         Boolean state=   _payController.SearchOrder(input.orderNumber);
+         Boolean state=   _payController.SearchOrder(input.orderNumber,input.price);
          if (state){
              Giving model= _giftService.SendGift(input);
             Order o= _orderService.UpdateState(input.orderNumber);

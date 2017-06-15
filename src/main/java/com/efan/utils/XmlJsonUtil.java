@@ -6,6 +6,7 @@ import org.dom4j.*;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.List;
@@ -96,5 +97,44 @@ public class XmlJsonUtil {
     private static boolean isEmpty(String str) {
 
         return str == null || str.trim().isEmpty() || "null".equals(str);
+    }
+    private final static String ENCODE = "UTF-8";
+    /**
+     * URL 解码
+     *
+     * @return String
+     * @author lifq
+     * @date 2015-3-17 下午04:09:51
+     */
+    public static String getURLDecoderString(String str) {
+        String result = "";
+        if (null == str) {
+            return "";
+        }
+        try {
+            result = java.net.URLDecoder.decode(str, ENCODE);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * URL 转码
+     *
+     * @return String
+     * @author lifq
+     * @date 2015-3-17 下午04:10:28
+     */
+    public static String getURLEncoderString(String str) {
+        String result = "";
+        if (null == str) {
+            return "";
+        }
+        try {
+            result = java.net.URLEncoder.encode(str, ENCODE);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

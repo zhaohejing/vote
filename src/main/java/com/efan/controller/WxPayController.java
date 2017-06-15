@@ -98,13 +98,11 @@ if (preid==null||preid.isEmpty()){
         }
     }
     /**
-     * 微信获取订单接口,
-     * @param out_trade_no 商户订单号
-     */
-
-    @ApiOperation(value="微信获取订单接口", notes="微信支付接口")
-    @RequestMapping(value  ="/orderstate" ,method = RequestMethod.POST)
-public  Boolean SearchOrder(String out_trade_no){
+     * 为新订单查询接口*/
+    @ApiOperation(value="为新订单查询接口", notes="微信支付接口")
+  //  @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "JsPayInput")
+    @RequestMapping(value  ="/search" ,method = RequestMethod.POST)
+        public  Boolean SearchOrder(String out_trade_no,Integer price){
     Boolean result = false;
     String url="https://api.mch.weixin.qq.com/pay/orderquery";
     String nonce_str = RandomUtil.generateLowerString(16);//生成随机数，可直接用系统提供的方法
@@ -124,7 +122,7 @@ public  Boolean SearchOrder(String out_trade_no){
         JSONObject jsonObject= XmlJsonUtil.xml2Json(PostResult);//返回的的结果
         if(jsonObject.getString("return_code").equals("SUCCESS")&&
                 jsonObject.getString("result_code").equals("SUCCESS")){
-            result=jsonObject.getString("trade_state").equals("SUCCESS");//这就是预支付id
+            result=jsonObject.getString("trade_state").equals("SUCCESS")&&jsonObject.getInteger("total_fee")==price ;//这就是预支付id
         }
         return result;
     }catch (Exception e){
@@ -132,53 +130,6 @@ public  Boolean SearchOrder(String out_trade_no){
 return  result;
 }
 
-
-    public String FindOrder(String out_trade_no1) throws Exception{
-        String result = "";
-        String token= getToken();
-        if (token.isEmpty()){
-          throw new Exception("token获取失败");
-        }
-        String url="https://api.weixin.qq.com/pay/orderquery?access_token="+token;
-        String pack=getPackage(out_trade_no1);
-        //组装map用于生成sign
-        Map<String, String> map=new HashMap<String, String>();
-        Map<String, String> ssss=new HashMap<String, String>();
-        String timeStamp=(System.currentTimeMillis()/1000)+"";
-        ssss.put("appid", appId);
-        ssss.put("appkey", secret);
-        ssss.put("package", pack);
-        ssss.put("timestamp", timeStamp);
-        String sign= Md5Utils.sign(ssss,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase();
-        map.put("appid", appId);
-        map.put("package", pack);
-        map.put("timestamp", timeStamp);
-        map.put("app_signature", sign);
-        map.put("sign_method", "sha1");
-        //组装xml(wx就这么变态，非得加点xml在里面)
-
-        String content= new Gson().toJson(map);
-        String PostResult= HttpUtils.sendPost(url, content);
-        try{
-            JSONObject jsonObject = XmlJsonUtil.xml2Json(PostResult);//返回的的结果
-            //d
-            if(jsonObject.getString("errcode").equals("0")&&jsonObject.getString("errmsg").equals("ok")){
-                result=jsonObject.get("trade_state")+"";//这就是预支付id
-            }
-            return result;
-        }catch (Exception e){
-            return  e.getMessage();
-        }
-    }
-
-    private  String getPackage(String out_trade_no ){
-        //组装map用于生成sign
-        Map<String, String> map=new HashMap<String, String>();
-        map.put("out_trade_no", out_trade_no);
-        map.put("partner", saleId);
-       String sign= Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase();
-       return  "out_trade_no="+out_trade_no +"&partner="+saleId+"&sign="+sign  ;
-    }
     private String getPrepayid(String out_trade_no1,String total_fee1,String openid1,String redirt,String userIp) throws  Exception{
         String result = "";
         String appid = appId;
@@ -240,37 +191,7 @@ return  result;
         // return to String Formed
         return xmlUTF8;
     }
-    /*获取token*/
-    private  String getToken(){
-        if (TokenSingleton.getInstance().getWxToken() != null &&TokenSingleton.getInstance().getTokenTime()>System.currentTimeMillis()){
-            return TokenSingleton.getInstance().getWxToken();
-        }
 
-        String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+appId+"&secret="+secret;
-        String result = HttpUtils.sendPost(url,"");
-
-        Gson gson = new Gson();
-
-        Map map = gson.fromJson(result,Map.class);
-
-        String access_token = (String) map.get("access_token");
-        Double error = (Double) map.get("errcode");
-
-        if (error!=null&& error>0){
-            String message=(String)map.get("errmsg");
-            //  TokenSingleton.getInstance().setWxToken("");
-            return "";
-        }
-
-        Double expires_in = (Double) map.get("expires_in");
-        //获取当前时间戳
-        long sjc = System.currentTimeMillis();
-        //设置token
-        TokenSingleton.getInstance().setWxToken(access_token);
-        //设置token过期时间
-        TokenSingleton.getInstance().setTokenTime(sjc + expires_in.longValue()*1000);
-        return access_token;
-    }
 }
 
 

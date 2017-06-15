@@ -8,6 +8,7 @@ import com.efan.controller.inputs.DeleteInput;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.*;
 import com.efan.repository.*;
+import com.efan.utils.XmlJsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -129,7 +130,7 @@ public class GiftService implements IGiftService {
         model.setId(0L);
         model.setSendImage(dto.sendImage);
         model.setSendKey(dto.sendKey);
-        model.setSendName(dto.sendName);
+        model.setSendName(XmlJsonUtil.getURLEncoderString( dto.sendName));
         Record record = addrecord(dto.actorId, dto.sendKey, gift.getBeVote());
         if (record == null) {
             throw new Exception("创建失败");
