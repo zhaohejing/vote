@@ -78,7 +78,7 @@ public class OrderController {
          if (state){
              Giving model= _giftService.SendGift(input);
             Order o= _orderService.UpdateState(input.orderNumber);
-             return  new ActionResult(o);
+             return  new ActionResult(model);
          }else  {
              return new ActionResult(false,"微信订单支付失败,请重试");
          }

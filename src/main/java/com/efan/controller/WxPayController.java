@@ -15,16 +15,18 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 @RestController
 @RequestMapping("/api/pay")
@@ -37,13 +39,12 @@ public class WxPayController {
     @Value("${wx.saleId}")
     private String saleId;
 
-    private IGiftService _giftService;
     private IOrderService _orderService;
     private IGiftRepository _giftRepository;
     @Autowired
-   public  WxPayController(IGiftService giftService,IOrderService orderService){
-    _giftService=giftService;
+   public  WxPayController(IOrderService orderService,IGiftRepository giftRepository){
     _orderService=orderService;
+    _giftRepository=giftRepository;
    }
 
     /**
@@ -130,6 +131,73 @@ if (preid==null||preid.isEmpty()){
     }
 return  result;
 }
+
+    @ApiOperation(value="微信回掉", notes="微信支付接口")
+    @RequestMapping(value = "notice", produces = "application/json;charset=UTF-8",method = RequestMethod.POST)
+    @ResponseBody
+    public String Notice(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        BufferedReader reader = null;
+        reader = request.getReader();
+        String line = "";
+        String xmlString = null;
+        StringBuffer inputString = new StringBuffer();
+        while ((line = reader.readLine()) != null) {
+            inputString.append(line);
+        }
+        xmlString = inputString.toString();
+        request.getReader().close();
+      //  System.out.println("----接收到的数据如下：---" + xmlString);
+        String result_code = "";
+        String return_code = "";
+        String out_trade_no = "";
+     JSONObject   map = XmlJsonUtil.xml2Json(xmlString);
+        result_code = map.getString("result_code");
+        out_trade_no = map.getString("out_trade_no");
+        return_code = map.getString("return_code");
+        if (checkSign(xmlString)) {
+            _orderService.UpdateState(out_trade_no);
+          //  this.memberOrderService.updateOrderInfo(out_trade_no);
+          //  MemberOrder memberOrder = memberOrderService.get(out_trade_no);
+         //   String couponId = memberOrder.getCouponId();
+          //  if (StringUtils.isNotEmpty(couponId)) {
+          //      memberCouponService.updateStatus(couponId);
+         //   }
+            return returnXML(result_code);
+        } else {
+            return returnXML("FAIL");
+        }
+    }
+    private boolean checkSign(String xmlString) {
+        JSONObject map = null;
+        try {
+            map = XmlJsonUtil.xml2Json(xmlString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String signFromAPIResponse = map.getString("sign");
+        if (signFromAPIResponse == "" || signFromAPIResponse == null) {
+            System.out.println("API返回的数据签名数据不存在，有可能被第三方篡改!!!");
+            return false;
+        }
+    /*  //  System.out.println("服务器回包里面的签名是:" + signFromAPIResponse);
+        //清掉返回数据对象里面的Sign数据（不能把这个数据也加进去进行签名），然后用签名算法进行签名
+        map.put("sign", "");
+        //将API返回的数据根据用签名算法进行计算新的签名，用来跟API返回的签名进行比较
+        String signForAPIResponse = getSign(map);
+        if (!signForAPIResponse.equals(signFromAPIResponse)) {
+            //签名验不过，表示这个API返回的数据有可能已经被篡改了
+            System.out.println("API返回的数据签名验证不通过，有可能被第三方篡改!!! signForAPIResponse生成的签名为" + signForAPIResponse);
+            return false;
+        }
+        System.out.println("恭喜，API返回的数据签名验证通过!!!");*/
+        return true;
+    }
+    private String returnXML(String return_code) {
+        return "<xml><return_code><![CDATA["
+                + return_code
+                + "]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>";
+    }
+
 
     private String getPrepayid(String out_trade_no1,String total_fee1,String openid1,String redirt,String userIp) throws  Exception{
         String result = "";
