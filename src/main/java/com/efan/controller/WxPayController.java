@@ -24,8 +24,7 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+
 
 @RestController
 @RequestMapping("/api/pay")
@@ -191,10 +190,11 @@ return  result;
         // return to String Formed
         return xmlUTF8;
     }
-    @RequestMapping(value = "notify" ,method = RequestMethod.GET)
-    @ResponseBody
+
+
+    @RequestMapping(value = "notify" ,method = RequestMethod.POST)
     public void notify(HttpServletRequest request,HttpServletResponse response) throws Exception {
-        System.out.println("----接收到的数据如下：---" + request);
+       // System.out.println("----接收到的数据如下：---" + request);
         //读取参数
         InputStream inputStream;
         StringBuffer sb = new StringBuffer();
@@ -216,6 +216,7 @@ return  result;
         }else   {
             //解析xml成map
             JSONObject m;
+            System.out.println(sb.toString());
             m = XmlJsonUtil.xml2Json(sb.toString());
             if ("SUCCESS".equals(m.getString("result_code"))) {
                 String out_trade_no =  m.getString("out_trade_no");
