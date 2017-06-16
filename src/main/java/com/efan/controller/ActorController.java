@@ -114,6 +114,9 @@ public class ActorController {
 
     @RequestMapping(value  ="/vote" ,method = RequestMethod.POST)
     public ActionResult Vote(@RequestBody VoteDto input){
+        if(input.actorId==null||input.actorId<=0){
+            return  new ActionResult(false,"报名者不存在");
+        }
         if(input.sendKey.isEmpty()||input.sendKey.equals("undefined")){
             return  new ActionResult(false,"微信唯一编号不存在");
         }

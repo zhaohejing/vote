@@ -9,8 +9,8 @@ import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.JsPayInput;
 import com.efan.core.page.ActionResult;
 import com.efan.core.primary.Gift;
+import com.efan.repository.IGiftRepository;
 import com.efan.utils.*;
-import com.google.gson.Gson;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,7 @@ public class WxPayController {
 
     private IGiftService _giftService;
     private IOrderService _orderService;
+    private IGiftRepository _giftRepository;
     @Autowired
    public  WxPayController(IGiftService giftService,IOrderService orderService){
     _giftService=giftService;
@@ -52,8 +53,11 @@ public class WxPayController {
     @RequestMapping(value  ="/jspay" ,method = RequestMethod.POST)
     public ActionResult jspay
     (@RequestBody JsPayInput input){
+        if (input.giftId==null||input.giftId<=0){
+            return  new ActionResult(false,"礼物信息不存在");
+        }
         try {
-            Gift gift=_giftService.Gift(new DeleteInput(input.giftId));
+            Gift gift=_giftRepository.findOne(input.giftId);
             if (gift==null){
                 return  new ActionResult(false,"礼物不存在");
             }
@@ -100,10 +104,9 @@ if (preid==null||preid.isEmpty()){
     /**
      * 为新订单查询接口*/
     @ApiOperation(value="为新订单查询接口", notes="微信支付接口")
-  //  @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "JsPayInput")
     @RequestMapping(value  ="/search" ,method = RequestMethod.POST)
-        public  Boolean SearchOrder(String out_trade_no,Integer price){
-    Boolean result = false;
+        public  ActionResult FindOrder(String out_trade_no,Integer price){
+        ActionResult result ;
     String url="https://api.mch.weixin.qq.com/pay/orderquery";
     String nonce_str = RandomUtil.generateLowerString(16);//生成随机数，可直接用系统提供的方法
     String body = "vote-商品订单";
@@ -120,12 +123,10 @@ if (preid==null||preid.isEmpty()){
     String PostResult= HttpUtils.sendPost(url, content);
     try{
         JSONObject jsonObject= XmlJsonUtil.xml2Json(PostResult);//返回的的结果
-        if(jsonObject.getString("return_code").equals("SUCCESS")&&
-                jsonObject.getString("result_code").equals("SUCCESS")){
-            result=jsonObject.getString("trade_state").equals("SUCCESS")&&jsonObject.getInteger("total_fee")==price ;//这就是预支付id
-        }
-        return result;
+
+        result=new ActionResult(jsonObject);
     }catch (Exception e){
+        result=new ActionResult(false,e.getMessage());
     }
 return  result;
 }
