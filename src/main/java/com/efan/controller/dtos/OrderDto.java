@@ -5,14 +5,25 @@ package com.efan.controller.dtos;
  */
 public class OrderDto {
     public  OrderDto(){}
-    public  OrderDto(String order,String openId,Long giftId,String giftName,Integer price,String des){
+    public  OrderDto(String order,String openId,Long giftId,String giftName,Integer price,String des,String payname,String payImage,Long actorId,Long activityId){
         this.orderDes=des;
         this.orderNum=order;
         this.payKey=openId;
         this.productId=giftId;
         this.productName=giftName;
         this.price=price;
+        this.payName=payname;
+        this.payImage=payImage;
+        this.actorId=actorId;
+        this.activityId=activityId;
     }
+    //购买人唯一id
+    public String payName;
+    public  Long activityId;
+    //购买人唯一id
+    public String payImage;
+
+    public  Long actorId;
 
     public  String orderNum;
     //用户唯一id

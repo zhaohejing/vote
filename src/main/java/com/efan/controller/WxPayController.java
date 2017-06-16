@@ -61,11 +61,12 @@ public class WxPayController {
             //处理价格单位为：分(请自行处理)
             String  WIDtotal_fee= gift.getPrice().toString();
             String nom= Md5Utils.getUuid();
-            String preid=getPrepayid(nom, WIDtotal_fee, input.openId,input.redirectUrl,input.userIp);//获取预支付标示
+            String preid=getPrepayid(nom, WIDtotal_fee, input.sendKey,input.redirectUrl,input.userIp);//获取预支付标示
 if (preid==null||preid.isEmpty()){
     return  new ActionResult(false,"生成预支付定单失败");
 }
-            OrderDto dto=new OrderDto(nom,input.openId,gift.getId(),gift.getGiftName(),gift.getPrice(),"");
+         //   String order,String openId,Long giftId,String giftName,Integer price,String des,String payname,String payImage,Long actorId
+            OrderDto dto=new OrderDto(nom,input.sendKey,gift.getId(),gift.getGiftName(),gift.getPrice(),"",input.sendName,input.sendImage,input.actorId,input.activityId);
             _orderService.CreatOrder(dto);
             //组装map用于生成sign
             Map<String, String> result=new HashMap<String, String>();
