@@ -74,8 +74,11 @@ public class OrderController {
     @RequestMapping(value  ="/updateState" ,method = RequestMethod.POST)
     public ActionResult UpdateState(@RequestBody OrderInput input){
         try{
-         Boolean state=   SearchOrder(input.orderNumber,input.price);
-         if (state){
+            if (input.activityId==null||input.activityId<=0){
+                return new ActionResult(false,"活动不存在");
+            }
+      //   Boolean state=   SearchOrder(input.orderNumber,input.price);
+         if (!input.orderNumber.isEmpty()){
              Giving model= _giftService.SendGift(input);
             Order o= _orderService.UpdateState(input.orderNumber);
              return  new ActionResult(model);
@@ -105,7 +108,7 @@ public class OrderController {
             JSONObject jsonObject= XmlJsonUtil.xml2Json(PostResult);//返回的的结果
             if(jsonObject.getString("return_code").equals("SUCCESS")&&
                     jsonObject.getString("result_code").equals("SUCCESS")){
-                result=jsonObject.getString("trade_state").equals("SUCCESS")&&jsonObject.getInteger("total_fee")==price ;//这就是预支付id
+                result=jsonObject.getString("trade_state").equals("SUCCESS") ;//这就是预支付id
             }
             return result;
         }catch (Exception e){

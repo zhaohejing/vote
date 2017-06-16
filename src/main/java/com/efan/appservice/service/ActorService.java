@@ -88,9 +88,8 @@ public class ActorService implements IActorService {
         Page<Giving> givings=_givingRepository.findAllByActorId(input.actorId,pageable);
         List<Gift> gifts=_giftRepository.findAllByActivityId(input.activityId);
         List<GivingOutPut> givingOutPuts =new ArrayList<>();
-        Integer length =givings.getContent().size();
-
-        if (length>0) {
+        if (givings.getContent()!=null&&givings.getContent().size()>0) {
+            Integer length =givings.getContent().size();
             for (int i = 0; i < length; i++) {
                 GivingOutPut dto = new GivingOutPut();
                 Giving temp = givings.getContent().get(i);

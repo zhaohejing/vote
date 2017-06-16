@@ -44,7 +44,7 @@ public class LogAspect {
         logger.info("HTTP_METHOD : " + request.getMethod());
         logger.info("IP : " + request.getRemoteAddr());
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("ARGS : " +  new Gson().toJson(joinPoint.getArgs()));
+     //   logger.info("ARGS : " +  new Gson().toJson(joinPoint.getArgs()));
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")

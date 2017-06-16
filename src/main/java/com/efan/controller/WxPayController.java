@@ -20,8 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -131,74 +130,6 @@ if (preid==null||preid.isEmpty()){
     }
 return  result;
 }
-
-    @ApiOperation(value="微信回掉", notes="微信支付接口")
-    @RequestMapping(value = "notice", produces = "application/json;charset=UTF-8",method = RequestMethod.POST)
-    @ResponseBody
-    public String Notice(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        BufferedReader reader = null;
-        reader = request.getReader();
-        String line = "";
-        String xmlString = null;
-        StringBuffer inputString = new StringBuffer();
-        while ((line = reader.readLine()) != null) {
-            inputString.append(line);
-        }
-        xmlString = inputString.toString();
-        request.getReader().close();
-      //  System.out.println("----接收到的数据如下：---" + xmlString);
-        String result_code = "";
-        String return_code = "";
-        String out_trade_no = "";
-     JSONObject   map = XmlJsonUtil.xml2Json(xmlString);
-        result_code = map.getString("result_code");
-        out_trade_no = map.getString("out_trade_no");
-        return_code = map.getString("return_code");
-        if (checkSign(xmlString)) {
-            _orderService.UpdateState(out_trade_no);
-          //  this.memberOrderService.updateOrderInfo(out_trade_no);
-          //  MemberOrder memberOrder = memberOrderService.get(out_trade_no);
-         //   String couponId = memberOrder.getCouponId();
-          //  if (StringUtils.isNotEmpty(couponId)) {
-          //      memberCouponService.updateStatus(couponId);
-         //   }
-            return returnXML(result_code);
-        } else {
-            return returnXML("FAIL");
-        }
-    }
-    private boolean checkSign(String xmlString) {
-        JSONObject map = null;
-        try {
-            map = XmlJsonUtil.xml2Json(xmlString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String signFromAPIResponse = map.getString("sign");
-        if (signFromAPIResponse == "" || signFromAPIResponse == null) {
-            System.out.println("API返回的数据签名数据不存在，有可能被第三方篡改!!!");
-            return false;
-        }
-    /*  //  System.out.println("服务器回包里面的签名是:" + signFromAPIResponse);
-        //清掉返回数据对象里面的Sign数据（不能把这个数据也加进去进行签名），然后用签名算法进行签名
-        map.put("sign", "");
-        //将API返回的数据根据用签名算法进行计算新的签名，用来跟API返回的签名进行比较
-        String signForAPIResponse = getSign(map);
-        if (!signForAPIResponse.equals(signFromAPIResponse)) {
-            //签名验不过，表示这个API返回的数据有可能已经被篡改了
-            System.out.println("API返回的数据签名验证不通过，有可能被第三方篡改!!! signForAPIResponse生成的签名为" + signForAPIResponse);
-            return false;
-        }
-        System.out.println("恭喜，API返回的数据签名验证通过!!!");*/
-        return true;
-    }
-    private String returnXML(String return_code) {
-        return "<xml><return_code><![CDATA["
-                + return_code
-                + "]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>";
-    }
-
-
     private String getPrepayid(String out_trade_no1,String total_fee1,String openid1,String redirt,String userIp) throws  Exception{
         String result = "";
         String appid = appId;
@@ -260,7 +191,53 @@ return  result;
         // return to String Formed
         return xmlUTF8;
     }
+    @RequestMapping(value = "notify" ,method = RequestMethod.GET)
+    @ResponseBody
+    public void notify(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        System.out.println("----接收到的数据如下：---" + request);
+        //读取参数
+        InputStream inputStream;
+        StringBuffer sb = new StringBuffer();
+        inputStream = request.getInputStream();
+        String s;
+        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+        while ((s = in.readLine()) != null) {
+            sb.append(s);
+        }
+        in.close();
+        inputStream.close();
+        //------------------------------
+        //处理业务开始
+        //------------------------------
+        String resXml = "";
+        if (sb.toString().isEmpty()) {
+            resXml = "<xml>" + "<return_code><![CDATA[FAIL]]></return_code>"
+                    + "<return_msg><![CDATA[报文为空]]></return_msg>" + "</xml> ";
+        }else   {
+            //解析xml成map
+            JSONObject m;
+            m = XmlJsonUtil.xml2Json(sb.toString());
+            if ("SUCCESS".equals(m.getString("result_code"))) {
+                String out_trade_no =  m.getString("out_trade_no");
+                _orderService.UpdateState(out_trade_no);
+                //通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.
+                resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"
+                        + "<return_msg><![CDATA[OK]]></return_msg>" + "</xml> ";
+            } else {
+                resXml = "<xml>" + "<return_code><![CDATA[FAIL]]></return_code>"
+                        + "<return_msg><![CDATA[报文为空]]></return_msg>" + "</xml> ";
+            }
+        }
 
+        //------------------------------
+        //处理业务完毕
+        //------------------------------
+        BufferedOutputStream out = new BufferedOutputStream(
+                response.getOutputStream());
+        out.write(resXml.getBytes());
+        out.flush();
+        out.close();
+    }
 }
 
 

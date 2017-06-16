@@ -89,6 +89,13 @@ public class ActorController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "GivingInput")
     @RequestMapping(value  ="/actorgifts" ,method = RequestMethod.POST)
     public ActionResult Gifts(@RequestBody GivingInput input){
+        if (input.activityId==null||input.activityId<=0){
+            return  new ActionResult(false,"活动不存在");
+        }
+        if (input.actorId==null||input.actorId<=0){
+            return  new ActionResult(false,"参与者不存在");
+        }
+
         ResultModel<GivingOutPut> model=_actorService.GetActorGifts(input);
         return  new ActionResult(model);
     }
