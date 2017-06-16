@@ -46,8 +46,13 @@ public class GiftController {
     @ApiImplicitParam(name = "input", value = "dto对象", required = true, dataType = "DeleteInput")
     @RequestMapping(value  ="/giftsbyactivity" ,method = RequestMethod.POST)
     public ActionResult Gifts(@RequestBody DeleteInput input){
-        ResultModel<Gift> result=_giftService.GiftsByActivityId(input);
-        return  new ActionResult(result);
+        try{
+            ResultModel<Gift> result=_giftService.GiftsByActivityId(input);
+            return  new ActionResult(result);
+        }catch (Exception e){
+            return  new ActionResult(false,e.getMessage());
+        }
+
     }
     /**
      * 添加礼物*/

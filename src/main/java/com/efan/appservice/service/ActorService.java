@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -198,6 +199,10 @@ public class ActorService implements IActorService {
     }
     //投票
     public Record  Vote(VoteDto input) throws Exception{
+        Activity act=_activityRepository.findOne(input.activityId);
+        if(act.getEndTime().getTime()<=new Date().getTime()){
+            throw new Exception("活动已截止");
+        }
         Actor tor=_actorRepository.findOne(input.actorId);
         if(!tor.getCanVote()){
             throw new Exception("热度已满");
@@ -212,7 +217,7 @@ public class ActorService implements IActorService {
         dto.setActivityId(input.activityId);
         dto.setSendKey(input.sendKey);
         dto.setVotes(input.votes);
-    Activity act=_activityRepository.findOne(input.activityId);
+
 if (    act==null   ) throw new Exception("活动不存在");
       Record red=   _recordRepository.saveAndFlush(dto);
 

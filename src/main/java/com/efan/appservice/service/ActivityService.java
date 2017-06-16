@@ -91,8 +91,12 @@ public class ActivityService implements IActivityService {
     }
 
     /*增加访问量*/
-    public Activity Access(DeleteInput input){
+    public Activity Access(DeleteInput input)throws Exception{
         Activity result=  _activityRepository.findOne(input.id);
+        if(result.getEndTime().getTime()<=new Date().getTime()){
+            throw new Exception("活动已截止");
+        }
+
         result.setTraffic(result.getTraffic()+1);
        return _activityRepository.saveAndFlush(result);
     }

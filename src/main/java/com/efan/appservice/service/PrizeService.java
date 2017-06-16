@@ -88,8 +88,4 @@ public class PrizeService implements IPrizeService {
     }
 
 
-    private  String getTimeStampNumberFormat(Timestamp formatTime) {
-        SimpleDateFormat m_format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss", new Locale("zh", "cn"));
-        return m_format.format(formatTime);
-    }
 }

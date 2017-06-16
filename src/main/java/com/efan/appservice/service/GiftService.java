@@ -54,7 +54,11 @@ public class GiftService implements IGiftService {
     }
 
     /*获取活动列表分页数据*/
-    public ResultModel<Gift> GiftsByActivityId(DeleteInput input) {
+    public ResultModel<Gift> GiftsByActivityId(DeleteInput input) throws Exception {
+        Activity act = _activityRepository.findOne(input.id);
+        if(act.getEndTime().getTime()<=new Date().getTime()){
+            throw new Exception("活动已截止");
+        }
         List<Gift> list = _giftRepository.findAllByActivityId(input.id);
         return new ResultModel<>(list);
     }
@@ -109,12 +113,16 @@ public class GiftService implements IGiftService {
     @Transactional
     //送礼物
     public Giving SendGift(SendDto dto) throws Exception {
+        Activity act = _activityRepository.findOne(dto.activityId);
+        if(act.getEndTime().getTime()<=new Date().getTime()){
+            throw new Exception("活动已截止");
+        }
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Gift gift = _giftRepository.findOne(dto.giftId);
         if (gift == null) {
             throw new Exception("礼物不存在");
         }
-        Activity act = _activityRepository.findOne(dto.activityId);
+
         if (act == null) {
             throw new Exception("活动不存在");
         }
