@@ -34,7 +34,8 @@ public class WxPayController {
     private String secret;
     @Value("${wx.saleId}")
     private String saleId;
-
+    @Value("${wx.saleKey}")
+    private String saleKey;
     private IOrderService _orderService;
     private IGiftRepository _giftRepository;
     @Autowired
@@ -92,7 +93,7 @@ if (preid==null||preid.isEmpty()){
             map.put("package", "prepay_id="+preid);
             map.put("signType", "MD5");
             ;
-            result.put("paySign", Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase());//签名
+            result.put("paySign", Md5Utils.sign(map,saleKey).toUpperCase());//签名
             result.put("order", nom);
             return new ActionResult(result);
         }catch (Exception e){
@@ -113,7 +114,7 @@ if (preid==null||preid.isEmpty()){
     map.put("mch_id", saleId);
     map.put("nonce_str", nonce_str);
     map.put("out_trade_no", out_trade_no);
-    String sign = Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase();//参数加密
+    String sign = Md5Utils.sign(map,saleKey).toUpperCase();//参数加密
     map.put("sign", sign);
     //组装xml(wx就这么变态，非得加点xml在里面)
     String content= Md5Utils.MapToXmlNoReg(map);
@@ -155,7 +156,7 @@ return  result;
         map.put("trade_type", trade_type);
         map.put("notify_url", notify_url);
         map.put("openid", openid);
-        String sign = Md5Utils.sign(map,"1q2w3e4r5t6y7u8i9o0p1q2w3e4r5t6y").toUpperCase();//参数加密
+        String sign = Md5Utils.sign(map,saleKey).toUpperCase();//参数加密
       //  System.out.println("sign秘钥:-----------"+sign);
         map.put("sign", sign);
         //组装xml(wx就这么变态，非得加点xml在里面)
