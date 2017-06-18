@@ -66,10 +66,14 @@ public class ScheduledJob {
 
     private  String GenderSql(){
         StringBuilder sb=new StringBuilder();
-        sb.append("select a.* from orders a left join giving b on a.pay_key=b.send_key  where a.pay_state=1 and b.id is null ");
+        sb.append("select a.* from orders a left join (select a.id, a.send_key from giving a ");
+        sb.append(" inner join ");
+        sb.append(" (select send_key,max(creation_time) creation_time from giving group by send_key) b on a.creation_time=b.creation_time) b");
+        sb.append(" on a.pay_key=b.send_key  ");
+        sb.append(" where a.pay_state=1 and b.id is null");
         String left =getTimeByMinute(-5);
         String right=getTimeByMinute(0);
-        sb.append("and a.creation_time>='"+left+"' ");
+        sb.append(" and a.creation_time>='"+left+"' ");
         sb.append(" and a.creation_time<'"+right+"' ;");
        return  sb.toString();
     }
