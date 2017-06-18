@@ -4,6 +4,7 @@ import com.efan.appservice.iservice.IGiftService;
 import com.efan.controller.dtos.GiftDto;
 import com.efan.controller.dtos.SendDto;
 import com.efan.core.primary.Giving;
+import com.efan.utils.XmlJsonUtil;
 import com.sun.javafx.collections.MappingChange;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,9 +44,17 @@ public class ScheduledJob {
                 Long giftId=Long.parseLong(d.get("gift_id").toString());
                 if(d.get("activity_id")==null) continue;
                 Long activityId=Long.parseLong(d.get("activity_id").toString());
+                String send=d.get("send_name")==null?"":d.get("send_name").toString();
+
+                try{
+                    send=XmlJsonUtil.emojiConvert( send);
+                }catch (Exception e){
+
+                }
+
                 //String sendKey,String sendName,String sendImage,Long activityId,Long actorId,Long giftId
                 SendDto dto=new SendDto(sendKey,
-                        d.get("send_name")==null?"":d.get("send_name").toString(),
+                        send,
                          d.get("send_image")==null?"":d.get("send_image").toString(),
                         activityId
                         ,actorId
