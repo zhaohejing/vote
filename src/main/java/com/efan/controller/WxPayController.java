@@ -65,9 +65,12 @@ public class WxPayController {
             String preid=getPrepayid(nom, WIDtotal_fee, input.sendKey,input.redirectUrl,input.userIp);//获取预支付标示
 if (preid==null||preid.isEmpty()){
     return  new ActionResult(false,"生成预支付定单失败");
-}
+}           String send="";
+try {
+    send=XmlJsonUtil.emojiConvert(input.sendName);
+}catch (Exception e){}
          //   String order,String openId,Long giftId,String giftName,Integer price,String des,String payname,String payImage,Long actorId
-            OrderDto dto=new OrderDto(nom,input.sendKey,gift.getId(),gift.getGiftName(),gift.getPrice(),"",input.sendName,input.sendImage,input.actorId,input.activityId);
+            OrderDto dto=new OrderDto(nom,input.sendKey,gift.getId(),gift.getGiftName(),gift.getPrice(),"", send,input.sendImage,input.actorId,input.activityId);
             _orderService.CreatOrder(dto);
             //组装map用于生成sign
             Map<String, String> result=new HashMap<String, String>();
