@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -88,6 +89,9 @@ public class ActivityController {
     public ActionResult GetDetail(@RequestParam Long activityId){
         try {
             ActivityOutPut model=_activityService.GetDetail(activityId);
+            if(model.getEndTime().getTime()<=new Date().getTime()){
+                return  new ActionResult(true,model,"活动已截止");
+            }
             return  new ActionResult(model);
 
         }catch (Exception e){
