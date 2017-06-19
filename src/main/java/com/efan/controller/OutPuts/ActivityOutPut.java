@@ -116,6 +116,16 @@ public class ActivityOutPut {
     private List<Image> images;
     private List<Prize> prizes;
 
+    public Boolean getEnd() {
+        return isEnd;
+    }
+
+    public void setEnd(Boolean end) {
+        isEnd = end;
+    }
+
+    private Boolean isEnd=false;
+
     public List<Prize> getPrizes() {
         return prizes;
     }

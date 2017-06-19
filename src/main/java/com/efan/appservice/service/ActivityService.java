@@ -8,6 +8,7 @@ import com.efan.controller.dtos.ImageDto;
 import com.efan.controller.inputs.BaseInput;
 import com.efan.controller.inputs.DeleteInput;
 import com.efan.controller.inputs.ListInput;
+import com.efan.core.page.ActionResult;
 import com.efan.core.page.ResultModel;
 import com.efan.core.primary.Activity;
 import com.efan.core.primary.Image;
@@ -73,7 +74,9 @@ public class ActivityService implements IActivityService {
             out.setTitle(model.getTitle());
             out.setTotalVotes(model.getTotalVotes());
             out.setTraffic(model.getTraffic());
-
+        if(model.getEndTime().getTime()<=new Date().getTime()){
+           out.setEnd(true);
+        }
             List<Image> images=  _imageRepository.findAllByActivityIdOrderBySort(activityId);
             if (    images.size()>0){
                 out.setImages(images);

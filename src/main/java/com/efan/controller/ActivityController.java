@@ -89,17 +89,11 @@ public class ActivityController {
     public ActionResult GetDetail(@RequestParam Long activityId){
         try {
             ActivityOutPut model=_activityService.GetDetail(activityId);
-            if(model.getEndTime().getTime()<=new Date().getTime()){
-                return  new ActionResult(true,model,"活动已截止");
-            }
             return  new ActionResult(model);
-
         }catch (Exception e){
             return  new ActionResult(false, e.getMessage());
         }
     }
-
-
     /**
      * 增加访问量*/
     @ApiOperation(value="增加访问量", notes="后台活动接口")
