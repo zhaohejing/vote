@@ -54,9 +54,8 @@ public class OrderService implements IOrderService {
             model.setActorId(input.actorId);
             model.setPayImage(input.payImage);
             model.setPayName(input.payName);
-
+            model.setActivityId(input.activityId);
             model.setPayState(false);
-
             model=  _orderRepository.save(model);
             return  model;
     }

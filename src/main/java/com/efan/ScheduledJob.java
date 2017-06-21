@@ -40,8 +40,8 @@ public class ScheduledJob {
                 String sendKey=d.get("pay_key").toString();
                 if(d.get("actor_id")==null) continue;
                 Long actorId=Long.parseLong(d.get("actor_id").toString());
-                if(d.get("gift_id")==null) continue;
-                Long giftId=Long.parseLong(d.get("gift_id").toString());
+                if(d.get("product_id")==null) continue;
+                Long giftId=Long.parseLong(d.get("product_id").toString());
                 if(d.get("activity_id")==null) continue;
                 Long activityId=Long.parseLong(d.get("activity_id").toString());
                 String send=d.get("send_name")==null?"":d.get("send_name").toString();
@@ -79,10 +79,10 @@ public class ScheduledJob {
         sb.append(" inner join ");
         sb.append(" (select send_key,max(creation_time) creation_time from giving group by send_key) b on a.creation_time=b.creation_time) b");
         sb.append(" on a.pay_key=b.send_key  ");
-        sb.append(" where a.pay_state=1 and b.id is null");
+        sb.append(" where a.pay_state=1 and a.actor_id is not null and b.id is null");
         String left =getTimeByMinute(-5);
         String right=getTimeByMinute(0);
-        sb.append(" and a.creation_time>='"+left+"' ");
+       sb.append(" and a.creation_time>='"+left+"' ");
         sb.append(" and a.creation_time<'"+right+"' ;");
        return  sb.toString();
     }
