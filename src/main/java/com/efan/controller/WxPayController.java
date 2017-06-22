@@ -9,6 +9,7 @@ import com.efan.core.page.ActionResult;
 import com.efan.core.primary.Gift;
 import com.efan.repository.IGiftRepository;
 import com.efan.utils.*;
+import com.sun.xml.internal.rngom.parse.host.Base;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/pay")
 @EnableSwagger2
-public class WxPayController {
+public class WxPayController extends BaseController {
    @Value("${wx.appId}")
     private String appId;
     @Value("${wx.secret}")
@@ -68,7 +69,9 @@ if (preid==null||preid.isEmpty()){
 }           String send="";
 try {
     send=XmlJsonUtil.emojiConvert(input.sendName);
-}catch (Exception e){}
+}catch (Exception e){
+   logger.error(e.getMessage(),e);
+}
          //   String order,String openId,Long giftId,String giftName,Integer price,String des,String payname,String payImage,Long actorId
             OrderDto dto=new OrderDto(nom,input.sendKey,gift.getId(),gift.getGiftName(),gift.getPrice(),"", send,input.sendImage,input.actorId,input.activityId);
             _orderService.CreatOrder(dto);
@@ -100,6 +103,7 @@ try {
             result.put("order", nom);
             return new ActionResult(result);
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  new ActionResult(false,e.getMessage());
         }
     }
@@ -173,6 +177,7 @@ return  result;
             }
             return result;
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  e.getMessage();
         }
 

@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/actor")
-public class ActorController {
+public class ActorController extends BaseController {
     private IActorService    _actorService;
     @Autowired
     public ActorController(IActorService actorService){
@@ -62,6 +62,7 @@ public class ActorController {
             return  new ActionResult(result);
 
         }catch (Exception e){
+            logger.error(e.getMessage());
             return  new ActionResult(false,e.getMessage());
         }
     }
@@ -110,6 +111,7 @@ public class ActorController {
             return  new ActionResult(model);
         }
         catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  new ActionResult(false,e.getMessage());
         }
 
@@ -139,6 +141,7 @@ public class ActorController {
            Record model=_actorService.Vote(input);
            return  new ActionResult(model);
        }catch (Exception e){
+           logger.error(e.getMessage(),e);
            return  new ActionResult(false,e.getMessage());
        }
     }

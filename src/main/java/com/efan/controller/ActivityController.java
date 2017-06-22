@@ -23,8 +23,9 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/activity")
-public class ActivityController {
+public class ActivityController extends BaseController {
     private IActivityService _activityService;
+
     @Autowired
     public ActivityController(IActivityService activityService){
         _activityService=activityService;
@@ -91,6 +92,7 @@ public class ActivityController {
             ActivityOutPut model=_activityService.GetDetail(activityId);
             return  new ActionResult(model);
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  new ActionResult(false, e.getMessage());
         }
     }
@@ -104,6 +106,7 @@ public class ActivityController {
             Activity model=_activityService.Access(input);
             return  new ActionResult(model);
         }catch (Exception e){
+            logger.error(e.getMessage());
             return  new ActionResult(false,e.getMessage());
         }
 

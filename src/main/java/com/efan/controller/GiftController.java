@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/gift")
-public class GiftController {
+public class GiftController extends  BaseController {
     private IGiftService _giftService;
     @Autowired
     public GiftController(IGiftService giftService){
@@ -50,6 +50,7 @@ public class GiftController {
             ResultModel<Gift> result=_giftService.GiftsByActivityId(input);
             return  new ActionResult(result);
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  new ActionResult(false,e.getMessage());
         }
 
@@ -94,6 +95,7 @@ public class GiftController {
             Giving model= _giftService.SendGift(input);
             return  new ActionResult(model);
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return  new ActionResult(false,e.getMessage());
         }
     }

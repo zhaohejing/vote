@@ -3,7 +3,6 @@ package com.efan.aspect;
 import com.google.gson.Gson;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,8 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Order(5)
 @Component
 public class LogAspect {
-    private Logger logger = LogManager.getLogger(getClass());
-
+    public org.apache.logging.log4j.Logger logger = LogManager.getLogger(getClass());
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
     @Pointcut("execution(public * com.efan.controller..*.*(..))")
@@ -34,11 +32,9 @@ public class LogAspect {
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
         startTime.set(System.currentTimeMillis());
-
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
         // 记录下请求内容
         logger.info("URL : " + request.getRequestURL().toString());
         logger.info("HTTP_METHOD : " + request.getMethod());
@@ -46,7 +42,6 @@ public class LogAspect {
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
      //   logger.info("ARGS : " +  new Gson().toJson(joinPoint.getArgs()));
     }
-
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容

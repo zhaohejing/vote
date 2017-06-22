@@ -31,7 +31,7 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping("/api/order")
-public class OrderController {
+public class OrderController extends BaseController {
     @Value("${wx.appId}")
     private String appId;
     @Value("${wx.secret}")
@@ -39,12 +39,12 @@ public class OrderController {
     @Value("${wx.saleId}")
     private String saleId;
     private IOrderService _orderService;
-    private WxPayController _payController;
+
     private IGiftService _giftService;
     @Autowired
-    public OrderController(IOrderService orderService,WxPayController payController,IGiftService giftService){
+    public OrderController(IOrderService orderService,IGiftService giftService){
         _orderService=orderService;
-        _payController=payController;
+
         _giftService=giftService;
     }
 
@@ -86,6 +86,7 @@ public class OrderController {
              return new ActionResult(false,"微信订单支付失败,请重试");
          }
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
             return new ActionResult(false,e.getMessage());
         }
     }
@@ -112,6 +113,7 @@ public class OrderController {
             }
             return result;
         }catch (Exception e){
+            logger.error(e.getMessage(),e);
         }
         return  result;
     }

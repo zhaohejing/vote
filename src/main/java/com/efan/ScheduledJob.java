@@ -1,13 +1,11 @@
 package com.efan;
 
 import com.efan.appservice.iservice.IGiftService;
-import com.efan.controller.dtos.GiftDto;
 import com.efan.controller.dtos.SendDto;
 import com.efan.core.primary.Giving;
 import com.efan.utils.XmlJsonUtil;
-import com.sun.javafx.collections.MappingChange;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,7 +27,7 @@ public class ScheduledJob {
     @Autowired
     @Qualifier("primaryJdbcTemplate")
     public JdbcTemplate _jdbc;
-    private Logger logger = LogManager.getLogger(getClass());
+    public final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Scheduled(cron="0 0/2 * * * ?")
     public void SendGifts() {
             String sql=GenderSql();
@@ -51,7 +49,6 @@ public class ScheduledJob {
                 }catch (Exception e){
 
                 }
-
                 //String sendKey,String sendName,String sendImage,Long activityId,Long actorId,Long giftId
                 SendDto dto=new SendDto(sendKey,
                         send,
@@ -62,8 +59,7 @@ public class ScheduledJob {
                 try {
                     Giving t = _giftService.SendGiftByScheduled(dto);
                     if (t!=null ){
-                        logger.info(t.getSendName()+"送礼给"+t.getActorId() +"成功");
-
+                        logger.warn(t.getSendName()+"送礼给"+t.getActorId() +"成功");
                     }
                 }catch (Exception e){
                     logger.error(e.getMessage());
