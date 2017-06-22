@@ -151,6 +151,42 @@ public class GiftService implements IGiftService {
         return _givingRepository.save(model);
     }
 
+    public Giving SendGiftByScheduled(SendDto dto) throws Exception {
+        Activity act = _activityRepository.findOne(dto.activityId);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Gift gift = _giftRepository.findOne(dto.giftId);
+        if (gift == null) {
+            throw new Exception("礼物不存在");
+        }
+
+        if (act == null) {
+            throw new Exception("活动不存在");
+        }
+        Actor tor = _actorRepository.findOne(dto.actorId);
+        if (tor == null) {
+            throw new Exception("送礼对象不存在");
+        }
+        Giving model = new Giving();
+        model.setActorId(dto.actorId);
+        model.setCreationTime(df.format(new java.util.Date()));
+        model.setDelete(false);
+        model.setGiftId(dto.giftId);
+        model.setId(0L);
+        model.setSendImage(dto.sendImage);
+        model.setSendKey(dto.sendKey);
+        model.setSendName(XmlJsonUtil.emojiConvert( dto.sendName));
+        Record record = addrecord(dto.actorId, dto.sendKey, gift.getBeVote());
+        if (record == null) {
+            throw new Exception("创建失败");
+        }
+        act.setTotalVotes(gift.getBeVote() + act.getTotalVotes());
+        tor.setGiftCount(tor.getGiftCount() + gift.getBeVote());
+        tor.setTotalPrice(tor.getTotalPrice() + (gift.getPrice() / 100));
+        _actorRepository.saveAndFlush(tor);
+        _activityRepository.saveAndFlush(act);
+        return _givingRepository.save(model);
+    }
+
     private Record addrecord(Long actorId, String sendKey, Integer votes) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Record dto = new Record();

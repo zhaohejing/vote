@@ -23,4 +23,5 @@ public interface IGiftService {
     //送礼物
     Giving SendGift(SendDto dto) throws Exception;
     ResultModel<Gift> GiftsByActivityId(DeleteInput input) throws Exception;
+    Giving SendGiftByScheduled(SendDto dto) throws Exception;
 }

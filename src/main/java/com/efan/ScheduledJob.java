@@ -60,7 +60,7 @@ public class ScheduledJob {
                         ,actorId
                         ,giftId);
                 try {
-                    Giving t = _giftService.SendGift(dto);
+                    Giving t = _giftService.SendGiftByScheduled(dto);
                     if (t!=null ){
                         logger.info(t.getSendName()+"送礼给"+t.getActorId() +"成功");
 
