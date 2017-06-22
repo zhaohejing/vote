@@ -7,11 +7,12 @@
             </PatternLayout>
         </Console>
         <!-- 按日期每天生成log文件 -->
-        <RollingFile name="RollingFile" fileName="log/JF.log"
-                     filePattern="log/JF-%d{yyyy-MM-dd}.log">
+        <RollingFile name="RollingFile" fileName="log/vote.log"
+                     filePattern="log/vote-%d{yyyy-MM-dd hh:mm:ss}.log">
             <PatternLayout pattern="%d %p %C{1.} [%t] %m%n"/>
             <Policies>
-                <TimeBasedTriggeringPolicy interval="1"/>
+                <TimeBasedTriggeringPolicy interval="10"/>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
 
             <!-- log文件只打印error级别信息 -->
@@ -23,7 +24,7 @@
     <Loggers>
         <!-- 输出info级别信息 -->
         <Root level="info">
-            <AppenderRef ref="Console"/>
+           <!-- <AppenderRef ref="Console"/>-->
             <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>

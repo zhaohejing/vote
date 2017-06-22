@@ -42,11 +42,11 @@ public class LogAspect {
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
      //   logger.info("ARGS : " +  new Gson().toJson(joinPoint.getArgs()));
     }
-    @AfterReturning(returning = "ret", pointcut = "webLog()")
+  /*  @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
         logger.info("RESPONSE : " + new Gson().toJson(ret));
         logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
-    }
+    }*/
 }
 
