@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BaseController  {
     public Logger logger = LogManager.getLogger(getClass());
-  /*  public BaseController() throws TokenException{
-        String token="";
-        if (token==null){
-            throw  new TokenException();
-
-        }
-    }
-    public  class TokenException extends Exception{
-
-    }*/
+//    public BaseController() throws TokenException{
+//        String token="";
+//        if (token==null){
+//            throw  new TokenException();
+//
+//        }
+//    }
+//    public  class TokenException extends Exception{
+//
+//    }
 }
