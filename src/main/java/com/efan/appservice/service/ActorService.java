@@ -137,8 +137,6 @@ public class ActorService implements IActorService {
                 Integer count=actors.size();
         if (input.id !=null&&input.id>0){
             model=_actorRepository.findOne(input.id);
-            model.setActivityId(input.activityId);
-            model.setActorCount(0);
             model.setActorImage(input.actorImage);
             model.setDeclaration(input.declaration);
             model.setActorKey(input.actorKey);
