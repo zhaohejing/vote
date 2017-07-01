@@ -133,9 +133,11 @@ public class ActorService implements IActorService {
     public Actor   Modify(ActorDto input) throws  Exception{
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Actor model;
-        List<Actor>  actors=_actorRepository.findAllByActivityId(input.activityId);
-                Integer count=actors.size();
+        List<Actor>  actors=_actorRepository.findAllByActivityIdOrderBySortDesc(input.activityId);
+            Actor temp=actors.get(0);
+                Integer count=temp==null?0:temp.getSort();
         if (input.id !=null&&input.id>0){
+
             model=_actorRepository.findOne(input.id);
             model.setActorImage(input.actorImage);
             model.setDeclaration(input.declaration);
@@ -143,6 +145,10 @@ public class ActorService implements IActorService {
             model.setActorName(input.actorName);
             model=  _actorRepository.saveAndFlush(model );
         }else {
+            Actor act=_actorRepository.findByActorKeyEquals(input.actorKey);
+            if (act!=null){
+                throw new  Exception("用户已存在");
+            }
             model=new Actor();
             model.setActivityId(input.activityId);
             model.setActorCount(0);
@@ -168,8 +174,9 @@ public class ActorService implements IActorService {
         if (act==null){
             throw new Exception("活动信息不存在");
         }
-        List<Actor>  actors=_actorRepository.findAllByActivityId(input.activityId);
-        Integer count=actors.size();
+            List<Actor>  actors=_actorRepository.findAllByActivityIdOrderBySortDesc(input.activityId);
+            Actor temp=actors.get(0);
+            Integer count=temp==null?0:temp.getSort();
             if (input.actors.size()<=0){
                 throw new Exception("人员信息不存在");
             }

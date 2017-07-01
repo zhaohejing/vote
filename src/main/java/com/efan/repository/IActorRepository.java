@@ -20,6 +20,8 @@ public interface IActorRepository extends JpaRepository<Actor,Long> {
 
     Page<Actor> findAllByActivityIdAndActorNameContains(Long activityId, String actorName, Pageable pageable);
     List<Actor> findAllByActivityId(Long activityId);
+    List<Actor> findAllByActivityIdOrderBySortDesc(Long activityId);
+    Actor findByActorKeyEquals(String actorName);
 }
 
 
